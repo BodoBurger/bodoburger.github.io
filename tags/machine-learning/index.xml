@@ -1,24 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Machine Learning | Bodo Burger</title>
-    <link>https://bodoburger.github.io/tags/machine-learning/</link>
-      <atom:link href="https://bodoburger.github.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
-    <description>Machine Learning</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Bodo Burger 2019</copyright><lastBuildDate>Sat, 06 Apr 2019 00:00:00 +0000</lastBuildDate>
-    <image>
-      <url>https://bodoburger.github.io/img/icon-192.png</url>
-      <title>Machine Learning</title>
-      <link>https://bodoburger.github.io/tags/machine-learning/</link>
-    </image>
-    
-    <item>
-      <title>Feature Effects in Machine Learning Models</title>
-      <link>https://bodoburger.github.io/project/2019-feature-effects/</link>
-      <pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>https://bodoburger.github.io/project/2019-feature-effects/</guid>
-      <description>
-
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Machine Learning | Bodo Burger</title><link>https://bodoburger.github.io/homepage-source-hugo/tags/machine-learning/</link><atom:link href="https://bodoburger.github.io/homepage-source-hugo/tags/machine-learning/index.xml" rel="self" type="application/rss+xml"/><description>Machine Learning</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Bodo Burger 2019</copyright><lastBuildDate>Sat, 06 Apr 2019 00:00:00 +0000</lastBuildDate><image><url>https://bodoburger.github.io/homepage-source-hugo/img/icon-192.png</url><title>Machine Learning</title><link>https://bodoburger.github.io/homepage-source-hugo/tags/machine-learning/</link></image><item><title>Feature Effects in Machine Learning Models</title><link>https://bodoburger.github.io/homepage-source-hugo/project/2019-feature-effects/</link><pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/homepage-source-hugo/project/2019-feature-effects/</guid><description>
 &lt;div id=&#34;TOC&#34;&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#summary&#34;&gt;Summary&lt;/a&gt;&lt;/li&gt;
@@ -30,7 +10,6 @@
 &lt;li&gt;&lt;a href=&#34;#references&#34;&gt;References&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-
 &lt;div id=&#34;summary&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Summary&lt;/h1&gt;
 &lt;p&gt;Supervised machine learning models are mostly black boxes.
@@ -215,35 +194,35 @@ We focus on the three numerical features &lt;code&gt;temp&lt;/code&gt; (temperat
 We apply our method to each of the complex models with default settings.
 The output in &lt;code&gt;R&lt;/code&gt; looks as follows:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;## lm:
-##      temp       hum windspeed 
-##      98.2     -13.7     -40.1
+## temp hum windspeed
+## 98.2 -13.7 -40.1
 ## SVM (temp)
-## [-5.221, 19.26) [19.26, 32.498] 
-##          128.11            3.87 
+## [-5.221, 19.26) [19.26, 32.498]
+## 128.11 3.87
 ## SVM (hum)
-## [18.792, 56.792) [56.792, 93.957] 
-##             7.19           -32.71 
+## [18.792, 56.792) [56.792, 93.957]
+## 7.19 -32.71
 ## SVM (windspeed)
-## [2.834, 14.876)    [14.876, 34] 
-##           -22.7           -64.7 
+## [2.834, 14.876) [14.876, 34]
+## -22.7 -64.7
 ## RF (temp)
-## [-5.221, 20.278) [20.278, 32.498] 
-##            104.5            -62.7 
+## [-5.221, 20.278) [20.278, 32.498]
+## 104.5 -62.7
 ## RF (hum)
-## [18.792, 64.667) [64.667, 93.957] 
-##            -1.18           -31.97 
+## [18.792, 64.667) [64.667, 93.957]
+## -1.18 -31.97
 ## RF (windspeed)
-##  [2.834, 18.417) [18.417, 24.251)     [24.251, 34] 
-##           -16.46           -78.30            -1.64 
+## [2.834, 18.417) [18.417, 24.251) [24.251, 34]
+## -16.46 -78.30 -1.64
 ## GBM (temp)
-## [-5.221, 16.792) [16.792, 26.075) [26.075, 32.498] 
-##            124.2             13.9           -239.7 
+## [-5.221, 16.792) [16.792, 26.075) [26.075, 32.498]
+## 124.2 13.9 -239.7
 ## GBM (hum)
-## [18.792, 64.667) [64.667, 83.792)  [83.792, 87.25)  [87.25, 93.957] 
-##            -3.86           -39.63          -227.00            91.19 
+## [18.792, 64.667) [64.667, 83.792) [83.792, 87.25) [87.25, 93.957]
+## -3.86 -39.63 -227.00 91.19
 ## GBM (windspeed)
-##   [2.834, 8.584)  [8.584, 22.959) [22.959, 24.251)     [24.251, 34] 
-##        -5.32e+01        -1.85e+01        -5.04e+02         6.60e-14&lt;/code&gt;&lt;/pre&gt;
+## [2.834, 8.584) [8.584, 22.959) [22.959, 24.251) [24.251, 34]
+## -5.32e+01 -1.85e+01 -5.04e+02 6.60e-14&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The marginal effect of the linear model is equal to the model coefficients.
 So according to the model an increase of the temperature by 1° Celsius
 leads to a predicted increase of &lt;span class=&#34;math inline&#34;&gt;\(98.188\)&lt;/span&gt;. rented bicycles per day.
@@ -281,7 +260,6 @@ Values outside this range indicate more extreme weather conditions.
 If uncommonly dry or wet air reduces people’s desire to ride a bike
 we will expect a positive effect on the number of rented bikes
 if humidity is below the familiar range, and a negative effect if it is above.&lt;/p&gt;
-
 &lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:bikes-hum-hist&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;figures/bikes-hum-hist-1.png&#34; alt=&#34;Histogram for feature humidity of the Bike Sharing dataset.&#34; width=&#34;40%&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
@@ -309,21 +287,18 @@ The results for the gradient boosting model are less convincing.
 Due to the stepped response function the model is less appropriate
 for making quantitative statements about the feature effect.
 The estimates fluctuate between high values and values close to zero.&lt;/p&gt;
-
 &lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:bikes-results-svm&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;figures/bikes-results-svm-1.png&#34; alt=&#34;Bike sharing data. Results SVM.&#34; width=&#34;1152&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 2: Bike sharing data. Results SVM.
 &lt;/p&gt;
 &lt;/div&gt;
-
 &lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:bikes-results-gbm&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;figures/bikes-results-gbm-1.png&#34; alt=&#34;Bike sharing data. Results gradient boosting.&#34; width=&#34;1152&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 3: Bike sharing data. Results gradient boosting.
 &lt;/p&gt;
 &lt;/div&gt;
-
 &lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:bikes-results-rf&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;figures/bikes-results-rf-1.png&#34; alt=&#34;Bike sharing data. Results random forest.&#34; width=&#34;1152&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
@@ -360,9 +335,4 @@ Source code and more information can be found on GitHub:
 &lt;p&gt;R Core Team. 2019. &lt;em&gt;R: A Language and Environment for Statistical Computing&lt;/em&gt;. Vienna, Austria: R Foundation for Statistical Computing. &lt;a href=&#34;https://www.R-project.org/&#34;&gt;https://www.R-project.org/&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-  </channel>
-</rss>
+&lt;/div&gt;</description></item></channel></rss>

@@ -1,25 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Books | Bodo Burger</title>
-    <link>https://bodoburger.github.io/categories/books/</link>
-      <atom:link href="https://bodoburger.github.io/categories/books/index.xml" rel="self" type="application/rss+xml" />
-    <description>Books</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Bodo Burger 2019</copyright><lastBuildDate>Tue, 26 Feb 2019 00:00:00 +0000</lastBuildDate>
-    <image>
-      <url>https://bodoburger.github.io/img/icon-192.png</url>
-      <title>Books</title>
-      <link>https://bodoburger.github.io/categories/books/</link>
-    </image>
-    
-    <item>
-      <title>Interpretable Machine Learning by Christoph Molnar</title>
-      <link>https://bodoburger.github.io/post/2019-02-interpretable-ml-book/</link>
-      <pubDate>Tue, 26 Feb 2019 00:00:00 +0000</pubDate>
-      <guid>https://bodoburger.github.io/post/2019-02-interpretable-ml-book/</guid>
-      <description>
-
-
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Books | Bodo Burger</title><link>https://bodoburger.github.io/homepage-source-hugo/categories/books/</link><atom:link href="https://bodoburger.github.io/homepage-source-hugo/categories/books/index.xml" rel="self" type="application/rss+xml"/><description>Books</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Bodo Burger 2019</copyright><lastBuildDate>Tue, 26 Feb 2019 00:00:00 +0000</lastBuildDate><image><url>https://bodoburger.github.io/homepage-source-hugo/img/icon-192.png</url><title>Books</title><link>https://bodoburger.github.io/homepage-source-hugo/categories/books/</link></image><item><title>Interpretable Machine Learning by Christoph Molnar</title><link>https://bodoburger.github.io/homepage-source-hugo/post/2019-02-interpretable-ml-book/</link><pubDate>Tue, 26 Feb 2019 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/homepage-source-hugo/post/2019-02-interpretable-ml-book/</guid><description>
 &lt;p&gt;The digital version of the book can be bought on
 &lt;a href=&#34;https://leanpub.com/interpretable-machine-learning&#34;&gt;leanpub&lt;/a&gt;.
 You can find a free online version of the book here:
@@ -82,9 +61,4 @@ that tells us how much the predicted target increases
 if we increase the corresponding feature by one unit, all other features held constant.
 (Effect plots)[&lt;a href=&#34;https://christophm.github.io/interpretable-ml-book/limo.html#visual-interpretation&#34; class=&#34;uri&#34;&gt;https://christophm.github.io/interpretable-ml-book/limo.html#visual-interpretation&lt;/a&gt;]
 can help to understand a feature’s contribution to the prediction.&lt;/p&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-  </channel>
-</rss>
+&lt;/div&gt;</description></item></channel></rss>

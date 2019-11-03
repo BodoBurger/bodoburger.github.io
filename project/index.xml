@@ -1,24 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Projects | Bodo Burger</title>
-    <link>https://bodoburger.github.io/project/</link>
-      <atom:link href="https://bodoburger.github.io/project/index.xml" rel="self" type="application/rss+xml" />
-    <description>Projects</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Bodo Burger 2019</copyright><lastBuildDate>Sat, 06 Apr 2019 00:00:00 +0000</lastBuildDate>
-    <image>
-      <url>https://bodoburger.github.io/img/icon-192.png</url>
-      <title>Projects</title>
-      <link>https://bodoburger.github.io/project/</link>
-    </image>
-    
-    <item>
-      <title>Feature Effects in Machine Learning Models</title>
-      <link>https://bodoburger.github.io/project/2019-feature-effects/</link>
-      <pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>https://bodoburger.github.io/project/2019-feature-effects/</guid>
-      <description>
-
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Projects | Bodo Burger</title><link>https://bodoburger.github.io/homepage-source-hugo/project/</link><atom:link href="https://bodoburger.github.io/homepage-source-hugo/project/index.xml" rel="self" type="application/rss+xml"/><description>Projects</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Bodo Burger 2019</copyright><lastBuildDate>Sat, 06 Apr 2019 00:00:00 +0000</lastBuildDate><image><url>https://bodoburger.github.io/homepage-source-hugo/img/icon-192.png</url><title>Projects</title><link>https://bodoburger.github.io/homepage-source-hugo/project/</link></image><item><title>Feature Effects in Machine Learning Models</title><link>https://bodoburger.github.io/homepage-source-hugo/project/2019-feature-effects/</link><pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/homepage-source-hugo/project/2019-feature-effects/</guid><description>
 &lt;div id=&#34;TOC&#34;&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#summary&#34;&gt;Summary&lt;/a&gt;&lt;/li&gt;
@@ -30,7 +10,6 @@
 &lt;li&gt;&lt;a href=&#34;#references&#34;&gt;References&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-
 &lt;div id=&#34;summary&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Summary&lt;/h1&gt;
 &lt;p&gt;Supervised machine learning models are mostly black boxes.
@@ -215,35 +194,35 @@ We focus on the three numerical features &lt;code&gt;temp&lt;/code&gt; (temperat
 We apply our method to each of the complex models with default settings.
 The output in &lt;code&gt;R&lt;/code&gt; looks as follows:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;## lm:
-##      temp       hum windspeed 
-##      98.2     -13.7     -40.1
+## temp hum windspeed
+## 98.2 -13.7 -40.1
 ## SVM (temp)
-## [-5.221, 19.26) [19.26, 32.498] 
-##          128.11            3.87 
+## [-5.221, 19.26) [19.26, 32.498]
+## 128.11 3.87
 ## SVM (hum)
-## [18.792, 56.792) [56.792, 93.957] 
-##             7.19           -32.71 
+## [18.792, 56.792) [56.792, 93.957]
+## 7.19 -32.71
 ## SVM (windspeed)
-## [2.834, 14.876)    [14.876, 34] 
-##           -22.7           -64.7 
+## [2.834, 14.876) [14.876, 34]
+## -22.7 -64.7
 ## RF (temp)
-## [-5.221, 20.278) [20.278, 32.498] 
-##            104.5            -62.7 
+## [-5.221, 20.278) [20.278, 32.498]
+## 104.5 -62.7
 ## RF (hum)
-## [18.792, 64.667) [64.667, 93.957] 
-##            -1.18           -31.97 
+## [18.792, 64.667) [64.667, 93.957]
+## -1.18 -31.97
 ## RF (windspeed)
-##  [2.834, 18.417) [18.417, 24.251)     [24.251, 34] 
-##           -16.46           -78.30            -1.64 
+## [2.834, 18.417) [18.417, 24.251) [24.251, 34]
+## -16.46 -78.30 -1.64
 ## GBM (temp)
-## [-5.221, 16.792) [16.792, 26.075) [26.075, 32.498] 
-##            124.2             13.9           -239.7 
+## [-5.221, 16.792) [16.792, 26.075) [26.075, 32.498]
+## 124.2 13.9 -239.7
 ## GBM (hum)
-## [18.792, 64.667) [64.667, 83.792)  [83.792, 87.25)  [87.25, 93.957] 
-##            -3.86           -39.63          -227.00            91.19 
+## [18.792, 64.667) [64.667, 83.792) [83.792, 87.25) [87.25, 93.957]
+## -3.86 -39.63 -227.00 91.19
 ## GBM (windspeed)
-##   [2.834, 8.584)  [8.584, 22.959) [22.959, 24.251)     [24.251, 34] 
-##        -5.32e+01        -1.85e+01        -5.04e+02         6.60e-14&lt;/code&gt;&lt;/pre&gt;
+## [2.834, 8.584) [8.584, 22.959) [22.959, 24.251) [24.251, 34]
+## -5.32e+01 -1.85e+01 -5.04e+02 6.60e-14&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The marginal effect of the linear model is equal to the model coefficients.
 So according to the model an increase of the temperature by 1° Celsius
 leads to a predicted increase of &lt;span class=&#34;math inline&#34;&gt;\(98.188\)&lt;/span&gt;. rented bicycles per day.
@@ -281,7 +260,6 @@ Values outside this range indicate more extreme weather conditions.
 If uncommonly dry or wet air reduces people’s desire to ride a bike
 we will expect a positive effect on the number of rented bikes
 if humidity is below the familiar range, and a negative effect if it is above.&lt;/p&gt;
-
 &lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:bikes-hum-hist&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;figures/bikes-hum-hist-1.png&#34; alt=&#34;Histogram for feature humidity of the Bike Sharing dataset.&#34; width=&#34;40%&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
@@ -309,21 +287,18 @@ The results for the gradient boosting model are less convincing.
 Due to the stepped response function the model is less appropriate
 for making quantitative statements about the feature effect.
 The estimates fluctuate between high values and values close to zero.&lt;/p&gt;
-
 &lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:bikes-results-svm&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;figures/bikes-results-svm-1.png&#34; alt=&#34;Bike sharing data. Results SVM.&#34; width=&#34;1152&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 2: Bike sharing data. Results SVM.
 &lt;/p&gt;
 &lt;/div&gt;
-
 &lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:bikes-results-gbm&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;figures/bikes-results-gbm-1.png&#34; alt=&#34;Bike sharing data. Results gradient boosting.&#34; width=&#34;1152&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 3: Bike sharing data. Results gradient boosting.
 &lt;/p&gt;
 &lt;/div&gt;
-
 &lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:bikes-results-rf&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;figures/bikes-results-rf-1.png&#34; alt=&#34;Bike sharing data. Results random forest.&#34; width=&#34;1152&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
@@ -360,101 +335,22 @@ Source code and more information can be found on GitHub:
 &lt;p&gt;R Core Team. 2019. &lt;em&gt;R: A Language and Environment for Statistical Computing&lt;/em&gt;. Vienna, Austria: R Foundation for Statistical Computing. &lt;a href=&#34;https://www.R-project.org/&#34;&gt;https://www.R-project.org/&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Data Analysis for Helmholtz Zentrum München</title>
-      <link>https://bodoburger.github.io/project/2017-biomarker-helmholtz/</link>
-      <pubDate>Fri, 07 Apr 2017 00:00:00 +0000</pubDate>
-      <guid>https://bodoburger.github.io/project/2017-biomarker-helmholtz/</guid>
-      <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
-
+&lt;/div&gt;</description></item><item><title>Data Analysis for Helmholtz Zentrum München</title><link>https://bodoburger.github.io/homepage-source-hugo/project/2017-biomarker-helmholtz/</link><pubDate>Fri, 07 Apr 2017 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/homepage-source-hugo/project/2017-biomarker-helmholtz/</guid><description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
 &lt;p&gt;Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.&lt;/p&gt;
-
 &lt;p&gt;Cras aliquam rhoncus ipsum, in hendrerit nunc mattis vitae. Duis vitae efficitur metus, ac tempus leo. Cras nec fringilla lacus. Quisque sit amet risus at ipsum pharetra commodo. Sed aliquam mauris at consequat eleifend. Praesent porta, augue sed viverra bibendum, neque ante euismod ante, in vehicula justo lorem ac eros. Suspendisse augue libero, venenatis eget tincidunt ut, malesuada at lorem. Donec vitae bibendum arcu. Aenean maximus nulla non pretium iaculis. Quisque imperdiet, nulla in pulvinar aliquet, velit quam ultrices quam, sit amet fringilla leo sem vel nunc. Mauris in lacinia lacus.&lt;/p&gt;
-
 &lt;p&gt;Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.&lt;/p&gt;
-
-&lt;p&gt;Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Fundamentals of Neural Networks</title>
-      <link>https://bodoburger.github.io/project/2016-fundamentals-neural-networks/</link>
-      <pubDate>Sat, 30 Jan 2016 00:00:00 +0000</pubDate>
-      <guid>https://bodoburger.github.io/project/2016-fundamentals-neural-networks/</guid>
-      <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
-
+&lt;p&gt;Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.&lt;/p&gt;</description></item><item><title>Fundamentals of Neural Networks</title><link>https://bodoburger.github.io/homepage-source-hugo/project/2016-fundamentals-neural-networks/</link><pubDate>Sat, 30 Jan 2016 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/homepage-source-hugo/project/2016-fundamentals-neural-networks/</guid><description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
 &lt;p&gt;Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.&lt;/p&gt;
-
 &lt;p&gt;Cras aliquam rhoncus ipsum, in hendrerit nunc mattis vitae. Duis vitae efficitur metus, ac tempus leo. Cras nec fringilla lacus. Quisque sit amet risus at ipsum pharetra commodo. Sed aliquam mauris at consequat eleifend. Praesent porta, augue sed viverra bibendum, neque ante euismod ante, in vehicula justo lorem ac eros. Suspendisse augue libero, venenatis eget tincidunt ut, malesuada at lorem. Donec vitae bibendum arcu. Aenean maximus nulla non pretium iaculis. Quisque imperdiet, nulla in pulvinar aliquet, velit quam ultrices quam, sit amet fringilla leo sem vel nunc. Mauris in lacinia lacus.&lt;/p&gt;
-
 &lt;p&gt;Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.&lt;/p&gt;
-
-&lt;p&gt;Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>German Healthcare System - Risk Selection and Two-tier Medicine</title>
-      <link>https://bodoburger.github.io/project/2014-german-healthcare-system/</link>
-      <pubDate>Tue, 26 Aug 2014 00:00:00 +0000</pubDate>
-      <guid>https://bodoburger.github.io/project/2014-german-healthcare-system/</guid>
-      <description>&lt;p&gt;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&amp;rsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Measuring the effects of a general minimum wage</title>
-      <link>https://bodoburger.github.io/project/2013-minimum-wages/</link>
-      <pubDate>Tue, 26 Aug 2014 00:00:00 +0000</pubDate>
-      <guid>https://bodoburger.github.io/project/2013-minimum-wages/</guid>
-      <description>&lt;p&gt;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&amp;rsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&lt;/p&gt;
-
-
-
-
-
-
-
+&lt;p&gt;Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.&lt;/p&gt;</description></item><item><title>German Healthcare System - Risk Selection and Two-tier Medicine</title><link>https://bodoburger.github.io/homepage-source-hugo/project/2014-german-healthcare-system/</link><pubDate>Tue, 26 Aug 2014 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/homepage-source-hugo/project/2014-german-healthcare-system/</guid><description>&lt;p&gt;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&amp;rsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&lt;/p&gt;</description></item><item><title>Measuring the effects of a general minimum wage</title><link>https://bodoburger.github.io/homepage-source-hugo/project/2013-minimum-wages/</link><pubDate>Tue, 26 Aug 2014 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/homepage-source-hugo/project/2013-minimum-wages/</guid><description>&lt;p&gt;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&amp;rsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&lt;/p&gt;
 &lt;figure&gt;
-
-  &lt;a data-fancybox=&#34;&#34; href=&#34;table1.png&#34; &gt;
-
+&lt;a data-fancybox=&#34;&#34; href=&#34;table1.png&#34; &gt;
 &lt;img src=&#34;table1.png&#34; alt=&#34;&#34; &gt;
 &lt;/a&gt;
-
 &lt;/figure&gt;
-
-
-
-
-
-
-
-
 &lt;figure&gt;
-
-  &lt;a data-fancybox=&#34;&#34; href=&#34;table2.png&#34; &gt;
-
+&lt;a data-fancybox=&#34;&#34; href=&#34;table2.png&#34; &gt;
 &lt;img src=&#34;table2.png&#34; alt=&#34;&#34; &gt;
 &lt;/a&gt;
-
-&lt;/figure&gt;
-
-</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://bodoburger.github.io/projects/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://bodoburger.github.io/projects/</guid>
-      <description></description>
-    </item>
-    
-  </channel>
-</rss>
+&lt;/figure&gt;</description></item><item><title/><link>https://bodoburger.github.io/homepage-source-hugo/projects/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/homepage-source-hugo/projects/</guid><description/></item></channel></rss>
