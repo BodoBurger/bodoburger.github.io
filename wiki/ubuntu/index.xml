@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ubuntu Wiki | Bodo Burger</title><link>https://bodoburger.github.io/homepage-source-hugo/wiki/ubuntu/</link><atom:link href="https://bodoburger.github.io/homepage-source-hugo/wiki/ubuntu/index.xml" rel="self" type="application/rss+xml"/><description>Ubuntu Wiki</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Bodo Burger 2019</copyright><lastBuildDate>Sun, 09 Sep 2018 00:00:00 +0000</lastBuildDate><image><url>https://bodoburger.github.io/homepage-source-hugo/img/icon-192.png</url><title>Ubuntu Wiki</title><link>https://bodoburger.github.io/homepage-source-hugo/wiki/ubuntu/</link></image><item><title>Basic tweaks and configuration</title><link>https://bodoburger.github.io/homepage-source-hugo/wiki/ubuntu/basic-tweaks/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/homepage-source-hugo/wiki/ubuntu/basic-tweaks/</guid><description>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ubuntu Wiki | Bodo Burger</title><link>https://bodoburger.github.io/wiki/ubuntu/</link><atom:link href="https://bodoburger.github.io/wiki/ubuntu/index.xml" rel="self" type="application/rss+xml"/><description>Ubuntu Wiki</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Bodo Burger 2019</copyright><lastBuildDate>Sun, 09 Sep 2018 00:00:00 +0000</lastBuildDate><image><url>https://bodoburger.github.io/img/icon-192.png</url><title>Ubuntu Wiki</title><link>https://bodoburger.github.io/wiki/ubuntu/</link></image><item><title>Basic tweaks and configuration</title><link>https://bodoburger.github.io/wiki/ubuntu/basic-tweaks/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/wiki/ubuntu/basic-tweaks/</guid><description>
 &lt;h2 id=&#34;disable-middle-click-paste&#34;&gt;Disable middle click paste&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://wiki.ubuntuusers.de/GNOME_Tweak_Tool/&#34; target=&#34;_blank&#34;&gt;https://wiki.ubuntuusers.de/GNOME_Tweak_Tool/&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;disable-looking-for-wifi-printer&#34;&gt;Disable looking for wifi printer&lt;/h2&gt;
@@ -12,7 +12,7 @@ BrowseRemoteProtocols none
 &lt;p&gt;&lt;code&gt;gnome-session-quit --power-off&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;kein-lock-screen-nach-suspend&#34;&gt;Kein Lock screen nach Suspend&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.techgrube.de/tutorials/ubuntu-sperrbildschirm-nach-standby-deaktivieren&#34; target=&#34;_blank&#34;&gt;https://www.techgrube.de/tutorials/ubuntu-sperrbildschirm-nach-standby-deaktivieren&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&amp;ldquo;Die gewünschte Einstellung findet man dann unter org -&amp;gt; Gnome -&amp;gt; Desktop -&amp;gt; screensaver. Hier entfernt man einfach bei ubuntu-lock-on-suspend das Häkchen.&amp;rdquo;&lt;/p&gt;</description></item><item><title>Installing software</title><link>https://bodoburger.github.io/homepage-source-hugo/wiki/ubuntu/install-software/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/homepage-source-hugo/wiki/ubuntu/install-software/</guid><description>
+&lt;p&gt;&amp;ldquo;Die gewünschte Einstellung findet man dann unter org -&amp;gt; Gnome -&amp;gt; Desktop -&amp;gt; screensaver. Hier entfernt man einfach bei ubuntu-lock-on-suspend das Häkchen.&amp;rdquo;&lt;/p&gt;</description></item><item><title>Installing software</title><link>https://bodoburger.github.io/wiki/ubuntu/install-software/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/wiki/ubuntu/install-software/</guid><description>
 &lt;h2 id=&#34;software-list&#34;&gt;Software list&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;APT
@@ -60,11 +60,11 @@ sudo apt install sound-icons # folder location: /usr/share/sounds/sound-icons/.
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://book.dpmb.org/debian-paketmanagement.chunked/ch03s02.html&#34; target=&#34;_blank&#34;&gt;https://book.dpmb.org/debian-paketmanagement.chunked/ch03s02.html&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://book.dpmb.org/debian-paketmanagement.chunked/ch03s03.html&#34; target=&#34;_blank&#34;&gt;https://book.dpmb.org/debian-paketmanagement.chunked/ch03s03.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>PDF</title><link>https://bodoburger.github.io/homepage-source-hugo/wiki/ubuntu/pdf/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/homepage-source-hugo/wiki/ubuntu/pdf/</guid><description>
+&lt;/ul&gt;</description></item><item><title>PDF</title><link>https://bodoburger.github.io/wiki/ubuntu/pdf/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/wiki/ubuntu/pdf/</guid><description>
 &lt;h2 id=&#34;extracting-photos-from-multiple-pdfs-using-pdfunite-and-pdfimages&#34;&gt;Extracting photos from multiple PDFs using pdfunite and pdfimages&lt;/h2&gt;
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pdfunite *.pdf allphotos.pdf
 pdfimages -j ‘allphotos.pdf’ image
-&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>R, packages and its dependencies</title><link>https://bodoburger.github.io/homepage-source-hugo/wiki/ubuntu/r-stats/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/homepage-source-hugo/wiki/ubuntu/r-stats/</guid><description>
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>R, packages and its dependencies</title><link>https://bodoburger.github.io/wiki/ubuntu/r-stats/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/wiki/ubuntu/r-stats/</guid><description>
 &lt;p&gt;Install libopenblas at first:&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.r-bloggers.com/why-is-r-slow-some-explanations-and-mklopenblas-setup-to-try-to-fix-this/&#34; target=&#34;_blank&#34;&gt;https://www.r-bloggers.com/why-is-r-slow-some-explanations-and-mklopenblas-setup-to-try-to-fix-this/&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
@@ -102,7 +102,7 @@ sudo apt install libgsl-dev
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;java –version
 sudo apt install default-jre default-jdk
 javac -version
-&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>TLP – Linux Advanced Power Management</title><link>https://bodoburger.github.io/homepage-source-hugo/wiki/ubuntu/tlp/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/homepage-source-hugo/wiki/ubuntu/tlp/</guid><description>&lt;p&gt;&lt;a href=&#34;http://thinkwiki.de/TLP_-_Linux_Stromsparen&#34; target=&#34;_blank&#34;&gt;http://thinkwiki.de/TLP_-_Linux_Stromsparen&lt;/a&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>TLP – Linux Advanced Power Management</title><link>https://bodoburger.github.io/wiki/ubuntu/tlp/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/wiki/ubuntu/tlp/</guid><description>&lt;p&gt;&lt;a href=&#34;http://thinkwiki.de/TLP_-_Linux_Stromsparen&#34; target=&#34;_blank&#34;&gt;http://thinkwiki.de/TLP_-_Linux_Stromsparen&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://linrunner.de/en/tlp/tlp.html&#34; target=&#34;_blank&#34;&gt;http://linrunner.de/en/tlp/tlp.html&lt;/a&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo apt install tlp tlp-rdw tp-smapi-dkms acpi-call-dkms
 # bluetooth off at startup:
@@ -112,7 +112,7 @@ DEVICES_TO_DISABLE_ON_STARTUP=&amp;quot;bluetooth&amp;quot;
 sudo tlp fullcharge [ BAT0 | BAT1 ]
 # Akku einmalig bis zur oberen Schwelle laden
 sudo tlp chargeonce [ BAT0 | BAT1 ]
-&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>USB storage</title><link>https://bodoburger.github.io/homepage-source-hugo/wiki/ubuntu/usb-storage/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/homepage-source-hugo/wiki/ubuntu/usb-storage/</guid><description>
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>USB storage</title><link>https://bodoburger.github.io/wiki/ubuntu/usb-storage/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/wiki/ubuntu/usb-storage/</guid><description>
 &lt;h2 id=&#34;mount&#34;&gt;Mount&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;sudo mount -o remount,rw /media/&amp;lt;storage-name&amp;gt;&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;error-can-t-format-usb-storage&#34;&gt;Error: &lt;em&gt;Can&amp;rsquo;t format USB storage&lt;/em&gt;&lt;/h2&gt;
