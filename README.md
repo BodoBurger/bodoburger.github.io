@@ -1,5 +1,7 @@
 # **https://bodoburger.github.io/**
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f0ebcb47-332f-4eb6-82c9-76d10f7a6d56/deploy-status)](https://app.netlify.com/sites/bodoburger/deploys)
+
 ## Tools
 
 - static site generator: [Hugo](https://gohugo.io/)

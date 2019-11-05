@@ -335,44 +335,183 @@ Source code and more information can be found on GitHub:
 &lt;p&gt;R Core Team. 2019. &lt;em&gt;R: A Language and Environment for Statistical Computing&lt;/em&gt;. Vienna, Austria: R Foundation for Statistical Computing. &lt;a href=&#34;https://www.R-project.org/&#34;&gt;https://www.R-project.org/&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;</description></item><item><title>Use R and Google Sheets to calculate a Nutrition Table</title><link>https://bodoburger.github.io/post/2019-04-nutrition-table-google-sheets/</link><pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/post/2019-04-nutrition-table-google-sheets/</guid><description>
+&lt;/div&gt;</description></item><item><title>Use R, Google Sheets and a nutrition API to calculate a nutrition table</title><link>https://bodoburger.github.io/post/2019-04-nutrition-table-google-sheets/</link><pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/post/2019-04-nutrition-table-google-sheets/</guid><description>
 &lt;p&gt;I recently stumbled upon this
 &lt;a href=&#34;https://greenysherry.com/life-changing-brot-mit-nuessen-nach-my-new-roots-glutenfrei-vegan/&#34;&gt;bread recipe&lt;/a&gt;.
 It’s quickly prepared, tastes great and is full of valuable ingredients
-(only oats, nuts and seeds, no flour).
+(only oats, nuts and seeds).
 However, being a homemade bread it does not come with a nutrition table.
 The following shows an easy way to create one.&lt;/p&gt;
-&lt;p&gt;First, we put the recipe and the nutrional values of each ingredient into
-two spreadsheets
-(&lt;a href=&#34;https://docs.google.com/spreadsheets/d/1C0AwjQYrudrV3ZLgQJZnCr9La7OVftRTZn3QKMrJx5E&#34;&gt;recipe&lt;/a&gt; and &lt;a href=&#34;https://docs.google.com/spreadsheets/d/1qgo8Yefb5nx5PVElZvmf6nSDI6RfN2ofd8CeMuSklHk&#34;&gt;food stats&lt;/a&gt;).
+&lt;p&gt;We put the recipe into a spreadsheet
+(&lt;a href=&#34;https://docs.google.com/spreadsheets/d/1C0AwjQYrudrV3ZLgQJZnCr9La7OVftRTZn3QKMrJx5E&#34;&gt;recipe&lt;/a&gt;).
+Another spreadsheet contains the nutrional values of the macro nutrients of each ingredient
+(&lt;a href=&#34;https://docs.google.com/spreadsheets/d/1qgo8Yefb5nx5PVElZvmf6nSDI6RfN2ofd8CeMuSklHk&#34;&gt;food stats&lt;/a&gt;).
 We combine these using &lt;strong&gt;R&lt;/strong&gt; to get the nutrition table.
 As a bonus, we can calculate the price of the recipe.&lt;/p&gt;
-&lt;div id=&#34;using-the-gsheet-package&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Using the &lt;em&gt;gsheet&lt;/em&gt; package&lt;/h2&gt;
+&lt;div id=&#34;downloading-google-sheets-to-r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Downloading Google Sheets to R&lt;/h2&gt;
 &lt;p&gt;A simple way to import Google Sheets to &lt;strong&gt;R&lt;/strong&gt; is the
 &lt;a href=&#34;https://cran.r-project.org/package=gsheet&#34;&gt;gsheet&lt;/a&gt; package.
 We only need to supply the sharing link.
 It returns a &lt;a href=&#34;https://tibble.tidyverse.org/&#34;&gt;tibble&lt;/a&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;food_stats = gsheet::gsheet2tbl(&amp;quot;https://docs.google.com/spreadsheets/d/1qgo8Yefb5nx5PVElZvmf6nSDI6RfN2ofd8CeMuSklHk&amp;quot;)
-recipes = gsheet::gsheet2tbl(&amp;quot;https://docs.google.com/spreadsheets/d/1C0AwjQYrudrV3ZLgQJZnCr9La7OVftRTZn3QKMrJx5E&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+recipe = gsheet::gsheet2tbl(&amp;quot;https://docs.google.com/spreadsheets/d/1C0AwjQYrudrV3ZLgQJZnCr9La7OVftRTZn3QKMrJx5E&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;em&gt;food_stats&lt;/em&gt; contains more ingredients than we need for our bread recipe.
 So when we merge both data frames we only want to keep the rows
 that contain the ingredients of the recipe.
 This is done by &lt;em&gt;left_join()&lt;/em&gt; from the
 &lt;a href=&#34;https://cran.r-project.org/package=dplyr&#34;&gt;dplyr&lt;/a&gt; package.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)
-bread_ingredients = left_join(recipes, food_stats, &amp;quot;Description&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;quantities = select(bread_ingredients, &amp;quot;Quantity (gr)&amp;quot;)[[1]]
-nutr_vals = bread_ingredients %&amp;gt;% select(-one_of(c(&amp;quot;Other.x&amp;quot;, &amp;quot;Other.y&amp;quot;,
-&amp;quot;Quantity (gr)&amp;quot;, &amp;quot;Description&amp;quot;, &amp;quot;Full Description&amp;quot;, &amp;quot;Salt&amp;quot;))) %&amp;gt;%
-select(-contains(&amp;quot;Energy&amp;quot;)) %&amp;gt;%
-select(-one_of(&amp;quot;Price (€)&amp;quot;)) %&amp;gt;% select(-contains(&amp;quot;Packaging&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;Nutrional values / 100g:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;colSums(nutr_vals * quantities) / sum(quantities)&lt;/code&gt;&lt;/pre&gt;
+bread_ingredient_stats = left_join(recipe, food_stats, &amp;quot;Description&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;calculating-the-nutritional-values&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Calculating the nutritional values&lt;/h2&gt;
+&lt;p&gt;We have 10 ingredients. First, we create a vector that gives us
+the quantity of each ingredient in grams,
+then we select the columns that are relevant for the nutrition table.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nutrient_names = c(&amp;quot;Calories (kcal)&amp;quot;, &amp;quot;Total Fat&amp;quot;, &amp;quot;Saturated Fat&amp;quot;,
+&amp;quot;Total Carbs&amp;quot;, &amp;quot;Sugar&amp;quot;, &amp;quot;Dietary Fiber&amp;quot;, &amp;quot;Protein&amp;quot;)
+quantities = select(bread_ingredient_stats, &amp;quot;Quantity (gr)&amp;quot;)[[1]]
+nutrition_values = bread_ingredient_stats %&amp;gt;% select(nutrient_names)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The following calculation gives us the quantity of
+each macro nutrient in our bread &lt;em&gt;per 100g&lt;/em&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nutrition_table = colSums(nutrition_values * quantities) / sum(quantities)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Finally, we can print our nutrition table:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;knitr::kable(nutrition_table, digits = 1, col.names = &amp;quot;per 100g&amp;quot;,
+caption = &amp;quot;Nutrition table&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;caption&gt;&lt;span id=&#34;tab:unnamed-chunk-5&#34;&gt;Table 1: &lt;/span&gt;Nutrition table&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;per 100g&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Calories (kcal)&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;307.3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Total Fat&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;22.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Saturated Fat&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;4.7&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Total Carbs&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;12.2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Sugar&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Dietary Fiber&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10.6&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Protein&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;12.6&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Calorie-wise very similar to your &lt;a href=&#34;https://www.google.com/search?q=brown+bread&#34;&gt;typical brown bread&lt;/a&gt;, but rich in fat.
+Trust me, the bread is very filling, so you won’t be able to eat too much of it anyways.
+And how much does it cost?&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prices = select(bread_ingredient_stats, &amp;quot;Price (€)&amp;quot;)[[1]]
+packaging = select(bread_ingredient_stats, &amp;quot;Packaging (g)&amp;quot;)[[1]]
+(price_total = sum(prices / packaging * quantities, na.rm = TRUE))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 3.208962&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;One loaf of bread is 3.21€ (not including energy and time).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;using-the-api-of-a-nutrition-database&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Using the API of a nutrition database&lt;/h2&gt;
+&lt;p&gt;Instead of manually creating a spreadsheet for the nutritional values of each ingredient
+we can fetch the information from on online database.
+We use &lt;a href=&#34;https://openfoodfacts.org&#34;&gt;openfoodfacts&lt;/a&gt;.
+It’s a crowd-sourced database of food stats.
+To identify a product we need a barcode for each ingredient
+which I added to the recipe spreadsheet.
+The openfoodfacts API returns a JSON file which we can convert to a list
+using the &lt;a href=&#34;https://cran.r-project.org/package=rjson&#34;&gt;rjson&lt;/a&gt; package.
+We write two helper functions to fetch and extract the relevant information.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(&amp;quot;rjson&amp;quot;)
+fetch_json = function(barcode, url = &amp;quot;https://world.openfoodfacts.org/api/v0/product/&amp;quot;) {
+query = paste0(url, barcode, &amp;quot;.json&amp;quot;)
+fromJSON(file = query)
+}
+extract_nutrition_values = function(food_list,
+nutriments = c(&amp;quot;energy_100g&amp;quot;, &amp;quot;fat_100g&amp;quot;, &amp;quot;saturated-fat_100g&amp;quot;,
+&amp;quot;carbohydrates_100g&amp;quot;, &amp;quot;sugars_100g&amp;quot;, &amp;quot;fiber_100g&amp;quot;,
+&amp;quot;proteins_100g&amp;quot;)) {
+nv = setNames(rep(0, length(nutriments)), nutriments)
+tmp = unlist(food_list$product$nutriments[nutriments])
+nv[names(tmp)] = tmp
+nv
+}
+barcodes = bread_ingredient_stats$Barcode[-10] # water does not have a barcode
+nutrition_values_api = matrix(0, nrow = 10, ncol = length(nutrition_values),
+dimnames = list(1:10, nutrient_names))
+for(i in seq_along(barcodes)) {
+food_list_tmp = fetch_json(barcodes[i])
+nutrition_values_api[i,] = extract_nutrition_values(food_list_tmp)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;nutrition_values_api&lt;/code&gt; has the same structure as &lt;code&gt;nutrition_values&lt;/code&gt; from above,
+so we can proceed as before:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(nutrition_table_api = colSums(nutrition_values_api * quantities) / sum(quantities))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Calories (kcal) Total Fat Saturated Fat Total Carbs
-## NA NA NA NA
+## 1344.0329670 22.4906593 4.7263736 12.3516484
 ## Sugar Dietary Fiber Protein
-## NA NA NA&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;em&gt;Draft&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Next step: download stats via nutrition database API.&lt;/p&gt;
+## 0.4923077 8.9291209 12.5313187&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The results for the macro nutrients differ slightly which is expected
+because we changed the data source.
+However, the value for &lt;em&gt;calories&lt;/em&gt; quadrupled
+because the API reported energy in kilojoule (kJ) instead of kilocalories.
+To correct for this we devide the value by &lt;span class=&#34;math inline&#34;&gt;\(4.1858\)&lt;/span&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nutrition_table_api[1] = nutrition_table_api[1] / 4.1858
+knitr::kable(nutrition_table_api, digits = 1, col.names = &amp;quot;per 100g&amp;quot;,
+caption = &amp;quot;Nutrition table&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;caption&gt;&lt;span id=&#34;tab:unnamed-chunk-9&#34;&gt;Table 2: &lt;/span&gt;Nutrition table&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;per 100g&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Calories (kcal)&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;321.1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Total Fat&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;22.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Saturated Fat&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;4.7&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Total Carbs&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;12.4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Sugar&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Dietary Fiber&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;8.9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Protein&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;12.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;And we are done!&lt;/p&gt;
 &lt;/div&gt;</description></item></channel></rss>
