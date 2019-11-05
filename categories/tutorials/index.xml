@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tutorials | Bodo Burger</title><link>https://bodoburger.github.io/categories/tutorials/</link><atom:link href="https://bodoburger.github.io/categories/tutorials/index.xml" rel="self" type="application/rss+xml"/><description>Tutorials</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Bodo Burger 2019</copyright><lastBuildDate>Mon, 01 Apr 2019 00:00:00 +0000</lastBuildDate><image><url>https://bodoburger.github.io/img/icon-192.png</url><title>Tutorials</title><link>https://bodoburger.github.io/categories/tutorials/</link></image><item><title>Use R, Google Sheets and a nutrition API to calculate a nutrition table</title><link>https://bodoburger.github.io/post/2019-04-nutrition-table-google-sheets/</link><pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/post/2019-04-nutrition-table-google-sheets/</guid><description>
 &lt;p&gt;I recently stumbled upon this
 &lt;a href=&#34;https://greenysherry.com/life-changing-brot-mit-nuessen-nach-my-new-roots-glutenfrei-vegan/&#34;&gt;bread recipe&lt;/a&gt;.
-It’s quickly prepared, tastes great and is full of valuable ingredients
+It’s quickly prepared, the bread tastes great and is full of valuable ingredients
 (only oats, nuts and seeds).
-However, being a homemade bread it does not come with a nutrition table.
+However, being homemade it does not come with a nutrition table.
 The following shows an easy way to create one.&lt;/p&gt;
 &lt;p&gt;We put the recipe into a spreadsheet
 (&lt;a href=&#34;https://docs.google.com/spreadsheets/d/1C0AwjQYrudrV3ZLgQJZnCr9La7OVftRTZn3QKMrJx5E&#34;&gt;recipe&lt;/a&gt;).
-Another spreadsheet contains the nutrional values of the macro nutrients of each ingredient
+Another spreadsheet contains the nutritional values of the macro nutrients of each ingredient
 (&lt;a href=&#34;https://docs.google.com/spreadsheets/d/1qgo8Yefb5nx5PVElZvmf6nSDI6RfN2ofd8CeMuSklHk&#34;&gt;food stats&lt;/a&gt;).
 We combine these using &lt;strong&gt;R&lt;/strong&gt; to get the nutrition table.
+Then, we look at an alternative to manually creating a spreadsheet with nutritional information
+by using an online database.
 As a bonus, we can calculate the price of the recipe.&lt;/p&gt;
 &lt;div id=&#34;downloading-google-sheets-to-r&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Downloading Google Sheets to R&lt;/h2&gt;
@@ -19,10 +21,10 @@ We only need to supply the sharing link.
 It returns a &lt;a href=&#34;https://tibble.tidyverse.org/&#34;&gt;tibble&lt;/a&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;food_stats = gsheet::gsheet2tbl(&amp;quot;https://docs.google.com/spreadsheets/d/1qgo8Yefb5nx5PVElZvmf6nSDI6RfN2ofd8CeMuSklHk&amp;quot;)
 recipe = gsheet::gsheet2tbl(&amp;quot;https://docs.google.com/spreadsheets/d/1C0AwjQYrudrV3ZLgQJZnCr9La7OVftRTZn3QKMrJx5E&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;em&gt;food_stats&lt;/em&gt; contains more ingredients than we need for our bread recipe.
+&lt;p&gt;&lt;code&gt;food_stats&lt;/code&gt; contains more ingredients than we need for our bread recipe.
 So when we merge both data frames we only want to keep the rows
 that contain the ingredients of the recipe.
-This is done by &lt;em&gt;left_join()&lt;/em&gt; from the
+This is done by &lt;code&gt;left_join()&lt;/code&gt; from the
 &lt;a href=&#34;https://cran.r-project.org/package=dplyr&#34;&gt;dplyr&lt;/a&gt; package.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)
 bread_ingredient_stats = left_join(recipe, food_stats, &amp;quot;Description&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
@@ -88,7 +90,9 @@ And how much does it cost?&lt;/p&gt;
 packaging = select(bread_ingredient_stats, &amp;quot;Packaging (g)&amp;quot;)[[1]]
 (price_total = sum(prices / packaging * quantities, na.rm = TRUE))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 3.208962&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;One loaf of bread is 3.21€ (not including energy and time).&lt;/p&gt;
+&lt;p&gt;One loaf of bread is 3.21€ (not including energy and time)
+weighing 910 grams (raw ingredients).
+I think that is a fair price for a bread I can eat from for a whole week.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;using-the-api-of-a-nutrition-database&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Using the API of a nutrition database&lt;/h2&gt;
@@ -133,7 +137,7 @@ so we can proceed as before:&lt;/p&gt;
 because we changed the data source.
 However, the value for &lt;em&gt;calories&lt;/em&gt; quadrupled
 because the API reported energy in kilojoule (kJ) instead of kilocalories.
-To correct for this we devide the value by &lt;span class=&#34;math inline&#34;&gt;\(4.1858\)&lt;/span&gt;.&lt;/p&gt;
+To correct for this we divide the value by &lt;span class=&#34;math inline&#34;&gt;\(4.1858\)&lt;/span&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nutrition_table_api[1] = nutrition_table_api[1] / 4.1858
 knitr::kable(nutrition_table_api, digits = 1, col.names = &amp;quot;per 100g&amp;quot;,
 caption = &amp;quot;Nutrition table&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
