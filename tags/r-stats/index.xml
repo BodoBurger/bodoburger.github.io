@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>r-stats | Bodo Burger</title><link>https://bodoburger.github.io/tags/r-stats/</link><atom:link href="https://bodoburger.github.io/tags/r-stats/index.xml" rel="self" type="application/rss+xml"/><description>r-stats</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Bodo Burger 2019</copyright><lastBuildDate>Sat, 06 Apr 2019 00:00:00 +0000</lastBuildDate><image><url>https://bodoburger.github.io/img/icon-192.png</url><title>r-stats</title><link>https://bodoburger.github.io/tags/r-stats/</link></image><item><title>Feature Effects in Machine Learning Models</title><link>https://bodoburger.github.io/project/2019-feature-effects/</link><pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/project/2019-feature-effects/</guid><description>
 &lt;div id=&#34;TOC&#34;&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#summary&#34;&gt;Summary&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#abstract&#34;&gt;Abstract&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#example-bike-sharing-data&#34;&gt;Example: Bike Sharing Data&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#model-training&#34;&gt;Model Training&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#analysis&#34;&gt;Analysis&lt;/a&gt;&lt;/li&gt;
@@ -10,10 +10,10 @@
 &lt;li&gt;&lt;a href=&#34;#references&#34;&gt;References&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-&lt;div id=&#34;summary&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Summary&lt;/h1&gt;
+&lt;div id=&#34;abstract&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Abstract&lt;/h2&gt;
 &lt;p&gt;Supervised machine learning models are mostly black boxes.
-The method I propose in my Master’s thesis tries to improve understanding of these black boxes.
+The method we propose tries to improve understanding of these black boxes.
 The goal is to find a way to quantify effect sizes of features.
 Average marginal effects are used in social sciences
 to determine effect sizes of logistic regression models.
@@ -26,8 +26,8 @@ within the response function is relatively stable.
 Second, we report some estimate of the feature effect separately for each interval.
 Our method determines the number of necessary intervals automatically.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div id=&#34;example-bike-sharing-data&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Example: Bike Sharing Data&lt;/h1&gt;
+&lt;div id=&#34;example-bike-sharing-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Example: Bike Sharing Data&lt;/h2&gt;
 &lt;p&gt;The following examples shows
 how the method can help to understand heterogeneous feature effects.
 We apply the method to the Bike Sharing dataset &lt;span class=&#34;citation&#34;&gt;(Fanaee-T and Gama 2013)&lt;/span&gt;
@@ -134,8 +134,8 @@ The features comprise calendrical and meteorological information for each day.&l
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;div id=&#34;model-training&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Model Training&lt;/h2&gt;
+&lt;div id=&#34;model-training&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Model Training&lt;/h3&gt;
 &lt;p&gt;We use a linear model &lt;span class=&#34;citation&#34;&gt;(R Core Team 2019)&lt;/span&gt;, an SVM &lt;span class=&#34;citation&#34;&gt;(Meyer et al. 2019)&lt;/span&gt;,
 a random decision forest &lt;span class=&#34;citation&#34;&gt;(Breiman et al. 2018)&lt;/span&gt; and gradient boosting &lt;span class=&#34;citation&#34;&gt;(Greenwell et al. 2019)&lt;/span&gt;.
 We compare the performance of all models and the performance
@@ -185,8 +185,8 @@ and R squared for hold-out test set&lt;/caption&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-&lt;div id=&#34;analysis&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Analysis&lt;/h2&gt;
+&lt;div id=&#34;analysis&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Analysis&lt;/h3&gt;
 &lt;p&gt;Now analyse how changing feature values influences
 the predicted number of bikes.
 We focus on the three numerical features &lt;code&gt;temp&lt;/code&gt; (temperature in degree Celsius),
@@ -307,14 +307,14 @@ Figure 4: Bike sharing data. Results random forest.
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id=&#34;r-package&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;R package&lt;/h1&gt;
+&lt;div id=&#34;r-package&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;R package&lt;/h2&gt;
 &lt;p&gt;The method is implemented in &lt;strong&gt;R&lt;/strong&gt; supporting a variety of models out of the box.
 Source code and more information can be found on GitHub:
 &lt;a href=&#34;https://github.com/BodoBurger/intame&#34; class=&#34;uri&#34;&gt;https://github.com/BodoBurger/intame&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
-&lt;div id=&#34;references&#34; class=&#34;section level1 unnumbered&#34;&gt;
-&lt;h1&gt;References&lt;/h1&gt;
+&lt;div id=&#34;references&#34; class=&#34;section level2 unnumbered&#34;&gt;
+&lt;h2&gt;References&lt;/h2&gt;
 &lt;div id=&#34;refs&#34; class=&#34;references&#34;&gt;
 &lt;div id=&#34;ref-R-randomForest&#34;&gt;
 &lt;p&gt;Breiman, Leo, Adele Cutler, Andy Liaw, and Matthew Wiener. 2018. &lt;em&gt;RandomForest: Breiman and Cutler’s Random Forests for Classification and Regression&lt;/em&gt;. &lt;a href=&#34;https://CRAN.R-project.org/package=randomForest&#34;&gt;https://CRAN.R-project.org/package=randomForest&lt;/a&gt;.&lt;/p&gt;
