@@ -1,4 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Overview | Bodo Burger</title><link>https://bodoburger.github.io/wiki/data-science/</link><atom:link href="https://bodoburger.github.io/wiki/data-science/index.xml" rel="self" type="application/rss+xml"/><description>Overview</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Bodo Burger 2019</copyright><lastBuildDate>Sun, 09 Sep 2018 00:00:00 +0000</lastBuildDate><image><url>https://bodoburger.github.io/img/icon-192.png</url><title>Overview</title><link>https://bodoburger.github.io/wiki/data-science/</link></image><item><title>Installing Anaconda</title><link>https://bodoburger.github.io/wiki/data-science/anaconda/anaconda-install/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/wiki/data-science/anaconda/anaconda-install/</guid><description>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Overview | Bodo Burger</title><link>https://bodoburger.github.io/wiki/data-science/</link><atom:link href="https://bodoburger.github.io/wiki/data-science/index.xml" rel="self" type="application/rss+xml"/><description>Overview</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Bodo Burger 2019</copyright><lastBuildDate>Sun, 09 Sep 2018 00:00:00 +0000</lastBuildDate><image><url>https://bodoburger.github.io/img/icon-192.png</url><title>Overview</title><link>https://bodoburger.github.io/wiki/data-science/</link></image><item><title>Anaconda</title><link>https://bodoburger.github.io/wiki/data-science/anaconda/anaconda/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/wiki/data-science/anaconda/anaconda/</guid><description>
+&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.anaconda.com&#34; target=&#34;_blank&#34;&gt;Anaconda&lt;/a&gt; is a Python distribution
+that comes with &lt;a href=&#34;https://conda.io&#34; target=&#34;_blank&#34;&gt;Conda&lt;/a&gt;,
+a package manager and environment management system.&lt;/p&gt;
+&lt;h2 id=&#34;resources&#34;&gt;Resources&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://conda.io/projects/conda&#34; target=&#34;_blank&#34;&gt;Conda docs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://conda.io/projects/conda/en/latest/user-guide/cheatsheet.html&#34; target=&#34;_blank&#34;&gt;Conda cheat sheet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/&#34; target=&#34;_blank&#34;&gt;Conda: Myths and Misconceptions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://conda-forge.org/&#34; target=&#34;_blank&#34;&gt;Conda forge (an alternative distribution for conda)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Big Data</title><link>https://bodoburger.github.io/wiki/data-science/big-data/big-data/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/wiki/data-science/big-data/big-data/</guid><description>
+&lt;h2 id=&#34;resources&#34;&gt;Resources&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.mmds.org/&#34; target=&#34;_blank&#34;&gt;Mining of Massive Datasets&lt;/a&gt;: free book, MOOC, lecture&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.systems.ethz.ch/node/217&#34; target=&#34;_blank&#34;&gt;Lecture ETH Zürich&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Installing Anaconda</title><link>https://bodoburger.github.io/wiki/data-science/anaconda/anaconda-install/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/wiki/data-science/anaconda/anaconda-install/</guid><description>
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.anaconda.com/anaconda/install/linux/&#34; target=&#34;_blank&#34;&gt;Documentation&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.anaconda.com/distribution/#linux&#34; target=&#34;_blank&#34;&gt;Installer for Linux&lt;/a&gt;&lt;/p&gt;
@@ -71,4 +87,85 @@ conda update anaconda
 &lt;p&gt;To add Anaconda temporarily to the PATH, open a terminal and type:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;export PATH=&amp;quot;/home/bodo/anaconda3/bin:$PATH&amp;quot;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Show PATH:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;echo $PATH&lt;/code&gt;&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;&lt;code&gt;echo $PATH&lt;/code&gt;&lt;/p&gt;</description></item><item><title>Basics</title><link>https://bodoburger.github.io/wiki/data-science/big-data/big-data-basics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/wiki/data-science/big-data/big-data-basics/</guid><description>
+&lt;h2 id=&#34;goal-of-data-analysis&#34;&gt;Goal of data analysis&lt;/h2&gt;
+&lt;p&gt;Decision making often involves uncertainty (uncertain situations, uncertain impacts).
+We assume that existing data contains information that we can use
+to model uncertain situations, predict outcomes, or unknown parameters.&lt;/p&gt;
+&lt;p&gt;Related disciplines: statistics, artificial intelligence, machine learning,
+data mining and knowledge discovery, deep learning, reinforcement learning.&lt;/p&gt;
+&lt;h2 id=&#34;knowledge-discovery-process&#34;&gt;Knowledge discovery process&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mermaid&#34;&gt;graph TD;
+A(databases or other data sources)
+B(data warehouse)
+C(task-relevant data)
+D(patterns)
+E(knowledge)
+A --&amp;gt;|data cleaning| B
+B --&amp;gt;|data selection| C
+C --&amp;gt;|data mining| D
+D --&amp;gt;|visualization| E
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;v-model-of-big-data&#34;&gt;V model of big data&lt;/h2&gt;
+&lt;p&gt;The initial three V&amp;rsquo;s are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;volume&lt;/strong&gt;:
+huge amount of data so large that it cannot be analyzed using traditional methods;
+high number of instances or features&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;variety&lt;/strong&gt;:
+large proportion of data is unstructured; there are different types of data
+(e.g. spreadsheets, images, videos); different data formats&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;velocity&lt;/strong&gt;:
+data can be generated, changed and analyzed within short time spans
+(e.g. milliseconds)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Additionally suggested V&amp;rsquo;s:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;veracity / validity&lt;/strong&gt;:
+credibility of the data, the high volume of data leads to different degrees
+of data quality;
+interfering factors can be noise, manipulation or misinterpretation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;value&lt;/strong&gt;:
+added value by investments of companies in big data infrastructure&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;different-types-of-tasks&#34;&gt;Different types of tasks&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;classification
+&lt;ul&gt;
+&lt;li&gt;e.g. image classification, document categorization&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;regression
+&lt;ul&gt;
+&lt;li&gt;e.g. housing values&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;clustering
+&lt;ul&gt;
+&lt;li&gt;e.g. customer segmentation&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;outlier detection&lt;/li&gt;
+&lt;li&gt;frequent itemset mining
+&lt;ul&gt;
+&lt;li&gt;e.g. market-basket analysis&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;application-examples&#34;&gt;Application examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;image recognition&lt;/li&gt;
+&lt;li&gt;image processing&lt;/li&gt;
+&lt;li&gt;speech recognition&lt;/li&gt;
+&lt;li&gt;automatic translation&lt;/li&gt;
+&lt;li&gt;game AIs:
+&lt;ul&gt;
+&lt;li&gt;Deepmind AlphaGo (go), AlphaZero (chess), AlphaStar (StarCraft)&lt;/li&gt;
+&lt;li&gt;OpenAI Five (Dota2)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;material requirement planning for manufacturing&lt;/li&gt;
+&lt;li&gt;predict capacity utilisation of the passenger train (Deutsche Bahn)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;sources&#34;&gt;Sources&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Lecture &lt;strong&gt;Big Data Management and Analytics&lt;/strong&gt; by Prof. Dr. Schubert, Ludwig-Maximilians-Universität München&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://whatis.techtarget.com/definition/3Vs&#34; target=&#34;_blank&#34;&gt;https://whatis.techtarget.com/definition/3Vs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.unbelievable-machine.com/en/what-is-big-data-definition-five-vs&#34; target=&#34;_blank&#34;&gt;https://blog.unbelievable-machine.com/en/what-is-big-data-definition-five-vs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>
