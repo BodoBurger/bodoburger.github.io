@@ -29,7 +29,8 @@ It will be updated from time to time.&lt;/p&gt;
 (&lt;a href=&#34;https://stackoverflow.com/questions/20984802/how-can-i-keep-my-fork-in-sync-without-adding-a-separate-remote/21131381#21131381&#34; target=&#34;_blank&#34;&gt;stackoverflow&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
-&lt;h2 id=&#34;change-branch-without-committing-changes-stash-and-pop&#34;&gt;Change branch without committing changes: stash and pop&lt;/h2&gt;
+&lt;h2 id=&#34;branches&#34;&gt;Branches&lt;/h2&gt;
+&lt;h3 id=&#34;change-branch-without-committing-changes-stash-and-pop&#34;&gt;Change branch without committing changes: stash and pop&lt;/h3&gt;
 &lt;p&gt;Want to have a look at another branch without committing changes done so far?
 Put them in a stash where they can hide until you switch back.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;$ git stash # on the original branch
@@ -39,15 +40,34 @@ $ git checkout original-branch
 $ git stash pop
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;More about &lt;a href=&#34;https://git-scm.com/docs/git-stash&#34; target=&#34;_blank&#34;&gt;&lt;em&gt;git-stash&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;create-a-local-branch-push-it-to-a-remote-repository-and-track-it&#34;&gt;Create a local branch, push it to a remote repository and track it&lt;/h2&gt;
+&lt;h3 id=&#34;create-a-local-branch-push-it-to-a-remote-repository-and-track-it&#34;&gt;Create a local branch, push it to a remote repository and track it&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;$ git checkout -b MyNewBranch # create and switch to new branch
 # do some stuff
 $ git push -u origin MyNewBranch
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;delete-local-branch&#34;&gt;Delete local branch&lt;/h2&gt;
+&lt;h3 id=&#34;delete-local-branch&#34;&gt;Delete local branch&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;$ git branch -d MyLocalBranch
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;merge-master-into-feature-branch-before-making-a-pr&#34;&gt;Merge master into feature branch before making a PR&lt;/h2&gt;
+&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
+&lt;h3 id=&#34;show-or-change-git-username-or-email-address&#34;&gt;Show or change Git username or email address&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;$ git config --list # repository-specific settings
+$ git config --list --global # global git settings
+$ git config user.name &amp;quot;Enrico Pallazzo&amp;quot;
+$ git config user.email &amp;quot;enrico.pallazzo@lapd.com&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The global settings are stored in the Git config file
+in the HOME directory (&lt;code&gt;~/.gitconfig&lt;/code&gt;),
+repository-specific settings are found at &lt;code&gt;.git/config&lt;/code&gt;
+in the respective repository folder.&lt;/p&gt;
+&lt;h2 id=&#34;index&#34;&gt;Index&lt;/h2&gt;
+&lt;h3 id=&#34;remove-files-from-the-index-without-removing-them-from-disc&#34;&gt;Remove files from the index without removing them from disc&lt;/h3&gt;
+&lt;p&gt;If you forgot to add a file to &lt;code&gt;.gitignore&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;$ git rm -rf --cached file-name
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The file is now untracked and can be added to &lt;code&gt;.gitignore&lt;/code&gt;.
+Then, you can commit the deletion and the modified gitignore file.&lt;/p&gt;
+&lt;h2 id=&#34;merging&#34;&gt;Merging&lt;/h2&gt;
+&lt;h3 id=&#34;merge-master-into-feature-branch-before-making-a-pr&#34;&gt;Merge master into feature branch before making a PR&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;$ git checkout master
 $ git pull
 $ git checkout new-feature
@@ -60,27 +80,12 @@ $ git merge master
 $ git commit -m &amp;quot;resolved mergeconflicts | merged master&amp;quot;
 $ git push origin new-feature
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;push-local-repository-to-existing-remote&#34;&gt;Push local repository to existing remote&lt;/h2&gt;
+&lt;h2 id=&#34;remote&#34;&gt;Remote&lt;/h2&gt;
+&lt;h3 id=&#34;push-local-repository-to-existing-remote&#34;&gt;Push local repository to existing remote&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;$ git remote add origin git@github.com:USERNAME/REPOSITORY.git
 $ git push --all --set-upstream origin
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;remove-files-from-the-index-without-removing-them-from-disc&#34;&gt;Remove files from the index without removing them from disc&lt;/h2&gt;
-&lt;p&gt;If you forgot to add a file to &lt;code&gt;.gitignore&lt;/code&gt;:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;$ git rm -rf --cached file-name
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The file is now untracked and can be added to &lt;code&gt;.gitignore&lt;/code&gt;.
-Then, you can commit the deletion and the modified gitignore file.&lt;/p&gt;
-&lt;h2 id=&#34;show-or-change-git-username-or-email-address&#34;&gt;Show or change Git username or email address&lt;/h2&gt;
-&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;$ git config --list # repository-specific settings
-$ git config --list --global # global git settings
-$ git config user.name &amp;quot;Enrico Pallazzo&amp;quot;
-$ git config user.email &amp;quot;enrico.pallazzo@lapd.com&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The global settings are stored in the Git config file
-in the HOME directory (&lt;code&gt;~/.gitconfig&lt;/code&gt;),
-repository-specific settings are found at &lt;code&gt;.git/config&lt;/code&gt;
-in the respective repository folder.&lt;/p&gt;
-&lt;h2 id=&#34;show-or-change-remote&#34;&gt;Show or change remote&lt;/h2&gt;
+&lt;h3 id=&#34;show-or-change-remote&#34;&gt;Show or change remote&lt;/h3&gt;
 &lt;p&gt;In this example we switch from HTTPS to SSH:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;$ git remote -v
 &amp;gt; origin https://github.com/USERNAME/REPOSITORY.git (fetch)
@@ -89,4 +94,14 @@ $ git remote set-url origin git@github.com:USERNAME/REPOSITORY.git
 $ git remote -v
 &amp;gt; origin git@github.com:USERNAME/REPOSITORY.git (fetch)
 &amp;gt; origin git@github.com:USERNAME/REPOSITORY.git (push)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;submodules&#34;&gt;Submodules&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://git-scm.com/docs/git-submodule&#34; target=&#34;_blank&#34;&gt;https://git-scm.com/docs/git-submodule&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;add-a-submodule&#34;&gt;Add a submodule&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;git submodule add git@github.com:USERNAME/REPOSITORY.git PATH/TO/SUBMODULEDIR
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;remove-a-submodule-leaving-no-trace&#34;&gt;Remove a submodule (leaving no trace)&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;git rm PATH/TO/SUBMODULEDIR
+rm -rf .git/modules/PATH/TO/SUBMODULEDIR
+git config -f .git/config --remove-section submodule.PATH/TO/SUBMODULEDIR 2&amp;gt; /dev/null
 &lt;/code&gt;&lt;/pre&gt;</description></item></channel></rss>
