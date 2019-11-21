@@ -346,6 +346,10 @@ $ git remote -v
 &lt;h3 id=&#34;add-a-submodule&#34;&gt;Add a submodule&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;git submodule add git@github.com:USERNAME/REPOSITORY.git PATH/TO/SUBMODULEDIR
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;download-files-to-empty-submodule-directory&#34;&gt;Download files to empty submodule directory&lt;/h3&gt;
+&lt;p&gt;When cloning a repository with submodules and the submodule directories are empty:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;git submodule update --init --recursive
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;remove-a-submodule-leaving-no-trace&#34;&gt;Remove a submodule (leaving no trace)&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;git rm PATH/TO/SUBMODULEDIR
 rm -rf .git/modules/PATH/TO/SUBMODULEDIR
