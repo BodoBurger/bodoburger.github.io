@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Notes | Bodo Burger</title><link>https://bodoburger.github.io/notes/</link><atom:link href="https://bodoburger.github.io/notes/index.xml" rel="self" type="application/rss+xml"/><description>Notes</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Bodo Burger 2019</copyright><image><url>https://bodoburger.github.io/img/headers/wiki-eugenio-mazzone.jpg</url><title>Notes</title><link>https://bodoburger.github.io/notes/</link></image><item><title>Ubuntu Wiki</title><link>https://bodoburger.github.io/notes/ubuntu/</link><pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/ubuntu/</guid><description>
+&lt;h2 id=&#34;resources&#34;&gt;Resources&lt;/h2&gt;
+&lt;h3 id=&#34;unix-shell&#34;&gt;Unix shell&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://swcarpentry.github.io/shell-novice/&#34; target=&#34;_blank&#34;&gt;http://swcarpentry.github.io/shell-novice/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Bash_%28Unix_shell%29&#34; target=&#34;_blank&#34;&gt;https://en.wikipedia.org/wiki/Bash_%28Unix_shell%29&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.ubuntu.com/community/Beginners/BashScripting&#34; target=&#34;_blank&#34;&gt;https://help.ubuntu.com/community/Beginners/BashScripting&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Big Data</title><link>https://bodoburger.github.io/notes/big-data/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/big-data/</guid><description>
+&lt;h2 id=&#34;resources&#34;&gt;Resources&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.mmds.org/&#34; target=&#34;_blank&#34;&gt;Mining of Massive Datasets&lt;/a&gt;: free book, MOOC, lecture&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.systems.ethz.ch/node/217&#34; target=&#34;_blank&#34;&gt;Lecture ETH Zürich&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Overview</title><link>https://bodoburger.github.io/notes/anaconda/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/anaconda/</guid><description>
+&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.anaconda.com&#34; target=&#34;_blank&#34;&gt;Anaconda&lt;/a&gt; is a Python distribution
+that comes with &lt;a href=&#34;https://conda.io&#34; target=&#34;_blank&#34;&gt;Conda&lt;/a&gt;,
+a package manager and environment management system.&lt;/p&gt;
+&lt;h2 id=&#34;resources&#34;&gt;Resources&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://conda.io/projects/conda&#34; target=&#34;_blank&#34;&gt;Conda docs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://conda.io/projects/conda/en/latest/user-guide/cheatsheet.html&#34; target=&#34;_blank&#34;&gt;Conda cheat sheet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/&#34; target=&#34;_blank&#34;&gt;Conda: Myths and Misconceptions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://conda-forge.org/&#34; target=&#34;_blank&#34;&gt;Conda forge (an alternative distribution for conda)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>
