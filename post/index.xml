@@ -230,16 +230,14 @@ introduces the datasets in more detail.&lt;/p&gt;
 &lt;div id=&#34;interpretable-models&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Interpretable models&lt;/h2&gt;
 &lt;p&gt;This chapter presents models that are interpretable by itself.
-For Molnar these are&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Linear_regression&#34;&gt;linear regression&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Logistic_regression&#34;&gt;logistic regression&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Decision_tree_learning&#34;&gt;decision trees&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Decision_tree#Decision_rules&#34;&gt;decision rules&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;RuleFit (&lt;a href=&#34;http://statweb.stanford.edu/~jhf/ftp/RuleFit.pdf&#34;&gt;Friedman and Popescu, 2005&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Naive_Bayes_classifier&#34;&gt;naive Bayes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm&#34;&gt;k-nearest neighbors&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+For Molnar these are
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Linear_regression&#34;&gt;linear regression&lt;/a&gt;,
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Logistic_regression&#34;&gt;logistic regression&lt;/a&gt;,
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Decision_tree_learning&#34;&gt;decision trees&lt;/a&gt;,
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Decision_tree#Decision_rules&#34;&gt;decision rules&lt;/a&gt;,
+RuleFit (&lt;a href=&#34;http://statweb.stanford.edu/~jhf/ftp/RuleFit.pdf&#34;&gt;Friedman and Popescu, 2005&lt;/a&gt;),
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Naive_Bayes_classifier&#34;&gt;naive Bayes&lt;/a&gt; and
+&lt;a href=&#34;https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm&#34;&gt;k-nearest neighbors&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;These models have in common that the result is accessible to the user without further steps.
 They differ in regards to linearity, monotonicity,
 the possibility to include feature interactions and the tasks they can handle.&lt;/p&gt;
