@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cloud Services | Bodo Burger</title><link>https://bodoburger.github.io/notes/cloud-services/</link><atom:link href="https://bodoburger.github.io/notes/cloud-services/index.xml" rel="self" type="application/rss+xml"/><description>Cloud Services</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Bodo Burger 2019</copyright><image><url>https://bodoburger.github.io/img/icon-192.png</url><title>Cloud Services</title><link>https://bodoburger.github.io/notes/cloud-services/</link></image><item><title>Amazon Web Services Overview</title><link>https://bodoburger.github.io/notes/cloud-services/aws/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/cloud-services/aws/</guid><description>
+&lt;h2 id=&#34;aws-analytics-services&#34;&gt;AWS Analytics Services&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Amazon ElasticSearch
+&lt;ul&gt;
+&lt;li&gt;search engine&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/elasticsearch-service/faqs/&#34; target=&#34;_blank&#34;&gt;https://aws.amazon.com/elasticsearch-service/faqs/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Elasticsearch&#34; target=&#34;_blank&#34;&gt;https://en.wikipedia.org/wiki/Elasticsearch&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Amazon Elastic MapReduce
+&lt;ul&gt;
+&lt;li&gt;process vast amounts of data using Hadoop framework&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/emr/faqs/&#34; target=&#34;_blank&#34;&gt;https://aws.amazon.com/emr/faqs/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Apache_Hadoop&#34; target=&#34;_blank&#34;&gt;https://en.wikipedia.org/wiki/Apache_Hadoop&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Amazon Kinesis
+&lt;ul&gt;
+&lt;li&gt;collect, process, and analyze video and data streams in real time&lt;/li&gt;
+&lt;li&gt;Kinesis Data Firehose&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Amazon Redshift
+&lt;ul&gt;
+&lt;li&gt;data warehouse: &lt;a href=&#34;https://en.wikipedia.org/wiki/Data_warehouse&#34; target=&#34;_blank&#34;&gt;https://en.wikipedia.org/wiki/Data_warehouse&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Amazon Athena
+&lt;ul&gt;
+&lt;li&gt;interactive query service using standard SQL&lt;/li&gt;
+&lt;li&gt;for data stored in S3 instance&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;aws-compute-services&#34;&gt;AWS Compute Services&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Amazon Elastic Compute Cloud (EC2)
+&lt;ul&gt;
+&lt;li&gt;resizable compute capacity in the cloud&lt;/li&gt;
+&lt;li&gt;different instance types with varying hardware configurations
+(A1, T3, T2, M5, &amp;hellip;)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Amazon Lightsail
+&lt;ul&gt;
+&lt;li&gt;virtual private servers&lt;/li&gt;
+&lt;li&gt;SSD-based storage, data transfer, DNS management, and a static IP&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Amazon Elastic Container Service (ECS)
+&lt;ul&gt;
+&lt;li&gt;container management service using Docker&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://de.wikipedia.org/wiki/Docker_(Software&#34; target=&#34;_blank&#34;&gt;https://de.wikipedia.org/wiki/Docker_(Software&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Amazon Lambda
+&lt;ul&gt;
+&lt;li&gt;run code without managing servers&lt;/li&gt;
+&lt;li&gt;serverless computing&lt;/li&gt;
+&lt;li&gt;natively supports Java, Go, PowerShell, Node.js, C#, Python, and Ruby code&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;aws-database-services&#34;&gt;AWS Database Services&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Amazon DynamoDB
+&lt;ul&gt;
+&lt;li&gt;NoSQL database&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Amazon_DynamoDB&#34; target=&#34;_blank&#34;&gt;https://en.wikipedia.org/wiki/Amazon_DynamoDB&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Amazon Relational Database Service (RDS)
+&lt;ul&gt;
+&lt;li&gt;manages relational database in the cloud&lt;/li&gt;
+&lt;li&gt;supports Amazon Aurora, MySQL, MariaDB, Oracle, SQL Server, and PostgreSQL database engines&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Amazon Redshift
+&lt;ul&gt;
+&lt;li&gt;data warehouse&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Amazon Aurora
+&lt;ul&gt;
+&lt;li&gt;MySQL and PostgreSQL compatible relational database built for the cloud&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;aws-developer-tools&#34;&gt;AWS Developer Tools&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Amazon CodeCommit
+&lt;ul&gt;
+&lt;li&gt;source control service using Git repositories&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Amazon CodePipeline
+&lt;ul&gt;
+&lt;li&gt;continuous integration and continuous delivery&lt;/li&gt;
+&lt;li&gt;builds, tests, and deploys code every time it is changed&lt;/li&gt;
+&lt;li&gt;can be used with GitHub&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Amazon CodeBuild
+&lt;ul&gt;
+&lt;li&gt;build and test code with continuous scaling&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Amazon CodeDeploy
+&lt;ul&gt;
+&lt;li&gt;automates software deployments&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;aws-management-tools&#34;&gt;AWS Management Tools&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Amazon CloudFormation
+&lt;ul&gt;
+&lt;li&gt;model and provision all of your cloud infrastructure resources&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Amazon CloudWatch
+&lt;ul&gt;
+&lt;li&gt;monitor resources and applications&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Amazon Systems Manager&lt;/li&gt;
+&lt;li&gt;Amazon CloudTrail
+&lt;ul&gt;
+&lt;li&gt;user activity&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;aws-networking-and-content-delivery-services&#34;&gt;AWS Networking and Content Delivery Services&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Amazon Virtual Private Cloud (VPC)
+&lt;ul&gt;
+&lt;li&gt;isolate cloud resources with your own private virtual network&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Amazon Direct Connect
+&lt;ul&gt;
+&lt;li&gt;dedicated network connection between your network and your Amazon VPC&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Amazon Route 53
+&lt;ul&gt;
+&lt;li&gt;cloud DNS to connect user requests to AWS resources&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Amazon Elastic Load Balancing
+&lt;ul&gt;
+&lt;li&gt;distributes application traffic across EC2 instances&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Amazon CloudFront
+&lt;ul&gt;
+&lt;li&gt;content delivery network (CDN)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;aws-storage-services&#34;&gt;AWS Storage Services&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Amazon Elastic Block Storage (EBS)
+-&lt;/li&gt;
+&lt;li&gt;Amazon Elastic File System (EFS)
+&lt;ul&gt;
+&lt;li&gt;store and share data in scalable file systems&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Amazon S3
+&lt;ul&gt;
+&lt;li&gt;object storage&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Amazon Glacier
+&lt;ul&gt;
+&lt;li&gt;archive data in low-cost storage&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>
