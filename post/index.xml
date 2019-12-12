@@ -337,7 +337,60 @@ k-nearest neighbors
 &lt;/div&gt;
 &lt;div id=&#34;model-agnostic-methods&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Model-agnostic methods&lt;/h2&gt;
-&lt;p&gt;[tbc]&lt;/p&gt;
+&lt;p&gt;A model-agnostic interpretability method is applied after a model is trained
+to make the result more accessible or transparent.
+Best case the method is flexible enough to be applied on any model.&lt;/p&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;th&gt;
+Method&lt;br&gt;
+&lt;/th&gt;
+&lt;th&gt;
+R
+&lt;/th&gt;
+&lt;th&gt;
+Python
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;
+Partial Dependence Plot
+&lt;/td&gt;
+&lt;td&gt;
+Packages: &lt;a href=&#34;https://cran.r-project.org/package=mlr&#34;&gt;mlr&lt;/a&gt;,
+&lt;a href=&#34;https://cran.r-project.org/package=pdp&#34;&gt;pdp&lt;/a&gt;,
+&lt;a href=&#34;https://cran.r-project.org/package=iml&#34;&gt;iml&lt;/a&gt;,
+&lt;a href=&#34;https://github.com/BodoBurger/intame&#34;&gt;intame&lt;/a&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;a href=&#34;https://scikit-learn.org/stable/modules/partial_dependence.html&#34;&gt;sklearn.inspection.plot_partial_dependence()&lt;/a&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;
+Individual Conditional Expectation
+&lt;/td&gt;
+&lt;td&gt;
+Packages: &lt;a href=&#34;https://cran.r-project.org/package=iml&#34;&gt;iml&lt;/a&gt;,
+&lt;a href=&#34;https://cran.r-project.org/package=pdp&#34;&gt;pdp&lt;/a&gt;,
+&lt;a href=&#34;https://cran.r-project.org/package=ICEbox&#34;&gt;ICEbox&lt;/a&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;
+Accumulated Local Effect
+&lt;/td&gt;
+&lt;td&gt;
+Packages: &lt;a href=&#34;https://cran.r-project.org/package=iml&#34;&gt;iml&lt;/a&gt;,
+&lt;a href=&#34;https://cran.r-project.org/package=ALEPlot&#34;&gt;ALEPlot&lt;/a&gt;,
+&lt;a href=&#34;https://github.com/BodoBurger/intame&#34;&gt;intame&lt;/a&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
 &lt;/div&gt;</description></item><item><title>Git Resources / Cheat Sheet</title><link>https://bodoburger.github.io/post/2017-07-git-cheat-sheet/</link><pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/post/2017-07-git-cheat-sheet/</guid><description>
 &lt;p&gt;&lt;h2&gt;Table of Contents&lt;/h2&gt;
 HAHAHUGOSHORTCODE-TOC0-HBHB&lt;/p&gt;
