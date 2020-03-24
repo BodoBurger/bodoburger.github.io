@@ -1,12 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Big Data | Bodo Burger</title><link>https://bodoburger.github.io/notes/big-data/</link><atom:link href="https://bodoburger.github.io/notes/big-data/index.xml" rel="self" type="application/rss+xml"/><description>Big Data</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Bodo Burger 2020</copyright><image><url>https://bodoburger.github.io/img/icon-192.png</url><title>Big Data</title><link>https://bodoburger.github.io/notes/big-data/</link></image><item><title>Basics</title><link>https://bodoburger.github.io/notes/big-data/big-data-basics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/big-data/big-data-basics/</guid><description>
-&lt;h2 id=&#34;goal-of-data-analysis&#34;&gt;Goal of data analysis&lt;/h2&gt;
-&lt;p&gt;Decision making often involves uncertainty (uncertain situations, uncertain impacts).
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Big Data | Bodo Burger</title><link>https://bodoburger.github.io/notes/big-data/</link><atom:link href="https://bodoburger.github.io/notes/big-data/index.xml" rel="self" type="application/rss+xml"/><description>Big Data</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Bodo Burger 2020</copyright><image><url>img/map[gravatar:%!s(bool=false) shape:circle]</url><title>Big Data</title><link>https://bodoburger.github.io/notes/big-data/</link></image><item><title>Basics</title><link>https://bodoburger.github.io/notes/big-data/big-data-basics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/big-data/big-data-basics/</guid><description>&lt;h2 id="goal-of-data-analysis">Goal of data analysis&lt;/h2>
+&lt;p>Decision making often involves uncertainty (uncertain situations, uncertain impacts).
 We assume that existing data contains information that we can use
-to model uncertain situations, predict outcomes, or unknown parameters.&lt;/p&gt;
-&lt;p&gt;Related disciplines: statistics, artificial intelligence, machine learning,
-data mining and knowledge discovery, deep learning, reinforcement learning.&lt;/p&gt;
-&lt;h2 id=&#34;knowledge-discovery-process&#34;&gt;Knowledge discovery process&lt;/h2&gt;
-&lt;pre&gt;&lt;code class=&#34;language-mermaid&#34;&gt;graph TD;
+to model uncertain situations, predict outcomes, or unknown parameters.&lt;/p>
+&lt;p>Related disciplines: statistics, artificial intelligence, machine learning,
+data mining and knowledge discovery, deep learning, reinforcement learning.&lt;/p>
+&lt;h2 id="knowledge-discovery-process">Knowledge discovery process&lt;/h2>
+&lt;pre>&lt;code class="language-mermaid">graph TD;
 A(databases or other data sources)
 B(data warehouse)
 C(task-relevant data)
@@ -16,67 +15,72 @@ A --&amp;gt;|data cleaning| B
 B --&amp;gt;|data selection| C
 C --&amp;gt;|data mining| D
 D --&amp;gt;|visualization| E
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;v-model-of-big-data&#34;&gt;V model of big data&lt;/h2&gt;
-&lt;p&gt;The initial three V&amp;rsquo;s are:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;volume&lt;/strong&gt;:
+&lt;/code>&lt;/pre>
+&lt;h2 id="v-model-of-big-data">V model of big data&lt;/h2>
+&lt;p>The initial three V&amp;rsquo;s are:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>volume&lt;/strong>:
 huge amount of data so large that it cannot be analyzed using traditional methods;
-high number of instances or features&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;variety&lt;/strong&gt;:
+high number of instances or features&lt;/li>
+&lt;li>&lt;strong>variety&lt;/strong>:
 large proportion of data is unstructured; there are different types of data
-(e.g. spreadsheets, images, videos); different data formats&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;velocity&lt;/strong&gt;:
+(e.g. spreadsheets, images, videos); different data formats&lt;/li>
+&lt;li>&lt;strong>velocity&lt;/strong>:
 data can be generated, changed and analyzed within short time spans
-(e.g. milliseconds)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Additionally suggested V&amp;rsquo;s:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;veracity / validity&lt;/strong&gt;:
+(e.g. milliseconds)&lt;/li>
+&lt;/ul>
+&lt;p>Additionally suggested V&amp;rsquo;s:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>veracity / validity&lt;/strong>:
 credibility of the data, the high volume of data leads to different degrees
 of data quality;
-interfering factors can be noise, manipulation or misinterpretation&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;value&lt;/strong&gt;:
-added value by investments of companies in big data infrastructure&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;different-types-of-tasks&#34;&gt;Different types of tasks&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;classification
-&lt;ul&gt;
-&lt;li&gt;e.g. image classification, document categorization&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;regression
-&lt;ul&gt;
-&lt;li&gt;e.g. housing values&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;clustering
-&lt;ul&gt;
-&lt;li&gt;e.g. customer segmentation&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;outlier detection&lt;/li&gt;
-&lt;li&gt;frequent itemset mining
-&lt;ul&gt;
-&lt;li&gt;e.g. market-basket analysis&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&amp;hellip;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;application-examples&#34;&gt;Application examples&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;image recognition&lt;/li&gt;
-&lt;li&gt;image processing&lt;/li&gt;
-&lt;li&gt;speech recognition&lt;/li&gt;
-&lt;li&gt;automatic translation&lt;/li&gt;
-&lt;li&gt;game AIs:
-&lt;ul&gt;
-&lt;li&gt;Deepmind AlphaGo (go), AlphaZero (chess), AlphaStar (StarCraft)&lt;/li&gt;
-&lt;li&gt;OpenAI Five (Dota2)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;material requirement planning for manufacturing&lt;/li&gt;
-&lt;li&gt;predict capacity utilisation of the passenger train (Deutsche Bahn)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;sources&#34;&gt;Sources&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Lecture &lt;strong&gt;Big Data Management and Analytics&lt;/strong&gt; by Prof. Dr. Schubert, Ludwig-Maximilians-Universität München&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://whatis.techtarget.com/definition/3Vs&#34; target=&#34;_blank&#34;&gt;https://whatis.techtarget.com/definition/3Vs&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.unbelievable-machine.com/en/what-is-big-data-definition-five-vs&#34; target=&#34;_blank&#34;&gt;https://blog.unbelievable-machine.com/en/what-is-big-data-definition-five-vs&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description></item></channel></rss>
+interfering factors can be noise, manipulation or misinterpretation&lt;/li>
+&lt;li>&lt;strong>value&lt;/strong>:
+added value by investments of companies in big data infrastructure&lt;/li>
+&lt;/ul>
+&lt;h2 id="different-types-of-tasks">Different types of tasks&lt;/h2>
+&lt;ul>
+&lt;li>classification
+&lt;ul>
+&lt;li>e.g. image classification, document categorization&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>regression
+&lt;ul>
+&lt;li>e.g. housing values&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>clustering
+&lt;ul>
+&lt;li>e.g. customer segmentation&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>outlier detection&lt;/li>
+&lt;li>frequent itemset mining
+&lt;ul>
+&lt;li>e.g. market-basket analysis&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&amp;hellip;&lt;/li>
+&lt;/ul>
+&lt;h2 id="application-examples">Application examples&lt;/h2>
+&lt;ul>
+&lt;li>image recognition&lt;/li>
+&lt;li>image processing&lt;/li>
+&lt;li>speech recognition&lt;/li>
+&lt;li>automatic translation&lt;/li>
+&lt;li>game AIs:
+&lt;ul>
+&lt;li>Deepmind AlphaGo (go), AlphaZero (chess), AlphaStar (StarCraft)&lt;/li>
+&lt;li>OpenAI Five (Dota2)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>material requirement planning for manufacturing&lt;/li>
+&lt;li>predict capacity utilisation of the passenger train (Deutsche Bahn)&lt;/li>
+&lt;/ul>
+&lt;h2 id="sources">Sources&lt;/h2>
+&lt;ul>
+&lt;li>Lecture &lt;strong>Big Data Management and Analytics&lt;/strong> by Prof. Dr. Schubert, Ludwig-Maximilians-Universität München&lt;/li>
+&lt;li>&lt;a href="https://whatis.techtarget.com/definition/3Vs">https://whatis.techtarget.com/definition/3Vs&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://blog.unbelievable-machine.com/en/what-is-big-data-definition-five-vs">https://blog.unbelievable-machine.com/en/what-is-big-data-definition-five-vs&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>

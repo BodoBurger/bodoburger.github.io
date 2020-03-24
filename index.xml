@@ -1,1 +1,1449 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bodo Burger</title><link>https://bodoburger.github.io/</link><atom:link href="https://bodoburger.github.io/index.xml" rel="self" type="application/rss+xml"/><description>Bodo Burger</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Bodo Burger 2020</copyright><lastBuildDate>Sun, 05 May 2019 00:00:00 +0100</lastBuildDate><image><url>https://bodoburger.github.io/img/icon-192.png</url><title>Bodo Burger</title><link>https://bodoburger.github.io/</link></image><item><title>Projects</title><link>https://bodoburger.github.io/project/</link><pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/project/</guid><description/></item><item><title/><link>https://bodoburger.github.io/aboutme/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/aboutme/</guid><description/></item><item><title/><link>https://bodoburger.github.io/contact/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/contact/</guid><description/></item><item><title/><link/><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid/><description/></item><item><title/><link>https://bodoburger.github.io/zzz/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/zzz/</guid><description/></item><item><title>Blog</title><link>https://bodoburger.github.io/post/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/post/</guid><description/></item><item><title>Notes</title><link>https://bodoburger.github.io/notes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/</guid><description/></item><item><title>Publications</title><link>https://bodoburger.github.io/publication/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/publication/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bodo Burger</title><link>https://bodoburger.github.io/</link><atom:link href="https://bodoburger.github.io/index.xml" rel="self" type="application/rss+xml"/><description>Bodo Burger</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Bodo Burger 2020</copyright><image><url>img/map[gravatar:%!s(bool=false) shape:circle]</url><title>Bodo Burger</title><link>https://bodoburger.github.io/</link></image><item><title>Basic tweaks and configuration</title><link>https://bodoburger.github.io/notes/ubuntu/basic-tweaks/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/ubuntu/basic-tweaks/</guid><description>&lt;h2 id="disable-middle-click-paste">Disable middle click paste&lt;/h2>
+&lt;p>&lt;a href="https://wiki.ubuntuusers.de/GNOME_Tweak_Tool/">https://wiki.ubuntuusers.de/GNOME_Tweak_Tool/&lt;/a>&lt;/p>
+&lt;h2 id="disable-looking-for-wifi-printer">Disable looking for wifi printer&lt;/h2>
+&lt;pre>&lt;code class="language-bash">/etc/cups/cups-browsed.conf
+## Change BrowseRemoteProtocols dnssd cups to
+BrowseRemoteProtocols none
+&lt;/code>&lt;/pre>
+&lt;p>&lt;a href="https://ubuntuforums.org/showthread.php?t=2330752">https://ubuntuforums.org/showthread.php?t=2330752&lt;/a>&lt;/p>
+&lt;h2 id="keyboardshortcut-power-off">Keyboardshortcut Power off&lt;/h2>
+&lt;p>Adding shortcut for &lt;em>Power off&lt;/em> screen by setting custom shortcut:&lt;/p>
+&lt;p>&lt;code>gnome-session-quit --power-off&lt;/code>&lt;/p>
+&lt;h2 id="kein-lock-screen-nach-suspend">Kein Lock screen nach Suspend&lt;/h2>
+&lt;p>&lt;a href="https://www.techgrube.de/tutorials/ubuntu-sperrbildschirm-nach-standby-deaktivieren">https://www.techgrube.de/tutorials/ubuntu-sperrbildschirm-nach-standby-deaktivieren&lt;/a>&lt;/p>
+&lt;p>&amp;ldquo;Die gewünschte Einstellung findet man dann unter org -&amp;gt; Gnome -&amp;gt; Desktop -&amp;gt; screensaver. Hier entfernt man einfach bei ubuntu-lock-on-suspend das Häkchen.&amp;rdquo;&lt;/p></description></item><item><title>Installing software</title><link>https://bodoburger.github.io/notes/ubuntu/install-software/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/ubuntu/install-software/</guid><description>&lt;h2 id="software-list">Software list&lt;/h2>
+&lt;ul>
+&lt;li>APT
+&lt;ul>
+&lt;li>chromium-browser&lt;/li>
+&lt;li>TexLive: &lt;code>sudo apt install texlive-full&lt;/code> (4GB)&lt;/li>
+&lt;li>R (
+&lt;a href="../r-stats">more info&lt;/a>)&lt;/li>
+&lt;li>Scribus&lt;/li>
+&lt;li>VLC&lt;/li>
+&lt;li>
+&lt;a href="https://www.darktable.org/install" target="_blank" rel="noopener">darktable&lt;/a>: &lt;code>bash sudo apt install darktable&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Snap
+&lt;ul>
+&lt;li>keepassxc&lt;/li>
+&lt;li>gimp&lt;/li>
+&lt;li>go (and hugo)&lt;/li>
+&lt;li>node&lt;/li>
+&lt;li>onlyoffice&lt;/li>
+&lt;li>Octave (Matlab alternative)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Flatpak
+&lt;ul>
+&lt;li>libreoffice&lt;/li>
+&lt;li>Epub: Bookworm&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>.deb (manually)
+&lt;ul>
+&lt;li>
+&lt;a href="https://rstudio.com/products/rstudio/download/" target="_blank" rel="noopener">Rstudio&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VS Code&lt;/a> (.deb package installs apt repo)&lt;/li>
+&lt;li>
+&lt;a href="https://code-industry.net/free-pdf-editor/" target="_blank" rel="noopener">Master PDF&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>.sh
+&lt;ul>
+&lt;li>Anaconda&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="alarm-clock-and-timer">Alarm clock and timer&lt;/h3>
+&lt;p>&lt;a href="https://wiki.ubuntuusers.de/Alarm_Clock/">https://wiki.ubuntuusers.de/Alarm_Clock/&lt;/a>&lt;/p>
+&lt;pre>&lt;code class="language-bash">sudo apt install alarm-clock-applet
+sudo apt install sound-icons # folder location: /usr/share/sounds/sound-icons/.
+&lt;/code>&lt;/pre>
+&lt;h3 id="nvidia-drivers">Nvidia drivers&lt;/h3>
+&lt;p>&amp;ldquo;Software &amp;amp; Updates &amp;ndash;&amp;gt; Additional Drivers&amp;rdquo;&lt;/p>
+&lt;h2 id="package-management">Package management&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://book.dpmb.org/debian-paketmanagement.chunked/ch03s02.html">https://book.dpmb.org/debian-paketmanagement.chunked/ch03s02.html&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://book.dpmb.org/debian-paketmanagement.chunked/ch03s03.html">https://book.dpmb.org/debian-paketmanagement.chunked/ch03s03.html&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>PDF</title><link>https://bodoburger.github.io/notes/ubuntu/pdf/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/ubuntu/pdf/</guid><description>&lt;h2 id="extracting-photos-from-multiple-pdfs-using-pdfunite-and-pdfimages">Extracting photos from multiple PDFs using pdfunite and pdfimages&lt;/h2>
+&lt;pre>&lt;code class="language-bash">pdfunite *.pdf allphotos.pdf
+pdfimages -j ‘allphotos.pdf’ image
+&lt;/code>&lt;/pre></description></item><item><title>R, packages and its dependencies</title><link>https://bodoburger.github.io/notes/ubuntu/r-stats/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/ubuntu/r-stats/</guid><description>&lt;p>Install libopenblas at first:&lt;/p>
+&lt;p>&lt;a href="https://www.r-bloggers.com/why-is-r-slow-some-explanations-and-mklopenblas-setup-to-try-to-fix-this/">https://www.r-bloggers.com/why-is-r-slow-some-explanations-and-mklopenblas-setup-to-try-to-fix-this/&lt;/a>&lt;/p>
+&lt;h2 id="installation">Installation&lt;/h2>
+&lt;p>&lt;a href="https://cloud.r-project.org/bin/linux/ubuntu/README.html">https://cloud.r-project.org/bin/linux/ubuntu/README.html&lt;/a>&lt;/p>
+&lt;pre>&lt;code class="language-bash"># adding secure apt key:
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+# adding cran-mirror for Ubuntu 18.04:
+sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
+# archive server
+sudo add-apt-repository 'deb http://ubuntu.mirror.lrz.de/ubuntu/ bionic-backports main restricted universe'
+# installing r-base and r-dev
+sudo apt update
+sudo apt install r-base r-base-dev
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>RStudio: &lt;a href="https://www.rstudio.com/products/rstudio/download/">https://www.rstudio.com/products/rstudio/download/&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="dependencies-of-r-packages">Dependencies of R packages&lt;/h2>
+&lt;pre>&lt;code class="language-bash">#&amp;quot;rgl&amp;quot;
+sudo apt install libcgal-dev libglu1-mesa-dev libglu1-mesa-dev libfreetype6-dev
+# &amp;quot;devtools&amp;quot;:
+sudo apt install libcurl4-openssl-dev libssl-dev
+# &amp;quot;XML&amp;quot;:
+sudo apt install libxml2-dev
+# &amp;quot;rattle&amp;quot;:
+sudo apt install libcanberra-gtk-module
+sudo apt install wajig
+wajig install libgtk2.0-dev libxml2-dev
+# &amp;quot;cairo&amp;quot;:
+sudo apt-get install libcairo2-dev
+# &amp;quot;sbrl&amp;quot;
+sudo apt install libgsl-dev
+&lt;/code>&lt;/pre>
+&lt;h2 id="rweka">RWeka:&lt;/h2>
+&lt;pre>&lt;code class="language-bash">java –version
+sudo apt install default-jre default-jdk
+javac -version
+&lt;/code>&lt;/pre></description></item><item><title>TLP – Linux Advanced Power Management</title><link>https://bodoburger.github.io/notes/ubuntu/tlp/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/ubuntu/tlp/</guid><description>&lt;p>&lt;a href="http://thinkwiki.de/TLP_-_Linux_Stromsparen">http://thinkwiki.de/TLP_-_Linux_Stromsparen&lt;/a>&lt;/p>
+&lt;p>&lt;a href="http://linrunner.de/en/tlp/tlp.html">http://linrunner.de/en/tlp/tlp.html&lt;/a>&lt;/p>
+&lt;pre>&lt;code class="language-bash">sudo apt install tlp tlp-rdw tp-smapi-dkms acpi-call-dkms
+# bluetooth off at startup:
+gksudo gedit /etc/default/tlp # does not work with WAYLAND
+DEVICES_TO_DISABLE_ON_STARTUP=&amp;quot;bluetooth&amp;quot;
+# Akku-Ladeschwellen vorübergehend auf Maximum setzen
+sudo tlp fullcharge [ BAT0 | BAT1 ]
+# Akku einmalig bis zur oberen Schwelle laden
+sudo tlp chargeonce [ BAT0 | BAT1 ]
+&lt;/code>&lt;/pre></description></item><item><title>USB storage</title><link>https://bodoburger.github.io/notes/ubuntu/usb-storage/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/ubuntu/usb-storage/</guid><description>&lt;h2 id="mount">Mount&lt;/h2>
+&lt;p>&lt;code>sudo mount -o remount,rw /media/&amp;lt;storage-name&amp;gt;&lt;/code>&lt;/p>
+&lt;h2 id="error-cant-format-usb-storage">Error: &lt;em>Can&amp;rsquo;t format USB storage&lt;/em>&lt;/h2>
+&lt;p>I got this fixed by doing the following&lt;/p>
+&lt;p>Type disks and launch the program,
+select the disk or drive you want to format,
+press CTRL+F and click format.&lt;/p>
+&lt;p>After formatting, the disk or drive would be unallocated, therefore you&amp;rsquo;ll have to create a partition by using the plus button on the screen.. Then insert the name you&amp;rsquo;ll like to use as the drive or disk name then click on create. Enjoy&amp;hellip;.&lt;/p>
+&lt;p>&lt;a href="https://askubuntu.com/questions/769079/cant-format-ubuntu-installation-stick/769094">https://askubuntu.com/questions/769079/cant-format-ubuntu-installation-stick/769094&lt;/a>&lt;/p></description></item><item><title>Uninstalling Anaconda</title><link>https://bodoburger.github.io/notes/anaconda/anaconda-uninstall/</link><pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate><guid>https://bodoburger.github.io/notes/anaconda/anaconda-uninstall/</guid><description>&lt;ul>
+&lt;li>
+&lt;a href="https://docs.anaconda.com/anaconda/install/uninstall/" target="_blank" rel="noopener">Documentation&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>For a clean uninstall, first install &lt;em>anaconda-clean&lt;/em> package,&lt;/p>
+&lt;pre>&lt;code class="language-bash">conda install anaconda-clean
+anaconda-clean
+&lt;/code>&lt;/pre>
+&lt;p>then:&lt;/p>
+&lt;pre>&lt;code class="language-bash">rm -rf ~/anaconda3
+&lt;/code>&lt;/pre></description></item><item><title>An example preprint / working paper</title><link>https://bodoburger.github.io/publication/preprint/</link><pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/publication/preprint/</guid><description>&lt;div class="alert alert-note">
+&lt;div>
+Click the &lt;em>Slides&lt;/em> button above to demo Academic&amp;rsquo;s Markdown slides feature.
+&lt;/div>
+&lt;/div>
+&lt;p>Supplementary notes can be added here, including
+&lt;a href="https://sourcethemes.com/academic/docs/writing-markdown-latex/" target="_blank" rel="noopener">code and math&lt;/a>.&lt;/p></description></item><item><title>Feature Effects in Machine Learning Models</title><link>https://bodoburger.github.io/project/2019-feature-effects/</link><pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/project/2019-feature-effects/</guid><description>
+&lt;div id="TOC">
+&lt;ul>
+&lt;li>&lt;a href="#abstract">Abstract&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#example-bike-sharing-data">Example: Bike Sharing Data&lt;/a>&lt;ul>
+&lt;li>&lt;a href="#model-training">Model Training&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#analysis">Analysis&lt;/a>&lt;/li>
+&lt;/ul>&lt;/li>
+&lt;li>&lt;a href="#r-package">R package&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#references">References&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/div>
+&lt;div id="abstract" class="section level2">
+&lt;h2>Abstract&lt;/h2>
+&lt;p>Supervised machine learning models are mostly black boxes.
+The method we propose tries to improve understanding of these black boxes.
+The goal is to find a way to quantify effect sizes of features.
+Average marginal effects are used in social sciences
+to determine effect sizes of logistic regression models.
+Applying this method to a machine learning model usually does not
+adequately represent the non-convex, non-monotonic response function.
+There are graphical methods like partial dependence plots or accumulated local effect plots
+that visualize the response functions but do not offer a quantitative interpretation.
+First, we use one of the latter methods to identify intervals
+within the response function is relatively stable.
+Second, we report some estimate of the feature effect separately for each interval.
+Our method determines the number of necessary intervals automatically.&lt;/p>
+&lt;/div>
+&lt;div id="example-bike-sharing-data" class="section level2">
+&lt;h2>Example: Bike Sharing Data&lt;/h2>
+&lt;p>The following examples shows
+how the method can help to understand heterogeneous feature effects.
+We apply the method to the Bike Sharing dataset &lt;span class="citation">(Fanaee-T and Gama 2013)&lt;/span>
+which was further processed by &lt;span class="citation">Molnar (2018)&lt;/span>.
+See table &lt;a href="#tab:bikes-load-data">1&lt;/a> for an overview of all the features.
+The target &lt;code>cnt&lt;/code> is the number of bicycles
+lent by a bicycle sharing company per day.
+The features comprise calendrical and meteorological information for each day.&lt;/p>
+&lt;table>
+&lt;caption>&lt;span id="tab:bikes-load-data">Table 1: &lt;/span>Excerpt of the Bike Sharing dataset&lt;/caption>
+&lt;thead>
+&lt;tr class="header">
+&lt;th align="left">season&lt;/th>
+&lt;th align="left">yr&lt;/th>
+&lt;th align="left">mnth&lt;/th>
+&lt;th align="left">holiday&lt;/th>
+&lt;th align="left">weekday&lt;/th>
+&lt;th align="left">weathersit&lt;/th>
+&lt;th align="right">temp&lt;/th>
+&lt;th align="right">hum&lt;/th>
+&lt;th align="right">windspeed&lt;/th>
+&lt;th align="right">cnt&lt;/th>
+&lt;th align="right">days_since_2011&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr class="odd">
+&lt;td align="left">SPRING&lt;/td>
+&lt;td align="left">2011&lt;/td>
+&lt;td align="left">JAN&lt;/td>
+&lt;td align="left">0&lt;/td>
+&lt;td align="left">SAT&lt;/td>
+&lt;td align="left">MISTY&lt;/td>
+&lt;td align="right">8.18&lt;/td>
+&lt;td align="right">80.6&lt;/td>
+&lt;td align="right">10.8&lt;/td>
+&lt;td align="right">985&lt;/td>
+&lt;td align="right">0&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td align="left">SPRING&lt;/td>
+&lt;td align="left">2011&lt;/td>
+&lt;td align="left">JAN&lt;/td>
+&lt;td align="left">0&lt;/td>
+&lt;td align="left">SUN&lt;/td>
+&lt;td align="left">MISTY&lt;/td>
+&lt;td align="right">9.08&lt;/td>
+&lt;td align="right">69.6&lt;/td>
+&lt;td align="right">16.7&lt;/td>
+&lt;td align="right">801&lt;/td>
+&lt;td align="right">1&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td align="left">SPRING&lt;/td>
+&lt;td align="left">2011&lt;/td>
+&lt;td align="left">JAN&lt;/td>
+&lt;td align="left">0&lt;/td>
+&lt;td align="left">MON&lt;/td>
+&lt;td align="left">GOOD&lt;/td>
+&lt;td align="right">1.23&lt;/td>
+&lt;td align="right">43.7&lt;/td>
+&lt;td align="right">16.6&lt;/td>
+&lt;td align="right">1349&lt;/td>
+&lt;td align="right">2&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td align="left">SPRING&lt;/td>
+&lt;td align="left">2011&lt;/td>
+&lt;td align="left">JAN&lt;/td>
+&lt;td align="left">0&lt;/td>
+&lt;td align="left">TUE&lt;/td>
+&lt;td align="left">GOOD&lt;/td>
+&lt;td align="right">1.40&lt;/td>
+&lt;td align="right">59.0&lt;/td>
+&lt;td align="right">10.7&lt;/td>
+&lt;td align="right">1562&lt;/td>
+&lt;td align="right">3&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td align="left">SPRING&lt;/td>
+&lt;td align="left">2011&lt;/td>
+&lt;td align="left">JAN&lt;/td>
+&lt;td align="left">0&lt;/td>
+&lt;td align="left">WED&lt;/td>
+&lt;td align="left">GOOD&lt;/td>
+&lt;td align="right">2.67&lt;/td>
+&lt;td align="right">43.7&lt;/td>
+&lt;td align="right">12.5&lt;/td>
+&lt;td align="right">1600&lt;/td>
+&lt;td align="right">4&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td align="left">SPRING&lt;/td>
+&lt;td align="left">2011&lt;/td>
+&lt;td align="left">JAN&lt;/td>
+&lt;td align="left">0&lt;/td>
+&lt;td align="left">THU&lt;/td>
+&lt;td align="left">GOOD&lt;/td>
+&lt;td align="right">1.60&lt;/td>
+&lt;td align="right">51.8&lt;/td>
+&lt;td align="right">6.0&lt;/td>
+&lt;td align="right">1606&lt;/td>
+&lt;td align="right">5&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;div id="model-training" class="section level3">
+&lt;h3>Model Training&lt;/h3>
+&lt;p>We use a linear model &lt;span class="citation">(R Core Team 2019)&lt;/span>, an SVM &lt;span class="citation">(Meyer et al. 2019)&lt;/span>,
+a random decision forest &lt;span class="citation">(Breiman et al. 2018)&lt;/span> and gradient boosting &lt;span class="citation">(Greenwell et al. 2019)&lt;/span>.
+We compare the performance of all models and the performance
+of predicting the mean for each observation on a hold-out test set
+(see table &lt;a href="#tab:bikes-model-training">2&lt;/a>).
+The linear model performs relatively well
+but we can improve by using a more complex machine learning model
+even without extensive tuning.&lt;/p>
+&lt;table>
+&lt;caption>&lt;span id="tab:bikes-model-training">Table 2: &lt;/span>Mean squared error, root mean squared log error,
+and R squared for hold-out test set&lt;/caption>
+&lt;thead>
+&lt;tr class="header">
+&lt;th>&lt;/th>
+&lt;th align="right">mean(y)&lt;/th>
+&lt;th align="right">lm&lt;/th>
+&lt;th align="right">svm&lt;/th>
+&lt;th align="right">rf&lt;/th>
+&lt;th align="right">gbm&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr class="odd">
+&lt;td>mse&lt;/td>
+&lt;td align="right">3.75e+06&lt;/td>
+&lt;td align="right">5.30e+05&lt;/td>
+&lt;td align="right">4.33e+05&lt;/td>
+&lt;td align="right">4.22e+05&lt;/td>
+&lt;td align="right">4.12e+05&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>rmsle&lt;/td>
+&lt;td align="right">5.93e-01&lt;/td>
+&lt;td align="right">2.36e-01&lt;/td>
+&lt;td align="right">2.44e-01&lt;/td>
+&lt;td align="right">2.61e-01&lt;/td>
+&lt;td align="right">2.30e-01&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>rsq&lt;/td>
+&lt;td align="right">0.00e+00&lt;/td>
+&lt;td align="right">8.59e-01&lt;/td>
+&lt;td align="right">8.85e-01&lt;/td>
+&lt;td align="right">8.88e-01&lt;/td>
+&lt;td align="right">8.90e-01&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;div id="analysis" class="section level3">
+&lt;h3>Analysis&lt;/h3>
+&lt;p>Now analyse how changing feature values influences
+the predicted number of bikes.
+We focus on the three numerical features &lt;code>temp&lt;/code> (temperature in degree Celsius),
+&lt;code>hum&lt;/code> (humidity in percent) and &lt;code>windspeed&lt;/code> (in kilometers per hour).
+We apply our method to each of the complex models with default settings.
+The output in &lt;code>R&lt;/code> looks as follows:&lt;/p>
+&lt;pre>&lt;code>## lm:
+## temp hum windspeed
+## 98.2 -13.7 -40.1
+## SVM (temp)
+## [-5.221, 19.26) [19.26, 32.498]
+## 128.11 3.87
+## SVM (hum)
+## [18.792, 56.792) [56.792, 93.957]
+## 7.19 -32.71
+## SVM (windspeed)
+## [2.834, 14.876) [14.876, 34]
+## -22.7 -64.7
+## RF (temp)
+## [-5.221, 20.278) [20.278, 32.498]
+## 104.5 -62.7
+## RF (hum)
+## [18.792, 64.667) [64.667, 93.957]
+## -1.18 -31.97
+## RF (windspeed)
+## [2.834, 18.417) [18.417, 24.251) [24.251, 34]
+## -16.46 -78.30 -1.64
+## GBM (temp)
+## [-5.221, 16.792) [16.792, 26.075) [26.075, 32.498]
+## 124.2 13.9 -239.7
+## GBM (hum)
+## [18.792, 64.667) [64.667, 83.792) [83.792, 87.25) [87.25, 93.957]
+## -3.86 -39.63 -227.00 91.19
+## GBM (windspeed)
+## [2.834, 8.584) [8.584, 22.959) [22.959, 24.251) [24.251, 34]
+## -5.32e+01 -1.85e+01 -5.04e+02 6.60e-14&lt;/code>&lt;/pre>
+&lt;p>The marginal effect of the linear model is equal to the model coefficients.
+So according to the model an increase of the temperature by 1° Celsius
+leads to a predicted increase of &lt;span class="math inline">\(98.188\)&lt;/span>. rented bicycles per day.
+This seems plausible for an average day.
+The higher the temperature the more people are willing to go by bike.
+But one could easily imagine that a temperature rise on a hot day
+will make people less likely rent a bike to avoid physical exertion.
+This is exactly what the results of the complex models suggest.
+Below 20° the SVM predicts an increase of
+&lt;span class="math inline">\(128.106\)&lt;/span>
+bikes per day for an additional degree Celsius.
+Above 20° the effect becomes negative and very small
+&lt;span class="math inline">\((3.867)\)&lt;/span>.
+The results of the random forest show two cutoff points.
+At around 13° the positive marginal effect becomes smaller in size
+and above 25° the effect is negative.
+The effect for gradient boosting is partitioned into four intervals.
+The effect of the three intervals below 27° are positive,
+above 27° it is negative, similarly to the results of the other two models.
+However, the absolute values of the effect fluctuate substantially
+for gradient boosting.&lt;/p>
+&lt;p>For humidity the linear model predicts a negative effect.
+For the SVM the effect is positive up to around 43%.
+Between 43% and 65% the effect is negative but smaller in size.
+Above 65% it is negative and
+four times bigger than in the previous interval.
+The results for the random forest and gradient boosting
+both show very small effects below roughly 65% humidity.
+Above this point both models predict a decrease of rented bicycles
+with rising humidity.
+The histogram (figure &lt;a href="#fig:bikes-hum-hist">1&lt;/a>) explains
+why the effect for humidity is probably non-monotonic.
+Humidity usually is between 50% to 75%.
+Values outside this range indicate more extreme weather conditions.
+If uncommonly dry or wet air reduces people’s desire to ride a bike
+we will expect a positive effect on the number of rented bikes
+if humidity is below the familiar range, and a negative effect if it is above.&lt;/p>
+&lt;div class="figure" style="text-align: center">&lt;span id="fig:bikes-hum-hist">&lt;/span>
+&lt;img src="figures/bikes-hum-hist-1.png" alt="Histogram for feature humidity of the Bike Sharing dataset." width="40%" />
+&lt;p class="caption">
+Figure 1: Histogram for feature &lt;code>humidity&lt;/code> of the Bike Sharing dataset.
+&lt;/p>
+&lt;/div>
+&lt;p>Wind makes cycling less attractive, so one associates higher wind speed
+with a reduced willingness to rent a bike.
+The linear model predicts a negative effect (&lt;span class="math inline">\(-40.149\)&lt;/span>).
+For both SVM and random forest our method proposes a negative effect
+that is constant over the whole feature distribution.
+Consequently, in the case of wind speed a linear model seems to be appropriate
+to represent the relationship.
+Gradient boosting shows a negative effect for five intervals,
+the reported values are not very stable, again.&lt;/p>
+&lt;p>In this exemplary application we showed that
+the linear model does not suffice to represent the varying response function types.
+A user may come to wrong conclusions about the number of rented bikes
+depending on the weather conditions of the day.
+The proposed method enables the user to make quantitative statements
+as if he was using a linear model
+while preserving the non-linear, non-monotonic relationship where necessary.
+Thus, he can combine a better performing model with a comprehensible interpretation.
+The results for the gradient boosting model are less convincing.
+Due to the stepped response function the model is less appropriate
+for making quantitative statements about the feature effect.
+The estimates fluctuate between high values and values close to zero.&lt;/p>
+&lt;div class="figure" style="text-align: center">&lt;span id="fig:bikes-results-svm">&lt;/span>
+&lt;img src="figures/bikes-results-svm-1.png" alt="Bike sharing data. Results SVM." width="1152" />
+&lt;p class="caption">
+Figure 2: Bike sharing data. Results SVM.
+&lt;/p>
+&lt;/div>
+&lt;div class="figure" style="text-align: center">&lt;span id="fig:bikes-results-gbm">&lt;/span>
+&lt;img src="figures/bikes-results-gbm-1.png" alt="Bike sharing data. Results gradient boosting." width="1152" />
+&lt;p class="caption">
+Figure 3: Bike sharing data. Results gradient boosting.
+&lt;/p>
+&lt;/div>
+&lt;div class="figure" style="text-align: center">&lt;span id="fig:bikes-results-rf">&lt;/span>
+&lt;img src="figures/bikes-results-rf-1.png" alt="Bike sharing data. Results random forest." width="1152" />
+&lt;p class="caption">
+Figure 4: Bike sharing data. Results random forest.
+&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div id="r-package" class="section level2">
+&lt;h2>R package&lt;/h2>
+&lt;p>The method is implemented in &lt;strong>R&lt;/strong> supporting a variety of models out of the box.
+Source code and more information can be found on GitHub:
+&lt;a href="https://github.com/BodoBurger/intame" class="uri">https://github.com/BodoBurger/intame&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div id="references" class="section level2 unnumbered">
+&lt;h2>References&lt;/h2>
+&lt;div id="refs" class="references">
+&lt;div id="ref-R-randomForest">
+&lt;p>Breiman, Leo, Adele Cutler, Andy Liaw, and Matthew Wiener. 2018. &lt;em>RandomForest: Breiman and Cutler’s Random Forests for Classification and Regression&lt;/em>. &lt;a href="https://CRAN.R-project.org/package=randomForest">https://CRAN.R-project.org/package=randomForest&lt;/a>.&lt;/p>
+&lt;/div>
+&lt;div id="ref-fanaee2013event">
+&lt;p>Fanaee-T, Hadi, and Joao Gama. 2013. “Event Labeling Combining Ensemble Detectors and Background Knowledge.” &lt;em>Progress in Artificial Intelligence&lt;/em>. Springer Berlin Heidelberg, 1–15. &lt;a href="https://doi.org/10.1007/s13748-013-0040-3">https://doi.org/10.1007/s13748-013-0040-3&lt;/a>.&lt;/p>
+&lt;/div>
+&lt;div id="ref-R-gbm">
+&lt;p>Greenwell, Brandon, Bradley Boehmke, Jay Cunningham, and GBM Developers. 2019. &lt;em>Gbm: Generalized Boosted Regression Models&lt;/em>. &lt;a href="https://CRAN.R-project.org/package=gbm">https://CRAN.R-project.org/package=gbm&lt;/a>.&lt;/p>
+&lt;/div>
+&lt;div id="ref-R-e1071">
+&lt;p>Meyer, David, Evgenia Dimitriadou, Kurt Hornik, Andreas Weingessel, and Friedrich Leisch. 2019. &lt;em>E1071: Misc Functions of the Department of Statistics, Probability Theory Group (Formerly: E1071), Tu Wien&lt;/em>. &lt;a href="https://CRAN.R-project.org/package=e1071">https://CRAN.R-project.org/package=e1071&lt;/a>.&lt;/p>
+&lt;/div>
+&lt;div id="ref-molnar2018interpretable">
+&lt;p>Molnar, Christoph. 2018. &lt;em>Interpretable Machine Learning - a Guide for Making Black Box Models Explainable&lt;/em>. Creative Commons. &lt;a href="https://christophm.github.io/interpretable-ml-book/">https://christophm.github.io/interpretable-ml-book/&lt;/a>.&lt;/p>
+&lt;/div>
+&lt;div id="ref-R-base">
+&lt;p>R Core Team. 2019. &lt;em>R: A Language and Environment for Statistical Computing&lt;/em>. Vienna, Austria: R Foundation for Statistical Computing. &lt;a href="https://www.R-project.org/">https://www.R-project.org/&lt;/a>.&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;/div></description></item><item><title>Use R, Google Sheets and a nutrition API to calculate a nutrition table</title><link>https://bodoburger.github.io/post/2019-04-nutrition-table-google-sheets/</link><pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/post/2019-04-nutrition-table-google-sheets/</guid><description>
+&lt;p>I recently stumbled upon this
+&lt;a href="https://greenysherry.com/life-changing-brot-mit-nuessen-nach-my-new-roots-glutenfrei-vegan/">bread recipe&lt;/a>.
+It’s quickly prepared, the bread tastes great and is full of valuable ingredients
+(only oats, nuts and seeds).
+However, being homemade it does not come with a nutrition table.
+The following shows an easy way to create one.&lt;/p>
+&lt;p>We put the recipe into a spreadsheet
+(&lt;a href="https://docs.google.com/spreadsheets/d/1C0AwjQYrudrV3ZLgQJZnCr9La7OVftRTZn3QKMrJx5E">recipe&lt;/a>).
+Another spreadsheet contains the nutritional values of the macro nutrients of each ingredient
+(&lt;a href="https://docs.google.com/spreadsheets/d/1qgo8Yefb5nx5PVElZvmf6nSDI6RfN2ofd8CeMuSklHk">food stats&lt;/a>).
+We combine these using &lt;strong>R&lt;/strong> to get the nutrition table.
+Then, we look at an alternative to manually creating a spreadsheet with nutritional information
+by using an online database.
+As a bonus, we can calculate the price of the recipe.&lt;/p>
+&lt;div id="downloading-google-sheets-to-r" class="section level2">
+&lt;h2>Downloading Google Sheets to R&lt;/h2>
+&lt;p>A simple way to import Google Sheets to &lt;strong>R&lt;/strong> is the
+&lt;a href="https://cran.r-project.org/package=gsheet">gsheet&lt;/a> package.
+We only need to supply the sharing link.
+It returns a &lt;a href="https://tibble.tidyverse.org/">tibble&lt;/a>.&lt;/p>
+&lt;pre class="r">&lt;code>food_stats = gsheet::gsheet2tbl(&amp;quot;https://docs.google.com/spreadsheets/d/1qgo8Yefb5nx5PVElZvmf6nSDI6RfN2ofd8CeMuSklHk&amp;quot;)
+recipe = gsheet::gsheet2tbl(&amp;quot;https://docs.google.com/spreadsheets/d/1C0AwjQYrudrV3ZLgQJZnCr9La7OVftRTZn3QKMrJx5E&amp;quot;)&lt;/code>&lt;/pre>
+&lt;p>&lt;code>food_stats&lt;/code> contains more ingredients than we need for our bread recipe.
+So when we merge both data frames we only want to keep the rows
+that contain the ingredients of the recipe.
+This is done by &lt;code>left_join()&lt;/code> from the
+&lt;a href="https://cran.r-project.org/package=dplyr">dplyr&lt;/a> package.&lt;/p>
+&lt;pre class="r">&lt;code>library(dplyr)
+bread_ingredient_stats = left_join(recipe, food_stats, &amp;quot;Description&amp;quot;)&lt;/code>&lt;/pre>
+&lt;/div>
+&lt;div id="calculating-the-nutritional-values" class="section level2">
+&lt;h2>Calculating the nutritional values&lt;/h2>
+&lt;p>We have 10 ingredients. First, we create a vector that gives us
+the quantity of each ingredient in grams,
+then we select the columns that are relevant for the nutrition table.&lt;/p>
+&lt;pre class="r">&lt;code>nutrient_names = c(&amp;quot;Calories (kcal)&amp;quot;, &amp;quot;Total Fat&amp;quot;, &amp;quot;Saturated Fat&amp;quot;,
+&amp;quot;Total Carbs&amp;quot;, &amp;quot;Sugar&amp;quot;, &amp;quot;Dietary Fiber&amp;quot;, &amp;quot;Protein&amp;quot;)
+quantities = select(bread_ingredient_stats, &amp;quot;Quantity (gr)&amp;quot;)[[1]]
+nutrition_values = bread_ingredient_stats %&amp;gt;% select(nutrient_names)&lt;/code>&lt;/pre>
+&lt;p>The following calculation gives us the quantity of
+each macro nutrient in our bread &lt;em>per 100g&lt;/em>:&lt;/p>
+&lt;pre class="r">&lt;code>nutrition_table = colSums(nutrition_values * quantities) / sum(quantities)&lt;/code>&lt;/pre>
+&lt;p>Finally, we can print our nutrition table:&lt;/p>
+&lt;pre class="r">&lt;code>knitr::kable(nutrition_table, digits = 1, col.names = &amp;quot;per 100g&amp;quot;,
+caption = &amp;quot;Nutrition table&amp;quot;)&lt;/code>&lt;/pre>
+&lt;table>
+&lt;caption>&lt;span id="tab:unnamed-chunk-5">Table 1: &lt;/span>Nutrition table&lt;/caption>
+&lt;thead>
+&lt;tr class="header">
+&lt;th>&lt;/th>
+&lt;th align="right">per 100g&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr class="odd">
+&lt;td>Calories (kcal)&lt;/td>
+&lt;td align="right">307.3&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Total Fat&lt;/td>
+&lt;td align="right">22.5&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Saturated Fat&lt;/td>
+&lt;td align="right">4.7&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Total Carbs&lt;/td>
+&lt;td align="right">12.2&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Sugar&lt;/td>
+&lt;td align="right">0.5&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Dietary Fiber&lt;/td>
+&lt;td align="right">10.6&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Protein&lt;/td>
+&lt;td align="right">12.6&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Calorie-wise very similar to your &lt;a href="https://www.google.com/search?q=brown+bread">typical brown bread&lt;/a>, but rich in fat.
+Trust me, the bread is very filling, so you won’t be able to eat too much of it anyways.
+And how much does it cost?&lt;/p>
+&lt;pre class="r">&lt;code>prices = select(bread_ingredient_stats, &amp;quot;Price (€)&amp;quot;)[[1]]
+packaging = select(bread_ingredient_stats, &amp;quot;Packaging (g)&amp;quot;)[[1]]
+(price_total = sum(prices / packaging * quantities, na.rm = TRUE))&lt;/code>&lt;/pre>
+&lt;pre>&lt;code>## [1] 3.208962&lt;/code>&lt;/pre>
+&lt;p>One loaf of bread is 3.21€ (not including energy and time)
+weighing 910 grams (raw ingredients).
+I think that is a fair price for a bread I can eat from for a whole week.&lt;/p>
+&lt;/div>
+&lt;div id="using-the-api-of-a-nutrition-database" class="section level2">
+&lt;h2>Using the API of a nutrition database&lt;/h2>
+&lt;p>Instead of manually creating a spreadsheet for the nutritional values of each ingredient
+we can fetch the information from on online database.
+We use &lt;a href="https://openfoodfacts.org">openfoodfacts&lt;/a>.
+It’s a crowd-sourced database of food stats.
+To identify a product we need a barcode for each ingredient
+which I added to the recipe spreadsheet.
+The openfoodfacts API returns a JSON file which we can convert to a list
+using the &lt;a href="https://cran.r-project.org/package=rjson">rjson&lt;/a> package.
+We write two helper functions to fetch and extract the relevant information.&lt;/p>
+&lt;pre class="r">&lt;code>library(&amp;quot;rjson&amp;quot;)
+fetch_json = function(barcode, url = &amp;quot;https://world.openfoodfacts.org/api/v0/product/&amp;quot;) {
+query = paste0(url, barcode, &amp;quot;.json&amp;quot;)
+fromJSON(file = query)
+}
+extract_nutrition_values = function(food_list,
+nutriments = c(&amp;quot;energy_100g&amp;quot;, &amp;quot;fat_100g&amp;quot;, &amp;quot;saturated-fat_100g&amp;quot;,
+&amp;quot;carbohydrates_100g&amp;quot;, &amp;quot;sugars_100g&amp;quot;, &amp;quot;fiber_100g&amp;quot;,
+&amp;quot;proteins_100g&amp;quot;)) {
+nv = setNames(rep(0, length(nutriments)), nutriments)
+tmp = unlist(food_list$product$nutriments[nutriments])
+nv[names(tmp)] = tmp
+nv
+}
+barcodes = bread_ingredient_stats$Barcode[-10] # water does not have a barcode
+nutrition_values_api = matrix(0, nrow = 10, ncol = length(nutrition_values),
+dimnames = list(1:10, nutrient_names))
+for(i in seq_along(barcodes)) {
+food_list_tmp = fetch_json(barcodes[i])
+nutrition_values_api[i,] = extract_nutrition_values(food_list_tmp)
+}&lt;/code>&lt;/pre>
+&lt;p>&lt;code>nutrition_values_api&lt;/code> has the same structure as &lt;code>nutrition_values&lt;/code> from above,
+so we can proceed as before:&lt;/p>
+&lt;pre class="r">&lt;code>(nutrition_table_api = colSums(nutrition_values_api * quantities) / sum(quantities))&lt;/code>&lt;/pre>
+&lt;pre>&lt;code>## Calories (kcal) Total Fat Saturated Fat Total Carbs
+## 1344.0329670 22.4906593 4.7263736 12.3516484
+## Sugar Dietary Fiber Protein
+## 0.4923077 8.9291209 12.5313187&lt;/code>&lt;/pre>
+&lt;p>The results for the macro nutrients differ slightly which is expected
+because we changed the data source.
+However, the value for &lt;em>calories&lt;/em> quadrupled
+because the API reported energy in kilojoule (kJ) instead of kilocalories.
+To correct for this we divide the value by &lt;span class="math inline">\(4.1858\)&lt;/span>.&lt;/p>
+&lt;pre class="r">&lt;code>nutrition_table_api[1] = nutrition_table_api[1] / 4.1858
+knitr::kable(nutrition_table_api, digits = 1, col.names = &amp;quot;per 100g&amp;quot;,
+caption = &amp;quot;Nutrition table&amp;quot;)&lt;/code>&lt;/pre>
+&lt;table>
+&lt;caption>&lt;span id="tab:unnamed-chunk-9">Table 2: &lt;/span>Nutrition table&lt;/caption>
+&lt;thead>
+&lt;tr class="header">
+&lt;th>&lt;/th>
+&lt;th align="right">per 100g&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr class="odd">
+&lt;td>Calories (kcal)&lt;/td>
+&lt;td align="right">321.1&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Total Fat&lt;/td>
+&lt;td align="right">22.5&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Saturated Fat&lt;/td>
+&lt;td align="right">4.7&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Total Carbs&lt;/td>
+&lt;td align="right">12.4&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Sugar&lt;/td>
+&lt;td align="right">0.5&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Dietary Fiber&lt;/td>
+&lt;td align="right">8.9&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Protein&lt;/td>
+&lt;td align="right">12.5&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>And we are done!&lt;/p>
+&lt;/div></description></item><item><title>Interpretable Machine Learning by Christoph Molnar</title><link>https://bodoburger.github.io/post/2019-02-interpretable-ml-book/</link><pubDate>Tue, 26 Feb 2019 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/post/2019-02-interpretable-ml-book/</guid><description>
+&lt;p>The book gives an overview of common methods
+that help to better understand machine learning models.
+You can support the author by buying the book on
+&lt;a href="https://leanpub.com/interpretable-machine-learning">leanpub&lt;/a>.
+There is a &lt;a href="https://christophm.github.io/interpretable-ml-book">free online version&lt;/a>
+of the book, too.&lt;/p>
+&lt;div id="introduction" class="section level2">
+&lt;h2>Introduction&lt;/h2>
+&lt;p>The beginning of the book covers three short stories
+that illustrate the detrimental consequences of
+a world controlled by black box machine learning models
+(&lt;a href="https://christophm.github.io/interpretable-ml-book/storytime.html">1.1&lt;/a>).
+They serve as motivation for why we want to use methods
+that improve understanding of opaque models.
+The ultimate goal of these methods is that a human can understand a model
+so that he can consistently predict its results.&lt;/p>
+&lt;p>&lt;a href="https://christophm.github.io/interpretable-ml-book/interpretability.html">Chapter 2&lt;/a>
+lays the foundation for the discussion on machine learning interpretability
+by answering the following questions:&lt;/p>
+&lt;ul>
+&lt;li>Why is interpretation important and when do we need it
+(&lt;a href="https://christophm.github.io/interpretable-ml-book/interpretability-importance.html">2.1&lt;/a>)?&lt;/li>
+&lt;li>How can we classify different interpretation methods
+(&lt;a href="https://christophm.github.io/interpretable-ml-book/taxonomy-of-interpretability-methods.html">2.2&lt;/a>)?
+&lt;ul>
+&lt;li>intrinsic vs post-hoc methods&lt;/li>
+&lt;li>result of the method&lt;/li>
+&lt;li>model-specific vs model-agnostic&lt;/li>
+&lt;li>local vs global&lt;/li>
+&lt;/ul>&lt;/li>
+&lt;li>Which part of a model do we want to inspect
+(&lt;a href="https://christophm.github.io/interpretable-ml-book/scope-of-interpretability.html">2.3&lt;/a>)?&lt;/li>
+&lt;li>How do we evaluate the interpretation
+(&lt;a href="https://christophm.github.io/interpretable-ml-book/evaluation-of-interpretability.html">2.4&lt;/a>)?&lt;/li>
+&lt;li>What does a human need to know to understand a black box model
+(&lt;a href="https://christophm.github.io/interpretable-ml-book/explanation.html">2.6&lt;/a>)?&lt;/li>
+&lt;/ul>
+&lt;p>The presented interpretation methods are repeatedly applied to three freely available data sets
+representing different kinds of prediction tasks:
+&lt;a href="http://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset">daily bike rentals&lt;/a> (regression),
+&lt;a href="https://archive.ics.uci.edu/ml/datasets/Cervical+cancer+%28Risk+Factors%29">cancer risk factors&lt;/a> (classification) and
+&lt;a href="dcomp.sor.ufscar.br/talmeida/youtubespamcollection/">YouTube spam comments&lt;/a> (text classification).
+&lt;a href="https://christophm.github.io/interpretable-ml-book/data.html">Chapter 3&lt;/a>
+introduces the datasets in more detail.&lt;/p>
+&lt;/div>
+&lt;div id="interpretable-models" class="section level2">
+&lt;h2>Interpretable models&lt;/h2>
+&lt;p>This chapter presents models that are interpretable by itself.
+For Molnar these are
+&lt;a href="https://en.wikipedia.org/wiki/Linear_regression">linear regression&lt;/a>,
+&lt;a href="https://en.wikipedia.org/wiki/Logistic_regression">logistic regression&lt;/a>,
+&lt;a href="https://en.wikipedia.org/wiki/Decision_tree_learning">decision trees&lt;/a>,
+&lt;a href="https://en.wikipedia.org/wiki/Decision_tree#Decision_rules">decision rules&lt;/a>,
+RuleFit (&lt;a href="http://statweb.stanford.edu/~jhf/ftp/RuleFit.pdf">Friedman and Popescu, 2005&lt;/a>),
+&lt;a href="https://en.wikipedia.org/wiki/Naive_Bayes_classifier">naive Bayes&lt;/a> and
+&lt;a href="https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm">k-nearest neighbors&lt;/a>.&lt;/p>
+&lt;p>These models have in common that the result is accessible to the user without further steps.
+They differ in regards to linearity, monotonicity,
+the possibility to include feature interactions and the tasks they can handle.&lt;/p>
+&lt;p>Molnar concludes the discussion of each method with a comparison of its advantages and disadvantages.
+E.g. &lt;a href="https://christophm.github.io/interpretable-ml-book/limo.html#advantages">the apparent simplicity of linear models&lt;/a>
+is opposed by the difficulty to incorporate nonlinearity, the low predictive performance and
+the potentially unintuitive interpretation of the coefficients due to correlated features.&lt;/p>
+&lt;p>The following table is an overview of implementations of &lt;em>interpretable models&lt;/em>
+both for &lt;strong>R&lt;/strong> and &lt;strong>Python&lt;/strong>:&lt;/p>
+&lt;table>
+&lt;tr>
+&lt;th>
+Method&lt;br>
+&lt;/th>
+&lt;th>
+R
+&lt;/th>
+&lt;th>
+Python
+&lt;/th>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+linear model
+&lt;/td>
+&lt;td>
+&lt;a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/lm.html">lm()&lt;/a>
+&lt;/td>
+&lt;td>
+&lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression">sklearn.linear_model.LinearRegression()&lt;/a>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+logistic model
+&lt;/td>
+&lt;td>
+&lt;a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/glm.html">glm(formula, binomial(link = “logit”))&lt;/a>
+&lt;/td>
+&lt;td>
+&lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression">sklearn.linear_model.LogisticRegression()&lt;/a>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+decision tree
+&lt;/td>
+&lt;td>
+&lt;a href="https://cran.r-project.org/package=rpart">rpart()&lt;/a>
+&lt;/td>
+&lt;td>
+&lt;a href="https://scikit-learn.org/stable/modules/tree.html">sklearn.tree&lt;/a>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+decision rule
+&lt;/td>
+&lt;td>
+&lt;a href="https://cran.r-project.org/package=OneR">OneR()&lt;/a>
+&lt;/td>
+&lt;td>
+&lt;a href="https://oracle.github.io/Skater/reference/interpretation.html#bayesian-rule-lists-brl">BRLC() (skater)&lt;/a>
+&lt;/td
+&lt;/tr>
+&lt;tr>
+&lt;td>
+RuleFit
+&lt;/td>
+&lt;td>
+&lt;a href="https://cran.r-project.org/package=pre">pre()&lt;/a>
+&lt;/td>
+&lt;td>
+&lt;a href="https://github.com/christophM/rulefit">RuleFit()&lt;/a> or
+&lt;a href="https://github.com/scikit-learn-contrib/skope-rules">SkopeRules()&lt;/a>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+Naive Bayes
+&lt;/td>
+&lt;td>
+&lt;a href="https://cran.r-project.org/package=e1071">naiveBayes()&lt;/a>
+&lt;td>
+&lt;a href="https://scikit-learn.org/stable/modules/naive_bayes.html">sklearn.naive_bayes&lt;/a>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+k-nearest neighbors
+&lt;/td>
+&lt;td>
+&lt;a href="https://cran.r-project.org/package=kknn">kknn()&lt;/a>
+&lt;td>
+&lt;a href="https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-classification">sklearn.neighbors&lt;/a>
+&lt;/td>
+&lt;/table>
+&lt;/div>
+&lt;div id="model-agnostic-methods" class="section level2">
+&lt;h2>Model-agnostic methods&lt;/h2>
+&lt;p>A model-agnostic interpretability method is applied after a model is trained
+to make the result more accessible or transparent.
+Best case the method is flexible enough to be applied on any model.&lt;/p>
+&lt;table>
+&lt;tr>
+&lt;th>
+Method&lt;br>
+&lt;/th>
+&lt;th>
+R
+&lt;/th>
+&lt;th>
+Python
+&lt;/th>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+Partial Dependence Plot
+&lt;/td>
+&lt;td>
+Packages: &lt;a href="https://cran.r-project.org/package=mlr">mlr&lt;/a>,
+&lt;a href="https://cran.r-project.org/package=pdp">pdp&lt;/a>,
+&lt;a href="https://cran.r-project.org/package=iml">iml&lt;/a>,
+&lt;a href="https://github.com/BodoBurger/intame">intame&lt;/a>
+&lt;/td>
+&lt;td>
+&lt;a href="https://scikit-learn.org/stable/modules/partial_dependence.html">sklearn.inspection.plot_partial_dependence()&lt;/a>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+Individual Conditional Expectation
+&lt;/td>
+&lt;td>
+Packages: &lt;a href="https://cran.r-project.org/package=iml">iml&lt;/a>,
+&lt;a href="https://cran.r-project.org/package=pdp">pdp&lt;/a>,
+&lt;a href="https://cran.r-project.org/package=ICEbox">ICEbox&lt;/a>
+&lt;/td>
+&lt;td>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+Accumulated Local Effect
+&lt;/td>
+&lt;td>
+Packages: &lt;a href="https://cran.r-project.org/package=iml">iml&lt;/a>,
+&lt;a href="https://cran.r-project.org/package=ALEPlot">ALEPlot&lt;/a>,
+&lt;a href="https://github.com/BodoBurger/intame">intame&lt;/a>
+&lt;/td>
+&lt;td>
+&lt;/td>
+&lt;/tr>
+&lt;/table>
+&lt;/div></description></item><item><title>Git Resources / Cheat Sheet</title><link>https://bodoburger.github.io/post/2017-07-git-cheat-sheet/</link><pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/post/2017-07-git-cheat-sheet/</guid><description>&lt;h2>Table of Contents&lt;/h2>
+&lt;nav id="TableOfContents">
+&lt;ul>
+&lt;li>&lt;a href="#useful-articles--resources">Useful articles / resources&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#basics">Basics&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#interesting-discussions-on-git">Interesting discussions on Git&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#github">GitHub&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="#branches">Branches&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#change-branch-without-committing-changes-stash-and-pop">Change branch without committing changes: stash and pop&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#create-a-local-branch-push-it-to-a-remote-repository-and-track-it">Create a local branch, push it to a remote repository and track it&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#delete-local-branch">Delete local branch&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="#configuration">Configuration&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#show-or-change-git-username-or-email-address">Show or change Git username or email address&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="#index">Index&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#remove-files-from-the-index-without-removing-them-from-disc">Remove files from the index without removing them from disc&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="#merging">Merging&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#merge-master-into-feature-branch-before-making-a-pr">Merge master into feature branch before making a PR&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="#remote">Remote&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#push-local-repository-to-existing-remote">Push local repository to existing remote&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#show-or-change-remote">Show or change remote&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="#submodules">Submodules&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#add-a-submodule">Add a submodule&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#download-files-to-empty-submodule-directory">Download files to empty submodule directory&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#remove-a-submodule-leaving-no-trace">Remove a submodule (leaving no trace)&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/nav>
+&lt;p>This blog post combines both a collection of useful resources on Git and
+a cheat sheet for git commands I googled repeatedly.
+It will be updated from time to time.&lt;/p>
+&lt;h2 id="useful-articles--resources">Useful articles / resources&lt;/h2>
+&lt;h3 id="basics">Basics&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;a href="https://git-scm.com/docs" target="_blank" rel="noopener">Git reference manual&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://git-scm.com/book/en/v2" target="_blank" rel="noopener">Pro Git book (2nd, 2014)&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://stackoverflow.com/questions/315911/git-for-beginners-the-definitive-practical-guide" target="_blank" rel="noopener">Git for beginners on stackoverflow&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://rogerdudler.github.io/git-guide/" target="_blank" rel="noopener">git - the simple guide&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/" target="_blank" rel="noopener">The beginner&amp;rsquo;s guide to contributing to a GitHub project&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="http://sethrobertson.github.io/GitFixUm/fixup.html" target="_blank" rel="noopener">On undoing, fixing, or removing commits in git&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="http://justinhileman.info/article/git-pretty/" target="_blank" rel="noopener">Git pretty chart&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="interesting-discussions-on-git">Interesting discussions on Git&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;a href="https://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="noopener">A successful Git branching model&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://chris.beams.io/posts/git-commit/" target="_blank" rel="noopener">How to Write a Git Commit Message&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://lornajane.net/posts/2015/code-reviews-before-you-even-run-the-code" target="_blank" rel="noopener">Code Reviews: Before You Even Run The Code&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://softwareengineering.stackexchange.com/questions/69178/what-is-the-benefit-of-gits-two-stage-commit-process-staging" target="_blank" rel="noopener">What is the benefit of gits two stage commit process&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://stackoverflow.com/questions/4878358/why-would-i-want-stage-before-committing-in-git" target="_blank" rel="noopener">Why would I want to stage before committing?&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="github">GitHub&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;a href="https://github.com/KirstieJane/STEMMRoleModels/wiki/Syncing-your-fork-to-the-original-repository-via-the-browser" target="_blank" rel="noopener">Keep your fork up to date with the original repo via GitHub browser interface&lt;/a>
+(
+&lt;a href="https://stackoverflow.com/questions/20984802/how-can-i-keep-my-fork-in-sync-without-adding-a-separate-remote/21131381#21131381" target="_blank" rel="noopener">stackoverflow&lt;/a>)&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="branches">Branches&lt;/h2>
+&lt;h3 id="change-branch-without-committing-changes-stash-and-pop">Change branch without committing changes: stash and pop&lt;/h3>
+&lt;p>Want to have a look at another branch without committing changes done so far?
+Put them in a stash where they can hide until you switch back.&lt;/p>
+&lt;pre>&lt;code class="language-Bash">$ git stash # on the original branch
+$ git checkout other-branch
+# do some stuff on the other branch
+$ git checkout original-branch
+$ git stash pop
+&lt;/code>&lt;/pre>
+&lt;p>More about
+&lt;a href="https://git-scm.com/docs/git-stash" target="_blank" rel="noopener">&lt;em>git-stash&lt;/em>&lt;/a>.&lt;/p>
+&lt;h3 id="create-a-local-branch-push-it-to-a-remote-repository-and-track-it">Create a local branch, push it to a remote repository and track it&lt;/h3>
+&lt;pre>&lt;code class="language-Bash">$ git checkout -b MyNewBranch # create and switch to new branch
+# do some stuff
+$ git push -u origin MyNewBranch
+&lt;/code>&lt;/pre>
+&lt;h3 id="delete-local-branch">Delete local branch&lt;/h3>
+&lt;pre>&lt;code class="language-Bash">$ git branch -d MyLocalBranch
+&lt;/code>&lt;/pre>
+&lt;h2 id="configuration">Configuration&lt;/h2>
+&lt;h3 id="show-or-change-git-username-or-email-address">Show or change Git username or email address&lt;/h3>
+&lt;pre>&lt;code class="language-Bash">$ git config --list # repository-specific settings
+$ git config --list --global # global git settings
+$ git config user.name &amp;quot;Enrico Pallazzo&amp;quot;
+$ git config user.email &amp;quot;enrico.pallazzo@lapd.com&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;p>The global settings are stored in the Git config file
+in the HOME directory (&lt;code>~/.gitconfig&lt;/code>),
+repository-specific settings are found at &lt;code>.git/config&lt;/code>
+in the respective repository folder.&lt;/p>
+&lt;h2 id="index">Index&lt;/h2>
+&lt;h3 id="remove-files-from-the-index-without-removing-them-from-disc">Remove files from the index without removing them from disc&lt;/h3>
+&lt;p>If you forgot to add a file to &lt;code>.gitignore&lt;/code>:&lt;/p>
+&lt;pre>&lt;code class="language-Bash">$ git rm -rf --cached file-name
+&lt;/code>&lt;/pre>
+&lt;p>The file is now untracked and can be added to &lt;code>.gitignore&lt;/code>.
+Then, you can commit the deletion and the modified gitignore file.&lt;/p>
+&lt;h2 id="merging">Merging&lt;/h2>
+&lt;h3 id="merge-master-into-feature-branch-before-making-a-pr">Merge master into feature branch before making a PR&lt;/h3>
+&lt;pre>&lt;code class="language-Bash">$ git checkout master
+$ git pull
+$ git checkout new-feature
+$ git add *files-and-changes*
+$ git commit -m &amp;quot;feature description&amp;quot;
+$ git reset HEAD --hard # removes all uncommited files
+$ rm *untracked-files* # to prevent merge conflicts
+$ git merge master
+# resolve potential merge conflicts
+$ git commit -m &amp;quot;resolved mergeconflicts | merged master&amp;quot;
+$ git push origin new-feature
+&lt;/code>&lt;/pre>
+&lt;h2 id="remote">Remote&lt;/h2>
+&lt;h3 id="push-local-repository-to-existing-remote">Push local repository to existing remote&lt;/h3>
+&lt;pre>&lt;code class="language-Bash">$ git remote add origin git@github.com:USERNAME/REPOSITORY.git
+$ git push --all --set-upstream origin
+&lt;/code>&lt;/pre>
+&lt;h3 id="show-or-change-remote">Show or change remote&lt;/h3>
+&lt;p>In this example we switch from HTTPS to SSH:&lt;/p>
+&lt;pre>&lt;code class="language-Bash">$ git remote -v
+&amp;gt; origin https://github.com/USERNAME/REPOSITORY.git (fetch)
+&amp;gt; origin https://github.com/USERNAME/REPOSITORY.git (push)
+$ git remote set-url origin git@github.com:USERNAME/REPOSITORY.git
+$ git remote -v
+&amp;gt; origin git@github.com:USERNAME/REPOSITORY.git (fetch)
+&amp;gt; origin git@github.com:USERNAME/REPOSITORY.git (push)
+&lt;/code>&lt;/pre>
+&lt;h2 id="submodules">Submodules&lt;/h2>
+&lt;p>&lt;a href="https://git-scm.com/docs/git-submodule">https://git-scm.com/docs/git-submodule&lt;/a>&lt;/p>
+&lt;h3 id="add-a-submodule">Add a submodule&lt;/h3>
+&lt;pre>&lt;code class="language-Bash">git submodule add git@github.com:USERNAME/REPOSITORY.git PATH/TO/SUBMODULEDIR
+&lt;/code>&lt;/pre>
+&lt;h3 id="download-files-to-empty-submodule-directory">Download files to empty submodule directory&lt;/h3>
+&lt;p>When cloning a repository with submodules and the submodule directories are empty:&lt;/p>
+&lt;pre>&lt;code class="language-Bash">git submodule update --init --recursive
+&lt;/code>&lt;/pre>
+&lt;h3 id="remove-a-submodule-leaving-no-trace">Remove a submodule (leaving no trace)&lt;/h3>
+&lt;pre>&lt;code class="language-Bash">git rm PATH/TO/SUBMODULEDIR
+rm -rf .git/modules/PATH/TO/SUBMODULEDIR
+git config -f .git/config --remove-section submodule.PATH/TO/SUBMODULEDIR 2&amp;gt; /dev/null
+&lt;/code>&lt;/pre></description></item><item><title>Data Analysis for Helmholtz Zentrum München</title><link>https://bodoburger.github.io/project/2017-biomarker-helmholtz/</link><pubDate>Fri, 07 Apr 2017 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/project/2017-biomarker-helmholtz/</guid><description>
+&lt;p>The goal of the project was to quantify the relative importance
+of different metabolic pathways for coronary heart disease and type 2 diabetes.
+We analyzed data from the &lt;a href="https://www.helmholtz-muenchen.de/kora">KORA study&lt;/a>
+for which more than 15000 people are repeatedly medically examined since 1984.
+The main features of the analysis were 47 different biomarkers (see the image above)
+that represent different metabolic pathways.
+Additionally we controlled for several personal characteristics like sex or age.
+The target features were the incidence of the disease and
+the time until the incidence.
+Before the analysis missing data was imputed.
+We modeled the data using a Cox proportional hazards model.
+The &lt;em>case-cohort&lt;/em> study design &lt;span class="citation">(Barlow 1994)&lt;/span> was taken into account
+by weighing the data according to &lt;span class="citation">Barlow et al. (1999)&lt;/span>
+upon request of our project partners.
+Because this weighing method is not supported
+by the R package &lt;code>survival&lt;/code> &lt;span class="citation">(Therneau 2015)&lt;/span>
+we had to implement the routine by ourselves.
+The estimation of the relative contribution of different biomarkers
+to the risk of the disease was done as proposed by &lt;span class="citation">Montonen et al. (2011)&lt;/span>.
+Finally, estimations from multiple imputations had to be combined
+following Rubin’s rules &lt;span class="citation">(Rubin 1987)&lt;/span>.&lt;/p>
+&lt;p>A paper using the results from this project was published in March 2020
+(&lt;a href="https://cardiab.biomedcentral.com/articles/10.1186/s12933-020-01003-w">Huth et al “Biomarker-defined pathways for incident type 2 diabetes and coronary heart disease”&lt;/a>).&lt;/p>
+&lt;div id="references" class="section level2 unnumbered">
+&lt;h2>References&lt;/h2>
+&lt;div id="refs" class="references">
+&lt;div id="ref-barlow1994robust">
+&lt;p>Barlow, William E. 1994. “Robust Variance Estimation for the Case-Cohort Design.” &lt;em>Biometrics&lt;/em>. JSTOR, 1064–72.&lt;/p>
+&lt;/div>
+&lt;div id="ref-barlow1999analysis">
+&lt;p>Barlow, William E, Laura Ichikawa, Dan Rosner, and Shizue Izumi. 1999. “Analysis of Case-Cohort Designs.” &lt;em>Journal of Clinical Epidemiology&lt;/em> 52 (12). Elsevier: 1165–72.&lt;/p>
+&lt;/div>
+&lt;div id="ref-montonen2011estimation">
+&lt;p>Montonen, Jukka, Dagmar Drogan, Hans-Georg Joost, Heiner Boeing, Andreas Fritsche, Erwin Schleicher, Matthias B Schulze, and Tobias Pischon. 2011. “Estimation of the Contribution of Biomarkers of Different Metabolic Pathways to Risk of Type 2 Diabetes.” &lt;em>European Journal of Epidemiology&lt;/em> 26 (1). Springer: 29–38.&lt;/p>
+&lt;/div>
+&lt;div id="ref-rubin1987multiple">
+&lt;p>Rubin, D.B. 1987. &lt;em>Multiple Imputation for Nonresponse in Surveys&lt;/em>. Wiley Series in Probability and Statistics. Wiley.&lt;/p>
+&lt;/div>
+&lt;div id="ref-survival-package">
+&lt;p>Therneau, Terry M. 2015. &lt;em>A Package for Survival Analysis in S&lt;/em>. &lt;a href="https://CRAN.R-project.org/package=survival">https://CRAN.R-project.org/package=survival&lt;/a>.&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;/div></description></item><item><title>Fundamentals of Neural Networks</title><link>https://bodoburger.github.io/project/2016-fundamentals-neural-networks/</link><pubDate>Sat, 30 Jan 2016 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/project/2016-fundamentals-neural-networks/</guid><description/></item><item><title>An example journal article</title><link>https://bodoburger.github.io/publication/journal-article/</link><pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/publication/journal-article/</guid><description>&lt;div class="alert alert-note">
+&lt;div>
+Click the &lt;em>Cite&lt;/em> button above to demo the feature to enable visitors to import publication metadata into their reference management software.
+&lt;/div>
+&lt;/div>
+&lt;div class="alert alert-note">
+&lt;div>
+Click the &lt;em>Slides&lt;/em> button above to demo Academic&amp;rsquo;s Markdown slides feature.
+&lt;/div>
+&lt;/div>
+&lt;p>Supplementary notes can be added here, including
+&lt;a href="https://sourcethemes.com/academic/docs/writing-markdown-latex/" target="_blank" rel="noopener">code and math&lt;/a>.&lt;/p></description></item><item><title>German Healthcare System - Risk Selection and Two-tier Medicine</title><link>https://bodoburger.github.io/project/2014-german-healthcare-system/</link><pubDate>Tue, 26 Aug 2014 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/project/2014-german-healthcare-system/</guid><description/></item><item><title>Measuring the effects of a general minimum wage</title><link>https://bodoburger.github.io/project/2013-minimum-wages/</link><pubDate>Tue, 26 Aug 2014 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/project/2013-minimum-wages/</guid><description>
+&lt;figure >
+&lt;a data-fancybox="" href="https://bodoburger.github.io/project/2013-minimum-wages/table1_hu7036a69ed3696bf8f3469f99c4de04e0_47624_2000x2000_fit_lanczos_2.png" >
+&lt;img data-src="https://bodoburger.github.io/project/2013-minimum-wages/table1_hu7036a69ed3696bf8f3469f99c4de04e0_47624_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="1046" height="341">
+&lt;/a>
+&lt;/figure>
+&lt;figure >
+&lt;a data-fancybox="" href="https://bodoburger.github.io/project/2013-minimum-wages/table2_hu1a89bde7ff415e0897fff6b265fa8503_47259_2000x2000_fit_lanczos_2.png" >
+&lt;img data-src="https://bodoburger.github.io/project/2013-minimum-wages/table2_hu1a89bde7ff415e0897fff6b265fa8503_47259_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="1049" height="341">
+&lt;/a>
+&lt;/figure></description></item><item><title>An example conference paper</title><link>https://bodoburger.github.io/publication/conference-paper/</link><pubDate>Mon, 01 Jul 2013 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/publication/conference-paper/</guid><description>&lt;div class="alert alert-note">
+&lt;div>
+Click the &lt;em>Cite&lt;/em> button above to demo the feature to enable visitors to import publication metadata into their reference management software.
+&lt;/div>
+&lt;/div>
+&lt;div class="alert alert-note">
+&lt;div>
+Click the &lt;em>Slides&lt;/em> button above to demo Academic&amp;rsquo;s Markdown slides feature.
+&lt;/div>
+&lt;/div>
+&lt;p>Supplementary notes can be added here, including
+&lt;a href="https://sourcethemes.com/academic/docs/writing-markdown-latex/" target="_blank" rel="noopener">code and math&lt;/a>.&lt;/p></description></item><item><title/><link>https://bodoburger.github.io/aboutme/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/aboutme/</guid><description/></item><item><title/><link>https://bodoburger.github.io/contact/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/contact/</guid><description/></item><item><title/><link>https://bodoburger.github.io/my-projects/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/my-projects/</guid><description/></item><item><title/><link>https://bodoburger.github.io/zzz/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/zzz/</guid><description/></item><item><title>Amazon Web Services Overview</title><link>https://bodoburger.github.io/notes/cloud-services/aws/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/cloud-services/aws/</guid><description>&lt;h2 id="aws-analytics-services">AWS Analytics Services&lt;/h2>
+&lt;ul>
+&lt;li>Amazon ElasticSearch
+&lt;ul>
+&lt;li>search engine&lt;/li>
+&lt;li>&lt;a href="https://aws.amazon.com/elasticsearch-service/faqs/">https://aws.amazon.com/elasticsearch-service/faqs/&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://en.wikipedia.org/wiki/Elasticsearch">https://en.wikipedia.org/wiki/Elasticsearch&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Amazon Elastic MapReduce
+&lt;ul>
+&lt;li>process vast amounts of data using Hadoop framework&lt;/li>
+&lt;li>&lt;a href="https://aws.amazon.com/emr/faqs/">https://aws.amazon.com/emr/faqs/&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://en.wikipedia.org/wiki/Apache_Hadoop">https://en.wikipedia.org/wiki/Apache_Hadoop&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Amazon Kinesis
+&lt;ul>
+&lt;li>collect, process, and analyze video and data streams in real time&lt;/li>
+&lt;li>Kinesis Data Firehose&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Amazon Redshift
+&lt;ul>
+&lt;li>data warehouse: &lt;a href="https://en.wikipedia.org/wiki/Data_warehouse">https://en.wikipedia.org/wiki/Data_warehouse&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Amazon Athena
+&lt;ul>
+&lt;li>interactive query service using standard SQL&lt;/li>
+&lt;li>for data stored in S3 instance&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="aws-compute-services">AWS Compute Services&lt;/h2>
+&lt;ul>
+&lt;li>Amazon Elastic Compute Cloud (EC2)
+&lt;ul>
+&lt;li>resizable compute capacity in the cloud&lt;/li>
+&lt;li>different instance types with varying hardware configurations
+(A1, T3, T2, M5, &amp;hellip;)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Amazon Lightsail
+&lt;ul>
+&lt;li>virtual private servers&lt;/li>
+&lt;li>SSD-based storage, data transfer, DNS management, and a static IP&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Amazon Elastic Container Service (ECS)
+&lt;ul>
+&lt;li>container management service using Docker&lt;/li>
+&lt;li>&lt;a href="https://de.wikipedia.org/wiki/Docker_(Software)">https://de.wikipedia.org/wiki/Docker_(Software)&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Amazon Lambda
+&lt;ul>
+&lt;li>run code without managing servers&lt;/li>
+&lt;li>serverless computing&lt;/li>
+&lt;li>natively supports Java, Go, PowerShell, Node.js, C#, Python, and Ruby code&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="aws-database-services">AWS Database Services&lt;/h2>
+&lt;ul>
+&lt;li>Amazon DynamoDB
+&lt;ul>
+&lt;li>NoSQL database&lt;/li>
+&lt;li>&lt;a href="https://en.wikipedia.org/wiki/Amazon_DynamoDB">https://en.wikipedia.org/wiki/Amazon_DynamoDB&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Amazon Relational Database Service (RDS)
+&lt;ul>
+&lt;li>manages relational database in the cloud&lt;/li>
+&lt;li>supports Amazon Aurora, MySQL, MariaDB, Oracle, SQL Server, and PostgreSQL database engines&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Amazon Redshift
+&lt;ul>
+&lt;li>data warehouse&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Amazon Aurora
+&lt;ul>
+&lt;li>MySQL and PostgreSQL compatible relational database built for the cloud&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="aws-developer-tools">AWS Developer Tools&lt;/h2>
+&lt;ul>
+&lt;li>Amazon CodeCommit
+&lt;ul>
+&lt;li>source control service using Git repositories&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Amazon CodePipeline
+&lt;ul>
+&lt;li>continuous integration and continuous delivery&lt;/li>
+&lt;li>builds, tests, and deploys code every time it is changed&lt;/li>
+&lt;li>can be used with GitHub&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Amazon CodeBuild
+&lt;ul>
+&lt;li>build and test code with continuous scaling&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Amazon CodeDeploy
+&lt;ul>
+&lt;li>automates software deployments&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="aws-management-tools">AWS Management Tools&lt;/h2>
+&lt;ul>
+&lt;li>Amazon CloudFormation
+&lt;ul>
+&lt;li>model and provision all of your cloud infrastructure resources&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Amazon CloudWatch
+&lt;ul>
+&lt;li>monitor resources and applications&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Amazon Systems Manager&lt;/li>
+&lt;li>Amazon CloudTrail
+&lt;ul>
+&lt;li>user activity&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="aws-networking-and-content-delivery-services">AWS Networking and Content Delivery Services&lt;/h2>
+&lt;ul>
+&lt;li>Amazon Virtual Private Cloud (VPC)
+&lt;ul>
+&lt;li>isolate cloud resources with your own private virtual network&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Amazon Direct Connect
+&lt;ul>
+&lt;li>dedicated network connection between your network and your Amazon VPC&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Amazon Route 53
+&lt;ul>
+&lt;li>cloud DNS to connect user requests to AWS resources&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Amazon Elastic Load Balancing
+&lt;ul>
+&lt;li>distributes application traffic across EC2 instances&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Amazon CloudFront
+&lt;ul>
+&lt;li>content delivery network (CDN)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="aws-storage-services">AWS Storage Services&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;h2 id="amazon-elastic-block-storage-ebs">Amazon Elastic Block Storage (EBS)&lt;/h2>
+&lt;/li>
+&lt;li>Amazon Elastic File System (EFS)
+&lt;ul>
+&lt;li>store and share data in scalable file systems&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Amazon S3
+&lt;ul>
+&lt;li>object storage&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Amazon Glacier
+&lt;ul>
+&lt;li>archive data in low-cost storage&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul></description></item><item><title>Basics</title><link>https://bodoburger.github.io/notes/big-data/big-data-basics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/big-data/big-data-basics/</guid><description>&lt;h2 id="goal-of-data-analysis">Goal of data analysis&lt;/h2>
+&lt;p>Decision making often involves uncertainty (uncertain situations, uncertain impacts).
+We assume that existing data contains information that we can use
+to model uncertain situations, predict outcomes, or unknown parameters.&lt;/p>
+&lt;p>Related disciplines: statistics, artificial intelligence, machine learning,
+data mining and knowledge discovery, deep learning, reinforcement learning.&lt;/p>
+&lt;h2 id="knowledge-discovery-process">Knowledge discovery process&lt;/h2>
+&lt;pre>&lt;code class="language-mermaid">graph TD;
+A(databases or other data sources)
+B(data warehouse)
+C(task-relevant data)
+D(patterns)
+E(knowledge)
+A --&amp;gt;|data cleaning| B
+B --&amp;gt;|data selection| C
+C --&amp;gt;|data mining| D
+D --&amp;gt;|visualization| E
+&lt;/code>&lt;/pre>
+&lt;h2 id="v-model-of-big-data">V model of big data&lt;/h2>
+&lt;p>The initial three V&amp;rsquo;s are:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>volume&lt;/strong>:
+huge amount of data so large that it cannot be analyzed using traditional methods;
+high number of instances or features&lt;/li>
+&lt;li>&lt;strong>variety&lt;/strong>:
+large proportion of data is unstructured; there are different types of data
+(e.g. spreadsheets, images, videos); different data formats&lt;/li>
+&lt;li>&lt;strong>velocity&lt;/strong>:
+data can be generated, changed and analyzed within short time spans
+(e.g. milliseconds)&lt;/li>
+&lt;/ul>
+&lt;p>Additionally suggested V&amp;rsquo;s:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>veracity / validity&lt;/strong>:
+credibility of the data, the high volume of data leads to different degrees
+of data quality;
+interfering factors can be noise, manipulation or misinterpretation&lt;/li>
+&lt;li>&lt;strong>value&lt;/strong>:
+added value by investments of companies in big data infrastructure&lt;/li>
+&lt;/ul>
+&lt;h2 id="different-types-of-tasks">Different types of tasks&lt;/h2>
+&lt;ul>
+&lt;li>classification
+&lt;ul>
+&lt;li>e.g. image classification, document categorization&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>regression
+&lt;ul>
+&lt;li>e.g. housing values&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>clustering
+&lt;ul>
+&lt;li>e.g. customer segmentation&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>outlier detection&lt;/li>
+&lt;li>frequent itemset mining
+&lt;ul>
+&lt;li>e.g. market-basket analysis&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&amp;hellip;&lt;/li>
+&lt;/ul>
+&lt;h2 id="application-examples">Application examples&lt;/h2>
+&lt;ul>
+&lt;li>image recognition&lt;/li>
+&lt;li>image processing&lt;/li>
+&lt;li>speech recognition&lt;/li>
+&lt;li>automatic translation&lt;/li>
+&lt;li>game AIs:
+&lt;ul>
+&lt;li>Deepmind AlphaGo (go), AlphaZero (chess), AlphaStar (StarCraft)&lt;/li>
+&lt;li>OpenAI Five (Dota2)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>material requirement planning for manufacturing&lt;/li>
+&lt;li>predict capacity utilisation of the passenger train (Deutsche Bahn)&lt;/li>
+&lt;/ul>
+&lt;h2 id="sources">Sources&lt;/h2>
+&lt;ul>
+&lt;li>Lecture &lt;strong>Big Data Management and Analytics&lt;/strong> by Prof. Dr. Schubert, Ludwig-Maximilians-Universität München&lt;/li>
+&lt;li>&lt;a href="https://whatis.techtarget.com/definition/3Vs">https://whatis.techtarget.com/definition/3Vs&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://blog.unbelievable-machine.com/en/what-is-big-data-definition-five-vs">https://blog.unbelievable-machine.com/en/what-is-big-data-definition-five-vs&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Installing Anaconda</title><link>https://bodoburger.github.io/notes/anaconda/anaconda-install/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/anaconda/anaconda-install/</guid><description>&lt;ul>
+&lt;li>
+&lt;a href="https://docs.anaconda.com/anaconda/install/linux/" target="_blank" rel="noopener">Documentation&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://www.anaconda.com/distribution/#linux" target="_blank" rel="noopener">Installer for Linux&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code>bash ~/Downloads/Anaconda3-2019.03-Linux-x86_64.sh
+conda update conda
+conda update anaconda
+&lt;/code>&lt;/pre>
+&lt;h2 id="change-kernel-in-jupyter">Change kernel in jupyter&lt;/h2>
+&lt;p>Base environment needs the nb_conda_kernels package.
+Every environment needs the ipykernel package.&lt;/p>
+&lt;pre>&lt;code>conda install nb_conda_kernels
+&lt;/code>&lt;/pre>
+&lt;h2 id="deep-learning-environment">Deep learning environment&lt;/h2>
+&lt;p>Prereq:&lt;/p>
+&lt;pre>&lt;code class="language-bash">sudo apt-get install libhdf5-serial-dev # for saving keras models efficiently
+sudo apt install graphviz
+&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-bash">conda create -n deeplearn
+source activate deeplearn
+conda install tensorflow-gpu
+conda install matplotlib yaml
+conda install opencv # needed for some examples
+conda install pydot # graphviz
+conda install pillow # python imaging library
+conda install cython # Why?
+conda install keras-gpu
+conda install ipykernel # for kernel selection in jupyter
+&lt;/code>&lt;/pre>
+&lt;h2 id="deeplearn-tensorflow-20">Deeplearn Tensorflow 2.0&lt;/h2>
+&lt;p>&lt;a href="https://www.tensorflow.org/install/gpu">https://www.tensorflow.org/install/gpu&lt;/a>&lt;/p>
+&lt;pre>&lt;code class="language-bash">conda install pip
+pip install tensorflow-gpu
+pip install tensorflow-datasets
+pip install matplotlib PyYAML opencv-python pydot pillow cython
+&lt;/code>&lt;/pre>
+&lt;h2 id="check-tensorflow-and-keras-gpu">Check tensorflow and keras gpu&lt;/h2>
+&lt;pre>&lt;code class="language-python">import tensorflow as tf
+tf.test.is_gpu_available(
+cuda_only=False,
+min_cuda_compute_capability=None
+)
+from keras import backend as K
+K.tensorflow_backend._get_available_gpus()
+&lt;/code>&lt;/pre>
+&lt;h2 id="archived">Archived&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;a href="https://www.pugetsystems.com/labs/hpc/Install-TensorFlow-with-GPU-Support-the-Easy-Way-on-Ubuntu-18-04-without-installing-CUDA-1170/" target="_blank" rel="noopener">Install TensorFlow with GPU Support the Easy Way&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>System Path</title><link>https://bodoburger.github.io/notes/anaconda/anaconda-path/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/anaconda/anaconda-path/</guid><description>&lt;ul>
+&lt;li>
+&lt;a href="https://docs.anaconda.com/anaconda/user-guide/faq/#installing-anaconda" target="_blank" rel="noopener">Anaconda-FAQ on whether you should add Anaconda to the PATH&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="temporarily">Temporarily&lt;/h3>
+&lt;p>To add Anaconda temporarily to the PATH, open a terminal and type:&lt;/p>
+&lt;p>&lt;code>export PATH=&amp;quot;/home/bodo/anaconda3/bin:$PATH&amp;quot;&lt;/code>&lt;/p>
+&lt;p>Show PATH:&lt;/p>
+&lt;p>&lt;code>echo $PATH&lt;/code>&lt;/p></description></item><item><title>Updating Anaconda</title><link>https://bodoburger.github.io/notes/anaconda/anaconda-update/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/anaconda/anaconda-update/</guid><description>&lt;h2 id="update-base-environment">Update base environment&lt;/h2>
+&lt;pre>&lt;code class="language-bash">conda update conda
+conda update anaconda
+&lt;/code>&lt;/pre>
+&lt;h2 id="update-all-packages">Update all packages&lt;/h2>
+&lt;pre>&lt;code class="language-bash">conda update --all
+&lt;/code>&lt;/pre></description></item></channel></rss>

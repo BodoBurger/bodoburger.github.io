@@ -1,111 +1,111 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog | Bodo Burger</title><link>https://bodoburger.github.io/post/</link><atom:link href="https://bodoburger.github.io/post/index.xml" rel="self" type="application/rss+xml"/><description>Blog</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Bodo Burger 2020</copyright><image><url>https://bodoburger.github.io/img/icon-192.png</url><title>Blog</title><link>https://bodoburger.github.io/post/</link></image><item><title>Use R, Google Sheets and a nutrition API to calculate a nutrition table</title><link>https://bodoburger.github.io/post/2019-04-nutrition-table-google-sheets/</link><pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/post/2019-04-nutrition-table-google-sheets/</guid><description>
-&lt;p&gt;I recently stumbled upon this
-&lt;a href=&#34;https://greenysherry.com/life-changing-brot-mit-nuessen-nach-my-new-roots-glutenfrei-vegan/&#34;&gt;bread recipe&lt;/a&gt;.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog | Bodo Burger</title><link>https://bodoburger.github.io/post/</link><atom:link href="https://bodoburger.github.io/post/index.xml" rel="self" type="application/rss+xml"/><description>Blog</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Bodo Burger 2020</copyright><image><url>img/map[gravatar:%!s(bool=false) shape:circle]</url><title>Blog</title><link>https://bodoburger.github.io/post/</link></image><item><title>Use R, Google Sheets and a nutrition API to calculate a nutrition table</title><link>https://bodoburger.github.io/post/2019-04-nutrition-table-google-sheets/</link><pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/post/2019-04-nutrition-table-google-sheets/</guid><description>
+&lt;p>I recently stumbled upon this
+&lt;a href="https://greenysherry.com/life-changing-brot-mit-nuessen-nach-my-new-roots-glutenfrei-vegan/">bread recipe&lt;/a>.
 It’s quickly prepared, the bread tastes great and is full of valuable ingredients
 (only oats, nuts and seeds).
 However, being homemade it does not come with a nutrition table.
-The following shows an easy way to create one.&lt;/p&gt;
-&lt;p&gt;We put the recipe into a spreadsheet
-(&lt;a href=&#34;https://docs.google.com/spreadsheets/d/1C0AwjQYrudrV3ZLgQJZnCr9La7OVftRTZn3QKMrJx5E&#34;&gt;recipe&lt;/a&gt;).
+The following shows an easy way to create one.&lt;/p>
+&lt;p>We put the recipe into a spreadsheet
+(&lt;a href="https://docs.google.com/spreadsheets/d/1C0AwjQYrudrV3ZLgQJZnCr9La7OVftRTZn3QKMrJx5E">recipe&lt;/a>).
 Another spreadsheet contains the nutritional values of the macro nutrients of each ingredient
-(&lt;a href=&#34;https://docs.google.com/spreadsheets/d/1qgo8Yefb5nx5PVElZvmf6nSDI6RfN2ofd8CeMuSklHk&#34;&gt;food stats&lt;/a&gt;).
-We combine these using &lt;strong&gt;R&lt;/strong&gt; to get the nutrition table.
+(&lt;a href="https://docs.google.com/spreadsheets/d/1qgo8Yefb5nx5PVElZvmf6nSDI6RfN2ofd8CeMuSklHk">food stats&lt;/a>).
+We combine these using &lt;strong>R&lt;/strong> to get the nutrition table.
 Then, we look at an alternative to manually creating a spreadsheet with nutritional information
 by using an online database.
-As a bonus, we can calculate the price of the recipe.&lt;/p&gt;
-&lt;div id=&#34;downloading-google-sheets-to-r&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Downloading Google Sheets to R&lt;/h2&gt;
-&lt;p&gt;A simple way to import Google Sheets to &lt;strong&gt;R&lt;/strong&gt; is the
-&lt;a href=&#34;https://cran.r-project.org/package=gsheet&#34;&gt;gsheet&lt;/a&gt; package.
+As a bonus, we can calculate the price of the recipe.&lt;/p>
+&lt;div id="downloading-google-sheets-to-r" class="section level2">
+&lt;h2>Downloading Google Sheets to R&lt;/h2>
+&lt;p>A simple way to import Google Sheets to &lt;strong>R&lt;/strong> is the
+&lt;a href="https://cran.r-project.org/package=gsheet">gsheet&lt;/a> package.
 We only need to supply the sharing link.
-It returns a &lt;a href=&#34;https://tibble.tidyverse.org/&#34;&gt;tibble&lt;/a&gt;.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;food_stats = gsheet::gsheet2tbl(&amp;quot;https://docs.google.com/spreadsheets/d/1qgo8Yefb5nx5PVElZvmf6nSDI6RfN2ofd8CeMuSklHk&amp;quot;)
-recipe = gsheet::gsheet2tbl(&amp;quot;https://docs.google.com/spreadsheets/d/1C0AwjQYrudrV3ZLgQJZnCr9La7OVftRTZn3QKMrJx5E&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt;food_stats&lt;/code&gt; contains more ingredients than we need for our bread recipe.
+It returns a &lt;a href="https://tibble.tidyverse.org/">tibble&lt;/a>.&lt;/p>
+&lt;pre class="r">&lt;code>food_stats = gsheet::gsheet2tbl(&amp;quot;https://docs.google.com/spreadsheets/d/1qgo8Yefb5nx5PVElZvmf6nSDI6RfN2ofd8CeMuSklHk&amp;quot;)
+recipe = gsheet::gsheet2tbl(&amp;quot;https://docs.google.com/spreadsheets/d/1C0AwjQYrudrV3ZLgQJZnCr9La7OVftRTZn3QKMrJx5E&amp;quot;)&lt;/code>&lt;/pre>
+&lt;p>&lt;code>food_stats&lt;/code> contains more ingredients than we need for our bread recipe.
 So when we merge both data frames we only want to keep the rows
 that contain the ingredients of the recipe.
-This is done by &lt;code&gt;left_join()&lt;/code&gt; from the
-&lt;a href=&#34;https://cran.r-project.org/package=dplyr&#34;&gt;dplyr&lt;/a&gt; package.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)
-bread_ingredient_stats = left_join(recipe, food_stats, &amp;quot;Description&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;calculating-the-nutritional-values&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Calculating the nutritional values&lt;/h2&gt;
-&lt;p&gt;We have 10 ingredients. First, we create a vector that gives us
+This is done by &lt;code>left_join()&lt;/code> from the
+&lt;a href="https://cran.r-project.org/package=dplyr">dplyr&lt;/a> package.&lt;/p>
+&lt;pre class="r">&lt;code>library(dplyr)
+bread_ingredient_stats = left_join(recipe, food_stats, &amp;quot;Description&amp;quot;)&lt;/code>&lt;/pre>
+&lt;/div>
+&lt;div id="calculating-the-nutritional-values" class="section level2">
+&lt;h2>Calculating the nutritional values&lt;/h2>
+&lt;p>We have 10 ingredients. First, we create a vector that gives us
 the quantity of each ingredient in grams,
-then we select the columns that are relevant for the nutrition table.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nutrient_names = c(&amp;quot;Calories (kcal)&amp;quot;, &amp;quot;Total Fat&amp;quot;, &amp;quot;Saturated Fat&amp;quot;,
+then we select the columns that are relevant for the nutrition table.&lt;/p>
+&lt;pre class="r">&lt;code>nutrient_names = c(&amp;quot;Calories (kcal)&amp;quot;, &amp;quot;Total Fat&amp;quot;, &amp;quot;Saturated Fat&amp;quot;,
 &amp;quot;Total Carbs&amp;quot;, &amp;quot;Sugar&amp;quot;, &amp;quot;Dietary Fiber&amp;quot;, &amp;quot;Protein&amp;quot;)
 quantities = select(bread_ingredient_stats, &amp;quot;Quantity (gr)&amp;quot;)[[1]]
-nutrition_values = bread_ingredient_stats %&amp;gt;% select(nutrient_names)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The following calculation gives us the quantity of
-each macro nutrient in our bread &lt;em&gt;per 100g&lt;/em&gt;:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nutrition_table = colSums(nutrition_values * quantities) / sum(quantities)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Finally, we can print our nutrition table:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;knitr::kable(nutrition_table, digits = 1, col.names = &amp;quot;per 100g&amp;quot;,
-caption = &amp;quot;Nutrition table&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;table&gt;
-&lt;caption&gt;&lt;span id=&#34;tab:unnamed-chunk-5&#34;&gt;Table 1: &lt;/span&gt;Nutrition table&lt;/caption&gt;
-&lt;thead&gt;
-&lt;tr class=&#34;header&#34;&gt;
-&lt;th&gt;&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;per 100g&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;Calories (kcal)&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;307.3&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;Total Fat&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;22.5&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;Saturated Fat&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;4.7&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;Total Carbs&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;12.2&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;Sugar&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.5&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;Dietary Fiber&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;10.6&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;Protein&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;12.6&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Calorie-wise very similar to your &lt;a href=&#34;https://www.google.com/search?q=brown+bread&#34;&gt;typical brown bread&lt;/a&gt;, but rich in fat.
+nutrition_values = bread_ingredient_stats %&amp;gt;% select(nutrient_names)&lt;/code>&lt;/pre>
+&lt;p>The following calculation gives us the quantity of
+each macro nutrient in our bread &lt;em>per 100g&lt;/em>:&lt;/p>
+&lt;pre class="r">&lt;code>nutrition_table = colSums(nutrition_values * quantities) / sum(quantities)&lt;/code>&lt;/pre>
+&lt;p>Finally, we can print our nutrition table:&lt;/p>
+&lt;pre class="r">&lt;code>knitr::kable(nutrition_table, digits = 1, col.names = &amp;quot;per 100g&amp;quot;,
+caption = &amp;quot;Nutrition table&amp;quot;)&lt;/code>&lt;/pre>
+&lt;table>
+&lt;caption>&lt;span id="tab:unnamed-chunk-5">Table 1: &lt;/span>Nutrition table&lt;/caption>
+&lt;thead>
+&lt;tr class="header">
+&lt;th>&lt;/th>
+&lt;th align="right">per 100g&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr class="odd">
+&lt;td>Calories (kcal)&lt;/td>
+&lt;td align="right">307.3&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Total Fat&lt;/td>
+&lt;td align="right">22.5&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Saturated Fat&lt;/td>
+&lt;td align="right">4.7&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Total Carbs&lt;/td>
+&lt;td align="right">12.2&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Sugar&lt;/td>
+&lt;td align="right">0.5&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Dietary Fiber&lt;/td>
+&lt;td align="right">10.6&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Protein&lt;/td>
+&lt;td align="right">12.6&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Calorie-wise very similar to your &lt;a href="https://www.google.com/search?q=brown+bread">typical brown bread&lt;/a>, but rich in fat.
 Trust me, the bread is very filling, so you won’t be able to eat too much of it anyways.
-And how much does it cost?&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prices = select(bread_ingredient_stats, &amp;quot;Price (€)&amp;quot;)[[1]]
+And how much does it cost?&lt;/p>
+&lt;pre class="r">&lt;code>prices = select(bread_ingredient_stats, &amp;quot;Price (€)&amp;quot;)[[1]]
 packaging = select(bread_ingredient_stats, &amp;quot;Packaging (g)&amp;quot;)[[1]]
-(price_total = sum(prices / packaging * quantities, na.rm = TRUE))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 3.208962&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;One loaf of bread is 3.21€ (not including energy and time)
+(price_total = sum(prices / packaging * quantities, na.rm = TRUE))&lt;/code>&lt;/pre>
+&lt;pre>&lt;code>## [1] 3.208962&lt;/code>&lt;/pre>
+&lt;p>One loaf of bread is 3.21€ (not including energy and time)
 weighing 910 grams (raw ingredients).
-I think that is a fair price for a bread I can eat from for a whole week.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;using-the-api-of-a-nutrition-database&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Using the API of a nutrition database&lt;/h2&gt;
-&lt;p&gt;Instead of manually creating a spreadsheet for the nutritional values of each ingredient
+I think that is a fair price for a bread I can eat from for a whole week.&lt;/p>
+&lt;/div>
+&lt;div id="using-the-api-of-a-nutrition-database" class="section level2">
+&lt;h2>Using the API of a nutrition database&lt;/h2>
+&lt;p>Instead of manually creating a spreadsheet for the nutritional values of each ingredient
 we can fetch the information from on online database.
-We use &lt;a href=&#34;https://openfoodfacts.org&#34;&gt;openfoodfacts&lt;/a&gt;.
+We use &lt;a href="https://openfoodfacts.org">openfoodfacts&lt;/a>.
 It’s a crowd-sourced database of food stats.
 To identify a product we need a barcode for each ingredient
 which I added to the recipe spreadsheet.
 The openfoodfacts API returns a JSON file which we can convert to a list
-using the &lt;a href=&#34;https://cran.r-project.org/package=rjson&#34;&gt;rjson&lt;/a&gt; package.
-We write two helper functions to fetch and extract the relevant information.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(&amp;quot;rjson&amp;quot;)
+using the &lt;a href="https://cran.r-project.org/package=rjson">rjson&lt;/a> package.
+We write two helper functions to fetch and extract the relevant information.&lt;/p>
+&lt;pre class="r">&lt;code>library(&amp;quot;rjson&amp;quot;)
 fetch_json = function(barcode, url = &amp;quot;https://world.openfoodfacts.org/api/v0/product/&amp;quot;) {
 query = paste0(url, barcode, &amp;quot;.json&amp;quot;)
 fromJSON(file = query)
@@ -125,343 +125,402 @@ dimnames = list(1:10, nutrient_names))
 for(i in seq_along(barcodes)) {
 food_list_tmp = fetch_json(barcodes[i])
 nutrition_values_api[i,] = extract_nutrition_values(food_list_tmp)
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt;nutrition_values_api&lt;/code&gt; has the same structure as &lt;code&gt;nutrition_values&lt;/code&gt; from above,
-so we can proceed as before:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(nutrition_table_api = colSums(nutrition_values_api * quantities) / sum(quantities))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Calories (kcal) Total Fat Saturated Fat Total Carbs
+}&lt;/code>&lt;/pre>
+&lt;p>&lt;code>nutrition_values_api&lt;/code> has the same structure as &lt;code>nutrition_values&lt;/code> from above,
+so we can proceed as before:&lt;/p>
+&lt;pre class="r">&lt;code>(nutrition_table_api = colSums(nutrition_values_api * quantities) / sum(quantities))&lt;/code>&lt;/pre>
+&lt;pre>&lt;code>## Calories (kcal) Total Fat Saturated Fat Total Carbs
 ## 1344.0329670 22.4906593 4.7263736 12.3516484
 ## Sugar Dietary Fiber Protein
-## 0.4923077 8.9291209 12.5313187&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The results for the macro nutrients differ slightly which is expected
+## 0.4923077 8.9291209 12.5313187&lt;/code>&lt;/pre>
+&lt;p>The results for the macro nutrients differ slightly which is expected
 because we changed the data source.
-However, the value for &lt;em&gt;calories&lt;/em&gt; quadrupled
+However, the value for &lt;em>calories&lt;/em> quadrupled
 because the API reported energy in kilojoule (kJ) instead of kilocalories.
-To correct for this we divide the value by &lt;span class=&#34;math inline&#34;&gt;\(4.1858\)&lt;/span&gt;.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nutrition_table_api[1] = nutrition_table_api[1] / 4.1858
+To correct for this we divide the value by &lt;span class="math inline">\(4.1858\)&lt;/span>.&lt;/p>
+&lt;pre class="r">&lt;code>nutrition_table_api[1] = nutrition_table_api[1] / 4.1858
 knitr::kable(nutrition_table_api, digits = 1, col.names = &amp;quot;per 100g&amp;quot;,
-caption = &amp;quot;Nutrition table&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;table&gt;
-&lt;caption&gt;&lt;span id=&#34;tab:unnamed-chunk-9&#34;&gt;Table 2: &lt;/span&gt;Nutrition table&lt;/caption&gt;
-&lt;thead&gt;
-&lt;tr class=&#34;header&#34;&gt;
-&lt;th&gt;&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;per 100g&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;Calories (kcal)&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;321.1&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;Total Fat&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;22.5&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;Saturated Fat&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;4.7&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;Total Carbs&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;12.4&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;Sugar&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.5&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;Dietary Fiber&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;8.9&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;Protein&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;12.5&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;And we are done!&lt;/p&gt;
-&lt;/div&gt;</description></item><item><title>Interpretable Machine Learning by Christoph Molnar</title><link>https://bodoburger.github.io/post/2019-02-interpretable-ml-book/</link><pubDate>Tue, 26 Feb 2019 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/post/2019-02-interpretable-ml-book/</guid><description>
-&lt;p&gt;The book gives an overview of common methods
+caption = &amp;quot;Nutrition table&amp;quot;)&lt;/code>&lt;/pre>
+&lt;table>
+&lt;caption>&lt;span id="tab:unnamed-chunk-9">Table 2: &lt;/span>Nutrition table&lt;/caption>
+&lt;thead>
+&lt;tr class="header">
+&lt;th>&lt;/th>
+&lt;th align="right">per 100g&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr class="odd">
+&lt;td>Calories (kcal)&lt;/td>
+&lt;td align="right">321.1&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Total Fat&lt;/td>
+&lt;td align="right">22.5&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Saturated Fat&lt;/td>
+&lt;td align="right">4.7&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Total Carbs&lt;/td>
+&lt;td align="right">12.4&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Sugar&lt;/td>
+&lt;td align="right">0.5&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Dietary Fiber&lt;/td>
+&lt;td align="right">8.9&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Protein&lt;/td>
+&lt;td align="right">12.5&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>And we are done!&lt;/p>
+&lt;/div></description></item><item><title>Interpretable Machine Learning by Christoph Molnar</title><link>https://bodoburger.github.io/post/2019-02-interpretable-ml-book/</link><pubDate>Tue, 26 Feb 2019 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/post/2019-02-interpretable-ml-book/</guid><description>
+&lt;p>The book gives an overview of common methods
 that help to better understand machine learning models.
 You can support the author by buying the book on
-&lt;a href=&#34;https://leanpub.com/interpretable-machine-learning&#34;&gt;leanpub&lt;/a&gt;.
-There is a &lt;a href=&#34;https://christophm.github.io/interpretable-ml-book&#34;&gt;free online version&lt;/a&gt;
-of the book, too.&lt;/p&gt;
-&lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;The beginning of the book covers three short stories
+&lt;a href="https://leanpub.com/interpretable-machine-learning">leanpub&lt;/a>.
+There is a &lt;a href="https://christophm.github.io/interpretable-ml-book">free online version&lt;/a>
+of the book, too.&lt;/p>
+&lt;div id="introduction" class="section level2">
+&lt;h2>Introduction&lt;/h2>
+&lt;p>The beginning of the book covers three short stories
 that illustrate the detrimental consequences of
 a world controlled by black box machine learning models
-(&lt;a href=&#34;https://christophm.github.io/interpretable-ml-book/storytime.html&#34;&gt;1.1&lt;/a&gt;).
+(&lt;a href="https://christophm.github.io/interpretable-ml-book/storytime.html">1.1&lt;/a>).
 They serve as motivation for why we want to use methods
 that improve understanding of opaque models.
 The ultimate goal of these methods is that a human can understand a model
-so that he can consistently predict its results.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://christophm.github.io/interpretable-ml-book/interpretability.html&#34;&gt;Chapter 2&lt;/a&gt;
+so that he can consistently predict its results.&lt;/p>
+&lt;p>&lt;a href="https://christophm.github.io/interpretable-ml-book/interpretability.html">Chapter 2&lt;/a>
 lays the foundation for the discussion on machine learning interpretability
-by answering the following questions:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Why is interpretation important and when do we need it
-(&lt;a href=&#34;https://christophm.github.io/interpretable-ml-book/interpretability-importance.html&#34;&gt;2.1&lt;/a&gt;)?&lt;/li&gt;
-&lt;li&gt;How can we classify different interpretation methods
-(&lt;a href=&#34;https://christophm.github.io/interpretable-ml-book/taxonomy-of-interpretability-methods.html&#34;&gt;2.2&lt;/a&gt;)?
-&lt;ul&gt;
-&lt;li&gt;intrinsic vs post-hoc methods&lt;/li&gt;
-&lt;li&gt;result of the method&lt;/li&gt;
-&lt;li&gt;model-specific vs model-agnostic&lt;/li&gt;
-&lt;li&gt;local vs global&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Which part of a model do we want to inspect
-(&lt;a href=&#34;https://christophm.github.io/interpretable-ml-book/scope-of-interpretability.html&#34;&gt;2.3&lt;/a&gt;)?&lt;/li&gt;
-&lt;li&gt;How do we evaluate the interpretation
-(&lt;a href=&#34;https://christophm.github.io/interpretable-ml-book/evaluation-of-interpretability.html&#34;&gt;2.4&lt;/a&gt;)?&lt;/li&gt;
-&lt;li&gt;What does a human need to know to understand a black box model
-(&lt;a href=&#34;https://christophm.github.io/interpretable-ml-book/explanation.html&#34;&gt;2.6&lt;/a&gt;)?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The presented interpretation methods are repeatedly applied to three freely available data sets
+by answering the following questions:&lt;/p>
+&lt;ul>
+&lt;li>Why is interpretation important and when do we need it
+(&lt;a href="https://christophm.github.io/interpretable-ml-book/interpretability-importance.html">2.1&lt;/a>)?&lt;/li>
+&lt;li>How can we classify different interpretation methods
+(&lt;a href="https://christophm.github.io/interpretable-ml-book/taxonomy-of-interpretability-methods.html">2.2&lt;/a>)?
+&lt;ul>
+&lt;li>intrinsic vs post-hoc methods&lt;/li>
+&lt;li>result of the method&lt;/li>
+&lt;li>model-specific vs model-agnostic&lt;/li>
+&lt;li>local vs global&lt;/li>
+&lt;/ul>&lt;/li>
+&lt;li>Which part of a model do we want to inspect
+(&lt;a href="https://christophm.github.io/interpretable-ml-book/scope-of-interpretability.html">2.3&lt;/a>)?&lt;/li>
+&lt;li>How do we evaluate the interpretation
+(&lt;a href="https://christophm.github.io/interpretable-ml-book/evaluation-of-interpretability.html">2.4&lt;/a>)?&lt;/li>
+&lt;li>What does a human need to know to understand a black box model
+(&lt;a href="https://christophm.github.io/interpretable-ml-book/explanation.html">2.6&lt;/a>)?&lt;/li>
+&lt;/ul>
+&lt;p>The presented interpretation methods are repeatedly applied to three freely available data sets
 representing different kinds of prediction tasks:
-&lt;a href=&#34;http://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset&#34;&gt;daily bike rentals&lt;/a&gt; (regression),
-&lt;a href=&#34;https://archive.ics.uci.edu/ml/datasets/Cervical+cancer+%28Risk+Factors%29&#34;&gt;cancer risk factors&lt;/a&gt; (classification) and
-&lt;a href=&#34;dcomp.sor.ufscar.br/talmeida/youtubespamcollection/&#34;&gt;YouTube spam comments&lt;/a&gt; (text classification).
-&lt;a href=&#34;https://christophm.github.io/interpretable-ml-book/data.html&#34;&gt;Chapter 3&lt;/a&gt;
-introduces the datasets in more detail.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;interpretable-models&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Interpretable models&lt;/h2&gt;
-&lt;p&gt;This chapter presents models that are interpretable by itself.
+&lt;a href="http://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset">daily bike rentals&lt;/a> (regression),
+&lt;a href="https://archive.ics.uci.edu/ml/datasets/Cervical+cancer+%28Risk+Factors%29">cancer risk factors&lt;/a> (classification) and
+&lt;a href="dcomp.sor.ufscar.br/talmeida/youtubespamcollection/">YouTube spam comments&lt;/a> (text classification).
+&lt;a href="https://christophm.github.io/interpretable-ml-book/data.html">Chapter 3&lt;/a>
+introduces the datasets in more detail.&lt;/p>
+&lt;/div>
+&lt;div id="interpretable-models" class="section level2">
+&lt;h2>Interpretable models&lt;/h2>
+&lt;p>This chapter presents models that are interpretable by itself.
 For Molnar these are
-&lt;a href=&#34;https://en.wikipedia.org/wiki/Linear_regression&#34;&gt;linear regression&lt;/a&gt;,
-&lt;a href=&#34;https://en.wikipedia.org/wiki/Logistic_regression&#34;&gt;logistic regression&lt;/a&gt;,
-&lt;a href=&#34;https://en.wikipedia.org/wiki/Decision_tree_learning&#34;&gt;decision trees&lt;/a&gt;,
-&lt;a href=&#34;https://en.wikipedia.org/wiki/Decision_tree#Decision_rules&#34;&gt;decision rules&lt;/a&gt;,
-RuleFit (&lt;a href=&#34;http://statweb.stanford.edu/~jhf/ftp/RuleFit.pdf&#34;&gt;Friedman and Popescu, 2005&lt;/a&gt;),
-&lt;a href=&#34;https://en.wikipedia.org/wiki/Naive_Bayes_classifier&#34;&gt;naive Bayes&lt;/a&gt; and
-&lt;a href=&#34;https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm&#34;&gt;k-nearest neighbors&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;These models have in common that the result is accessible to the user without further steps.
+&lt;a href="https://en.wikipedia.org/wiki/Linear_regression">linear regression&lt;/a>,
+&lt;a href="https://en.wikipedia.org/wiki/Logistic_regression">logistic regression&lt;/a>,
+&lt;a href="https://en.wikipedia.org/wiki/Decision_tree_learning">decision trees&lt;/a>,
+&lt;a href="https://en.wikipedia.org/wiki/Decision_tree#Decision_rules">decision rules&lt;/a>,
+RuleFit (&lt;a href="http://statweb.stanford.edu/~jhf/ftp/RuleFit.pdf">Friedman and Popescu, 2005&lt;/a>),
+&lt;a href="https://en.wikipedia.org/wiki/Naive_Bayes_classifier">naive Bayes&lt;/a> and
+&lt;a href="https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm">k-nearest neighbors&lt;/a>.&lt;/p>
+&lt;p>These models have in common that the result is accessible to the user without further steps.
 They differ in regards to linearity, monotonicity,
-the possibility to include feature interactions and the tasks they can handle.&lt;/p&gt;
-&lt;p&gt;Molnar concludes the discussion of each method with a comparison of its advantages and disadvantages.
-E.g. &lt;a href=&#34;https://christophm.github.io/interpretable-ml-book/limo.html#advantages&#34;&gt;the apparent simplicity of linear models&lt;/a&gt;
+the possibility to include feature interactions and the tasks they can handle.&lt;/p>
+&lt;p>Molnar concludes the discussion of each method with a comparison of its advantages and disadvantages.
+E.g. &lt;a href="https://christophm.github.io/interpretable-ml-book/limo.html#advantages">the apparent simplicity of linear models&lt;/a>
 is opposed by the difficulty to incorporate nonlinearity, the low predictive performance and
-the potentially unintuitive interpretation of the coefficients due to correlated features.&lt;/p&gt;
-&lt;p&gt;The following table is an overview of implementations of &lt;em&gt;interpretable models&lt;/em&gt;
-both for &lt;strong&gt;R&lt;/strong&gt; and &lt;strong&gt;Python&lt;/strong&gt;:&lt;/p&gt;
-&lt;table&gt;
-&lt;tr&gt;
-&lt;th&gt;
-Method&lt;br&gt;
-&lt;/th&gt;
-&lt;th&gt;
+the potentially unintuitive interpretation of the coefficients due to correlated features.&lt;/p>
+&lt;p>The following table is an overview of implementations of &lt;em>interpretable models&lt;/em>
+both for &lt;strong>R&lt;/strong> and &lt;strong>Python&lt;/strong>:&lt;/p>
+&lt;table>
+&lt;tr>
+&lt;th>
+Method&lt;br>
+&lt;/th>
+&lt;th>
 R
-&lt;/th&gt;
-&lt;th&gt;
+&lt;/th>
+&lt;th>
 Python
-&lt;/th&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;
+&lt;/th>
+&lt;/tr>
+&lt;tr>
+&lt;td>
 linear model
-&lt;/td&gt;
-&lt;td&gt;
-&lt;a href=&#34;https://stat.ethz.ch/R-manual/R-devel/library/stats/html/lm.html&#34;&gt;lm()&lt;/a&gt;
-&lt;/td&gt;
-&lt;td&gt;
-&lt;a href=&#34;https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression&#34;&gt;sklearn.linear_model.LinearRegression()&lt;/a&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;
+&lt;/td>
+&lt;td>
+&lt;a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/lm.html">lm()&lt;/a>
+&lt;/td>
+&lt;td>
+&lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression">sklearn.linear_model.LinearRegression()&lt;/a>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
 logistic model
-&lt;/td&gt;
-&lt;td&gt;
-&lt;a href=&#34;https://stat.ethz.ch/R-manual/R-devel/library/stats/html/glm.html&#34;&gt;glm(formula, binomial(link = “logit”))&lt;/a&gt;
-&lt;/td&gt;
-&lt;td&gt;
-&lt;a href=&#34;https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression&#34;&gt;sklearn.linear_model.LogisticRegression()&lt;/a&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;
+&lt;/td>
+&lt;td>
+&lt;a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/glm.html">glm(formula, binomial(link = “logit”))&lt;/a>
+&lt;/td>
+&lt;td>
+&lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression">sklearn.linear_model.LogisticRegression()&lt;/a>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
 decision tree
-&lt;/td&gt;
-&lt;td&gt;
-&lt;a href=&#34;https://cran.r-project.org/package=rpart&#34;&gt;rpart()&lt;/a&gt;
-&lt;/td&gt;
-&lt;td&gt;
-&lt;a href=&#34;https://scikit-learn.org/stable/modules/tree.html&#34;&gt;sklearn.tree&lt;/a&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;
+&lt;/td>
+&lt;td>
+&lt;a href="https://cran.r-project.org/package=rpart">rpart()&lt;/a>
+&lt;/td>
+&lt;td>
+&lt;a href="https://scikit-learn.org/stable/modules/tree.html">sklearn.tree&lt;/a>
+&lt;/tr>
+&lt;tr>
+&lt;td>
 decision rule
-&lt;/td&gt;
-&lt;td&gt;
-&lt;a href=&#34;https://cran.r-project.org/package=OneR&#34;&gt;OneR()&lt;/a&gt;
-&lt;/td&gt;
-&lt;td&gt;
-&lt;a href=&#34;https://oracle.github.io/Skater/reference/interpretation.html#bayesian-rule-lists-brl&#34;&gt;BRLC() (skater)&lt;/a&gt;
+&lt;/td>
+&lt;td>
+&lt;a href="https://cran.r-project.org/package=OneR">OneR()&lt;/a>
+&lt;/td>
+&lt;td>
+&lt;a href="https://oracle.github.io/Skater/reference/interpretation.html#bayesian-rule-lists-brl">BRLC() (skater)&lt;/a>
 &lt;/td
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;
+&lt;/tr>
+&lt;tr>
+&lt;td>
 RuleFit
-&lt;/td&gt;
-&lt;td&gt;
-&lt;a href=&#34;https://cran.r-project.org/package=pre&#34;&gt;pre()&lt;/a&gt;
-&lt;/td&gt;
-&lt;td&gt;
-&lt;a href=&#34;https://github.com/christophM/rulefit&#34;&gt;RuleFit()&lt;/a&gt; or
-&lt;a href=&#34;https://github.com/scikit-learn-contrib/skope-rules&#34;&gt;SkopeRules()&lt;/a&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;
+&lt;/td>
+&lt;td>
+&lt;a href="https://cran.r-project.org/package=pre">pre()&lt;/a>
+&lt;/td>
+&lt;td>
+&lt;a href="https://github.com/christophM/rulefit">RuleFit()&lt;/a> or
+&lt;a href="https://github.com/scikit-learn-contrib/skope-rules">SkopeRules()&lt;/a>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
 Naive Bayes
-&lt;/td&gt;
-&lt;td&gt;
-&lt;a href=&#34;https://cran.r-project.org/package=e1071&#34;&gt;naiveBayes()&lt;/a&gt;
-&lt;td&gt;
-&lt;a href=&#34;https://scikit-learn.org/stable/modules/naive_bayes.html&#34;&gt;sklearn.naive_bayes&lt;/a&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;
+&lt;/td>
+&lt;td>
+&lt;a href="https://cran.r-project.org/package=e1071">naiveBayes()&lt;/a>
+&lt;td>
+&lt;a href="https://scikit-learn.org/stable/modules/naive_bayes.html">sklearn.naive_bayes&lt;/a>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
 k-nearest neighbors
-&lt;/td&gt;
-&lt;td&gt;
-&lt;a href=&#34;https://cran.r-project.org/package=kknn&#34;&gt;kknn()&lt;/a&gt;
-&lt;td&gt;
-&lt;a href=&#34;https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-classification&#34;&gt;sklearn.neighbors&lt;/a&gt;
-&lt;/td&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;div id=&#34;model-agnostic-methods&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Model-agnostic methods&lt;/h2&gt;
-&lt;p&gt;A model-agnostic interpretability method is applied after a model is trained
+&lt;/td>
+&lt;td>
+&lt;a href="https://cran.r-project.org/package=kknn">kknn()&lt;/a>
+&lt;td>
+&lt;a href="https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-classification">sklearn.neighbors&lt;/a>
+&lt;/td>
+&lt;/table>
+&lt;/div>
+&lt;div id="model-agnostic-methods" class="section level2">
+&lt;h2>Model-agnostic methods&lt;/h2>
+&lt;p>A model-agnostic interpretability method is applied after a model is trained
 to make the result more accessible or transparent.
-Best case the method is flexible enough to be applied on any model.&lt;/p&gt;
-&lt;table&gt;
-&lt;tr&gt;
-&lt;th&gt;
-Method&lt;br&gt;
-&lt;/th&gt;
-&lt;th&gt;
+Best case the method is flexible enough to be applied on any model.&lt;/p>
+&lt;table>
+&lt;tr>
+&lt;th>
+Method&lt;br>
+&lt;/th>
+&lt;th>
 R
-&lt;/th&gt;
-&lt;th&gt;
+&lt;/th>
+&lt;th>
 Python
-&lt;/th&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;
+&lt;/th>
+&lt;/tr>
+&lt;tr>
+&lt;td>
 Partial Dependence Plot
-&lt;/td&gt;
-&lt;td&gt;
-Packages: &lt;a href=&#34;https://cran.r-project.org/package=mlr&#34;&gt;mlr&lt;/a&gt;,
-&lt;a href=&#34;https://cran.r-project.org/package=pdp&#34;&gt;pdp&lt;/a&gt;,
-&lt;a href=&#34;https://cran.r-project.org/package=iml&#34;&gt;iml&lt;/a&gt;,
-&lt;a href=&#34;https://github.com/BodoBurger/intame&#34;&gt;intame&lt;/a&gt;
-&lt;/td&gt;
-&lt;td&gt;
-&lt;a href=&#34;https://scikit-learn.org/stable/modules/partial_dependence.html&#34;&gt;sklearn.inspection.plot_partial_dependence()&lt;/a&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;
+&lt;/td>
+&lt;td>
+Packages: &lt;a href="https://cran.r-project.org/package=mlr">mlr&lt;/a>,
+&lt;a href="https://cran.r-project.org/package=pdp">pdp&lt;/a>,
+&lt;a href="https://cran.r-project.org/package=iml">iml&lt;/a>,
+&lt;a href="https://github.com/BodoBurger/intame">intame&lt;/a>
+&lt;/td>
+&lt;td>
+&lt;a href="https://scikit-learn.org/stable/modules/partial_dependence.html">sklearn.inspection.plot_partial_dependence()&lt;/a>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
 Individual Conditional Expectation
-&lt;/td&gt;
-&lt;td&gt;
-Packages: &lt;a href=&#34;https://cran.r-project.org/package=iml&#34;&gt;iml&lt;/a&gt;,
-&lt;a href=&#34;https://cran.r-project.org/package=pdp&#34;&gt;pdp&lt;/a&gt;,
-&lt;a href=&#34;https://cran.r-project.org/package=ICEbox&#34;&gt;ICEbox&lt;/a&gt;
-&lt;/td&gt;
-&lt;td&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;
+&lt;/td>
+&lt;td>
+Packages: &lt;a href="https://cran.r-project.org/package=iml">iml&lt;/a>,
+&lt;a href="https://cran.r-project.org/package=pdp">pdp&lt;/a>,
+&lt;a href="https://cran.r-project.org/package=ICEbox">ICEbox&lt;/a>
+&lt;/td>
+&lt;td>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
 Accumulated Local Effect
-&lt;/td&gt;
-&lt;td&gt;
-Packages: &lt;a href=&#34;https://cran.r-project.org/package=iml&#34;&gt;iml&lt;/a&gt;,
-&lt;a href=&#34;https://cran.r-project.org/package=ALEPlot&#34;&gt;ALEPlot&lt;/a&gt;,
-&lt;a href=&#34;https://github.com/BodoBurger/intame&#34;&gt;intame&lt;/a&gt;
-&lt;/td&gt;
-&lt;td&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
-&lt;/div&gt;</description></item><item><title>Git Resources / Cheat Sheet</title><link>https://bodoburger.github.io/post/2017-07-git-cheat-sheet/</link><pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/post/2017-07-git-cheat-sheet/</guid><description>
-&lt;p&gt;&lt;h2&gt;Table of Contents&lt;/h2&gt;
-HAHAHUGOSHORTCODE-TOC0-HBHB&lt;/p&gt;
-&lt;p&gt;This blog post combines both a collection of useful resources on Git and
+&lt;/td>
+&lt;td>
+Packages: &lt;a href="https://cran.r-project.org/package=iml">iml&lt;/a>,
+&lt;a href="https://cran.r-project.org/package=ALEPlot">ALEPlot&lt;/a>,
+&lt;a href="https://github.com/BodoBurger/intame">intame&lt;/a>
+&lt;/td>
+&lt;td>
+&lt;/td>
+&lt;/tr>
+&lt;/table>
+&lt;/div></description></item><item><title>Git Resources / Cheat Sheet</title><link>https://bodoburger.github.io/post/2017-07-git-cheat-sheet/</link><pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/post/2017-07-git-cheat-sheet/</guid><description>&lt;h2>Table of Contents&lt;/h2>
+&lt;nav id="TableOfContents">
+&lt;ul>
+&lt;li>&lt;a href="#useful-articles--resources">Useful articles / resources&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#basics">Basics&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#interesting-discussions-on-git">Interesting discussions on Git&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#github">GitHub&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="#branches">Branches&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#change-branch-without-committing-changes-stash-and-pop">Change branch without committing changes: stash and pop&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#create-a-local-branch-push-it-to-a-remote-repository-and-track-it">Create a local branch, push it to a remote repository and track it&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#delete-local-branch">Delete local branch&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="#configuration">Configuration&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#show-or-change-git-username-or-email-address">Show or change Git username or email address&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="#index">Index&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#remove-files-from-the-index-without-removing-them-from-disc">Remove files from the index without removing them from disc&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="#merging">Merging&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#merge-master-into-feature-branch-before-making-a-pr">Merge master into feature branch before making a PR&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="#remote">Remote&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#push-local-repository-to-existing-remote">Push local repository to existing remote&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#show-or-change-remote">Show or change remote&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="#submodules">Submodules&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#add-a-submodule">Add a submodule&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#download-files-to-empty-submodule-directory">Download files to empty submodule directory&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#remove-a-submodule-leaving-no-trace">Remove a submodule (leaving no trace)&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/nav>
+&lt;p>This blog post combines both a collection of useful resources on Git and
 a cheat sheet for git commands I googled repeatedly.
-It will be updated from time to time.&lt;/p&gt;
-&lt;h2 id=&#34;useful-articles-resources&#34;&gt;Useful articles / resources&lt;/h2&gt;
-&lt;h3 id=&#34;basics&#34;&gt;Basics&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://git-scm.com/docs&#34; target=&#34;_blank&#34;&gt;Git reference manual&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://git-scm.com/book/en/v2&#34; target=&#34;_blank&#34;&gt;Pro Git book (2nd, 2014)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/315911/git-for-beginners-the-definitive-practical-guide&#34; target=&#34;_blank&#34;&gt;Git for beginners on stackoverflow&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://rogerdudler.github.io/git-guide/&#34; target=&#34;_blank&#34;&gt;git - the simple guide&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/&#34; target=&#34;_blank&#34;&gt;The beginner&amp;rsquo;s guide to contributing to a GitHub project&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://sethrobertson.github.io/GitFixUm/fixup.html&#34; target=&#34;_blank&#34;&gt;On undoing, fixing, or removing commits in git&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://justinhileman.info/article/git-pretty/&#34; target=&#34;_blank&#34;&gt;Git pretty chart&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;interesting-discussions-on-git&#34;&gt;Interesting discussions on Git&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://nvie.com/posts/a-successful-git-branching-model/&#34; target=&#34;_blank&#34;&gt;A successful Git branching model&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://chris.beams.io/posts/git-commit/&#34; target=&#34;_blank&#34;&gt;How to Write a Git Commit Message&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://lornajane.net/posts/2015/code-reviews-before-you-even-run-the-code&#34; target=&#34;_blank&#34;&gt;Code Reviews: Before You Even Run The Code&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://softwareengineering.stackexchange.com/questions/69178/what-is-the-benefit-of-gits-two-stage-commit-process-staging&#34; target=&#34;_blank&#34;&gt;What is the benefit of gits two stage commit process&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/4878358/why-would-i-want-stage-before-committing-in-git&#34; target=&#34;_blank&#34;&gt;Why would I want to stage before committing?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;github&#34;&gt;GitHub&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/KirstieJane/STEMMRoleModels/wiki/Syncing-your-fork-to-the-original-repository-via-the-browser&#34; target=&#34;_blank&#34;&gt;Keep your fork up to date with the original repo via GitHub browser interface&lt;/a&gt;
-(&lt;a href=&#34;https://stackoverflow.com/questions/20984802/how-can-i-keep-my-fork-in-sync-without-adding-a-separate-remote/21131381#21131381&#34; target=&#34;_blank&#34;&gt;stackoverflow&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-&lt;h2 id=&#34;branches&#34;&gt;Branches&lt;/h2&gt;
-&lt;h3 id=&#34;change-branch-without-committing-changes-stash-and-pop&#34;&gt;Change branch without committing changes: stash and pop&lt;/h3&gt;
-&lt;p&gt;Want to have a look at another branch without committing changes done so far?
-Put them in a stash where they can hide until you switch back.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;$ git stash # on the original branch
+It will be updated from time to time.&lt;/p>
+&lt;h2 id="useful-articles--resources">Useful articles / resources&lt;/h2>
+&lt;h3 id="basics">Basics&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;a href="https://git-scm.com/docs" target="_blank" rel="noopener">Git reference manual&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://git-scm.com/book/en/v2" target="_blank" rel="noopener">Pro Git book (2nd, 2014)&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://stackoverflow.com/questions/315911/git-for-beginners-the-definitive-practical-guide" target="_blank" rel="noopener">Git for beginners on stackoverflow&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://rogerdudler.github.io/git-guide/" target="_blank" rel="noopener">git - the simple guide&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/" target="_blank" rel="noopener">The beginner&amp;rsquo;s guide to contributing to a GitHub project&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="http://sethrobertson.github.io/GitFixUm/fixup.html" target="_blank" rel="noopener">On undoing, fixing, or removing commits in git&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="http://justinhileman.info/article/git-pretty/" target="_blank" rel="noopener">Git pretty chart&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="interesting-discussions-on-git">Interesting discussions on Git&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;a href="https://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="noopener">A successful Git branching model&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://chris.beams.io/posts/git-commit/" target="_blank" rel="noopener">How to Write a Git Commit Message&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://lornajane.net/posts/2015/code-reviews-before-you-even-run-the-code" target="_blank" rel="noopener">Code Reviews: Before You Even Run The Code&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://softwareengineering.stackexchange.com/questions/69178/what-is-the-benefit-of-gits-two-stage-commit-process-staging" target="_blank" rel="noopener">What is the benefit of gits two stage commit process&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://stackoverflow.com/questions/4878358/why-would-i-want-stage-before-committing-in-git" target="_blank" rel="noopener">Why would I want to stage before committing?&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="github">GitHub&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;a href="https://github.com/KirstieJane/STEMMRoleModels/wiki/Syncing-your-fork-to-the-original-repository-via-the-browser" target="_blank" rel="noopener">Keep your fork up to date with the original repo via GitHub browser interface&lt;/a>
+(
+&lt;a href="https://stackoverflow.com/questions/20984802/how-can-i-keep-my-fork-in-sync-without-adding-a-separate-remote/21131381#21131381" target="_blank" rel="noopener">stackoverflow&lt;/a>)&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="branches">Branches&lt;/h2>
+&lt;h3 id="change-branch-without-committing-changes-stash-and-pop">Change branch without committing changes: stash and pop&lt;/h3>
+&lt;p>Want to have a look at another branch without committing changes done so far?
+Put them in a stash where they can hide until you switch back.&lt;/p>
+&lt;pre>&lt;code class="language-Bash">$ git stash # on the original branch
 $ git checkout other-branch
 # do some stuff on the other branch
 $ git checkout original-branch
 $ git stash pop
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;More about &lt;a href=&#34;https://git-scm.com/docs/git-stash&#34; target=&#34;_blank&#34;&gt;&lt;em&gt;git-stash&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;create-a-local-branch-push-it-to-a-remote-repository-and-track-it&#34;&gt;Create a local branch, push it to a remote repository and track it&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;$ git checkout -b MyNewBranch # create and switch to new branch
+&lt;/code>&lt;/pre>
+&lt;p>More about
+&lt;a href="https://git-scm.com/docs/git-stash" target="_blank" rel="noopener">&lt;em>git-stash&lt;/em>&lt;/a>.&lt;/p>
+&lt;h3 id="create-a-local-branch-push-it-to-a-remote-repository-and-track-it">Create a local branch, push it to a remote repository and track it&lt;/h3>
+&lt;pre>&lt;code class="language-Bash">$ git checkout -b MyNewBranch # create and switch to new branch
 # do some stuff
 $ git push -u origin MyNewBranch
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;delete-local-branch&#34;&gt;Delete local branch&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;$ git branch -d MyLocalBranch
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
-&lt;h3 id=&#34;show-or-change-git-username-or-email-address&#34;&gt;Show or change Git username or email address&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;$ git config --list # repository-specific settings
+&lt;/code>&lt;/pre>
+&lt;h3 id="delete-local-branch">Delete local branch&lt;/h3>
+&lt;pre>&lt;code class="language-Bash">$ git branch -d MyLocalBranch
+&lt;/code>&lt;/pre>
+&lt;h2 id="configuration">Configuration&lt;/h2>
+&lt;h3 id="show-or-change-git-username-or-email-address">Show or change Git username or email address&lt;/h3>
+&lt;pre>&lt;code class="language-Bash">$ git config --list # repository-specific settings
 $ git config --list --global # global git settings
 $ git config user.name &amp;quot;Enrico Pallazzo&amp;quot;
 $ git config user.email &amp;quot;enrico.pallazzo@lapd.com&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The global settings are stored in the Git config file
-in the HOME directory (&lt;code&gt;~/.gitconfig&lt;/code&gt;),
-repository-specific settings are found at &lt;code&gt;.git/config&lt;/code&gt;
-in the respective repository folder.&lt;/p&gt;
-&lt;h2 id=&#34;index&#34;&gt;Index&lt;/h2&gt;
-&lt;h3 id=&#34;remove-files-from-the-index-without-removing-them-from-disc&#34;&gt;Remove files from the index without removing them from disc&lt;/h3&gt;
-&lt;p&gt;If you forgot to add a file to &lt;code&gt;.gitignore&lt;/code&gt;:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;$ git rm -rf --cached file-name
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The file is now untracked and can be added to &lt;code&gt;.gitignore&lt;/code&gt;.
-Then, you can commit the deletion and the modified gitignore file.&lt;/p&gt;
-&lt;h2 id=&#34;merging&#34;&gt;Merging&lt;/h2&gt;
-&lt;h3 id=&#34;merge-master-into-feature-branch-before-making-a-pr&#34;&gt;Merge master into feature branch before making a PR&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;$ git checkout master
+&lt;/code>&lt;/pre>
+&lt;p>The global settings are stored in the Git config file
+in the HOME directory (&lt;code>~/.gitconfig&lt;/code>),
+repository-specific settings are found at &lt;code>.git/config&lt;/code>
+in the respective repository folder.&lt;/p>
+&lt;h2 id="index">Index&lt;/h2>
+&lt;h3 id="remove-files-from-the-index-without-removing-them-from-disc">Remove files from the index without removing them from disc&lt;/h3>
+&lt;p>If you forgot to add a file to &lt;code>.gitignore&lt;/code>:&lt;/p>
+&lt;pre>&lt;code class="language-Bash">$ git rm -rf --cached file-name
+&lt;/code>&lt;/pre>
+&lt;p>The file is now untracked and can be added to &lt;code>.gitignore&lt;/code>.
+Then, you can commit the deletion and the modified gitignore file.&lt;/p>
+&lt;h2 id="merging">Merging&lt;/h2>
+&lt;h3 id="merge-master-into-feature-branch-before-making-a-pr">Merge master into feature branch before making a PR&lt;/h3>
+&lt;pre>&lt;code class="language-Bash">$ git checkout master
 $ git pull
 $ git checkout new-feature
 $ git add *files-and-changes*
@@ -472,33 +531,33 @@ $ git merge master
 # resolve potential merge conflicts
 $ git commit -m &amp;quot;resolved mergeconflicts | merged master&amp;quot;
 $ git push origin new-feature
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;remote&#34;&gt;Remote&lt;/h2&gt;
-&lt;h3 id=&#34;push-local-repository-to-existing-remote&#34;&gt;Push local repository to existing remote&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;$ git remote add origin git@github.com:USERNAME/REPOSITORY.git
+&lt;/code>&lt;/pre>
+&lt;h2 id="remote">Remote&lt;/h2>
+&lt;h3 id="push-local-repository-to-existing-remote">Push local repository to existing remote&lt;/h3>
+&lt;pre>&lt;code class="language-Bash">$ git remote add origin git@github.com:USERNAME/REPOSITORY.git
 $ git push --all --set-upstream origin
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;show-or-change-remote&#34;&gt;Show or change remote&lt;/h3&gt;
-&lt;p&gt;In this example we switch from HTTPS to SSH:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;$ git remote -v
+&lt;/code>&lt;/pre>
+&lt;h3 id="show-or-change-remote">Show or change remote&lt;/h3>
+&lt;p>In this example we switch from HTTPS to SSH:&lt;/p>
+&lt;pre>&lt;code class="language-Bash">$ git remote -v
 &amp;gt; origin https://github.com/USERNAME/REPOSITORY.git (fetch)
 &amp;gt; origin https://github.com/USERNAME/REPOSITORY.git (push)
 $ git remote set-url origin git@github.com:USERNAME/REPOSITORY.git
 $ git remote -v
 &amp;gt; origin git@github.com:USERNAME/REPOSITORY.git (fetch)
 &amp;gt; origin git@github.com:USERNAME/REPOSITORY.git (push)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;submodules&#34;&gt;Submodules&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://git-scm.com/docs/git-submodule&#34; target=&#34;_blank&#34;&gt;https://git-scm.com/docs/git-submodule&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;add-a-submodule&#34;&gt;Add a submodule&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;git submodule add git@github.com:USERNAME/REPOSITORY.git PATH/TO/SUBMODULEDIR
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;download-files-to-empty-submodule-directory&#34;&gt;Download files to empty submodule directory&lt;/h3&gt;
-&lt;p&gt;When cloning a repository with submodules and the submodule directories are empty:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;git submodule update --init --recursive
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;remove-a-submodule-leaving-no-trace&#34;&gt;Remove a submodule (leaving no trace)&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;git rm PATH/TO/SUBMODULEDIR
+&lt;/code>&lt;/pre>
+&lt;h2 id="submodules">Submodules&lt;/h2>
+&lt;p>&lt;a href="https://git-scm.com/docs/git-submodule">https://git-scm.com/docs/git-submodule&lt;/a>&lt;/p>
+&lt;h3 id="add-a-submodule">Add a submodule&lt;/h3>
+&lt;pre>&lt;code class="language-Bash">git submodule add git@github.com:USERNAME/REPOSITORY.git PATH/TO/SUBMODULEDIR
+&lt;/code>&lt;/pre>
+&lt;h3 id="download-files-to-empty-submodule-directory">Download files to empty submodule directory&lt;/h3>
+&lt;p>When cloning a repository with submodules and the submodule directories are empty:&lt;/p>
+&lt;pre>&lt;code class="language-Bash">git submodule update --init --recursive
+&lt;/code>&lt;/pre>
+&lt;h3 id="remove-a-submodule-leaving-no-trace">Remove a submodule (leaving no trace)&lt;/h3>
+&lt;pre>&lt;code class="language-Bash">git rm PATH/TO/SUBMODULEDIR
 rm -rf .git/modules/PATH/TO/SUBMODULEDIR
 git config -f .git/config --remove-section submodule.PATH/TO/SUBMODULEDIR 2&amp;gt; /dev/null
-&lt;/code&gt;&lt;/pre&gt;</description></item></channel></rss>
+&lt;/code>&lt;/pre></description></item></channel></rss>
