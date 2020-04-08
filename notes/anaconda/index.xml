@@ -15,6 +15,10 @@ conda activate name_of_new_env
 &lt;p>Create environment with specific python version:&lt;/p>
 &lt;pre>&lt;code class="language-bash">conda create -n name_of_new_env python 3.7
 &lt;/code>&lt;/pre>
+&lt;h2 id="remove-environment">Remove environment&lt;/h2>
+&lt;pre>&lt;code class="language-bash">conda remove -n name_of_env --all
+# alternative: conda env remove -n name_of_env
+&lt;/code>&lt;/pre>
 &lt;h2 id="list-all-environments">List all environments&lt;/h2>
 &lt;pre>&lt;code class="language-bash">conda env list
 &lt;/code>&lt;/pre>
