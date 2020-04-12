@@ -33,12 +33,13 @@ BrowseRemoteProtocols none
 &lt;li>node&lt;/li>
 &lt;li>onlyoffice&lt;/li>
 &lt;li>Octave (Matlab alternative)&lt;/li>
+&lt;li>
+&lt;a href="https://snapcraft.io/foliate" target="_blank" rel="noopener">Foliate&lt;/a> (epub reader)&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;li>Flatpak
 &lt;ul>
 &lt;li>libreoffice&lt;/li>
-&lt;li>Epub: Bookworm&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;li>.deb (manually)
