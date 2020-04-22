@@ -3054,6 +3054,18 @@ conda activate name_of_new_env
 &lt;h2 id="adding-channels-to-environment">Adding channels to environment&lt;/h2>
 &lt;p>Activate the environment, then:&lt;/p>
 &lt;pre>&lt;code class="language-bash">conda config --env --add channels conda-forge
+&lt;/code>&lt;/pre>
+&lt;h2 id="sharing-an-environment">Sharing an environment&lt;/h2>
+&lt;p>This can be useful if you want to document the package versions for a project or if you are collaborating with other people so they can work with the same environment.&lt;/p>
+&lt;pre>&lt;code class="language-bash">conda env export &amp;gt; environment.yml
+&lt;/code>&lt;/pre>
+&lt;p>To exclude packages that were installed into the environment as a dependency add the flag &lt;code>--from-history&lt;/code>.
+This can help for cross-platform compatibility, because &lt;em>conda&lt;/em> will figure out platform-specific dependencies.
+However, this will not document the version of a package if the version was not explicitly stated when installing.&lt;/p>
+&lt;pre>&lt;code class="language-bash">conda env export --from-history &amp;gt; environment.yml
+&lt;/code>&lt;/pre>
+&lt;p>To recreate the environment using the &lt;em>yml&lt;/em> file:&lt;/p>
+&lt;pre>&lt;code class="language-bash">conda env create -f environment.yml
 &lt;/code>&lt;/pre></description></item><item><title>Installing Anaconda</title><link>https://bodoburger.github.io/notes/anaconda/anaconda-install/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/anaconda/anaconda-install/</guid><description>&lt;ul>
 &lt;li>
 &lt;a href="https://docs.anaconda.com/anaconda/install/linux/" target="_blank" rel="noopener">Documentation&lt;/a>&lt;/li>
