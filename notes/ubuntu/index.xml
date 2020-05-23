@@ -110,10 +110,14 @@ sudo apt install libgsl-dev
 sudo apt install default-jre default-jdk
 javac -version
 &lt;/code>&lt;/pre></description></item><item><title>TLP – Linux Advanced Power Management</title><link>https://bodoburger.github.io/notes/ubuntu/tlp/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/ubuntu/tlp/</guid><description>&lt;p>&lt;a href="http://thinkwiki.de/TLP_-_Linux_Stromsparen">http://thinkwiki.de/TLP_-_Linux_Stromsparen&lt;/a>&lt;/p>
-&lt;p>&lt;a href="http://linrunner.de/en/tlp/tlp.html">http://linrunner.de/en/tlp/tlp.html&lt;/a>&lt;/p>
-&lt;pre>&lt;code class="language-bash">sudo apt install tlp tlp-rdw tp-smapi-dkms acpi-call-dkms
+&lt;p>&lt;a href="https://linrunner.de">https://linrunner.de&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://linrunner.de/tlp/installation/ubuntu.html">https://linrunner.de/tlp/installation/ubuntu.html&lt;/a>&lt;/p>
+&lt;pre>&lt;code class="language-bash">sudo apt install tlp tlp-rdw
+# for Thinkpads
+tlp-stat -b #suggest which additional package to install
+sudo apt install acpi-call-dkms
 # bluetooth off at startup:
-gksudo gedit /etc/default/tlp # does not work with WAYLAND
+sudo nano /etc/tlp.conf
 DEVICES_TO_DISABLE_ON_STARTUP=&amp;quot;bluetooth&amp;quot;
 # Akku-Ladeschwellen vorübergehend auf Maximum setzen
 sudo tlp fullcharge [ BAT0 | BAT1 ]
