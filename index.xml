@@ -15,19 +15,20 @@ BrowseRemoteProtocols none
 &lt;ul>
 &lt;li>APT
 &lt;ul>
-&lt;li>chromium-browser&lt;/li>
+&lt;li>tlp (use PPA ppa:linrunner/tlp for latest version)&lt;/li>
 &lt;li>TexLive: &lt;code>sudo apt install texlive-full&lt;/code> (4GB)&lt;/li>
 &lt;li>R (
 &lt;a href="../r-stats">more info&lt;/a>)&lt;/li>
 &lt;li>Scribus&lt;/li>
-&lt;li>VLC&lt;/li>
 &lt;li>
 &lt;a href="https://www.darktable.org/install" target="_blank" rel="noopener">darktable&lt;/a>: &lt;code>bash sudo apt install darktable&lt;/code>&lt;/li>
 &lt;/ul>
 &lt;/li>
-&lt;li>Snap
+&lt;li>Snap (Ubuntu Software Manager)
 &lt;ul>
+&lt;li>Chromium&lt;/li>
 &lt;li>keepassxc&lt;/li>
+&lt;li>VLC&lt;/li>
 &lt;li>gimp&lt;/li>
 &lt;li>go (and hugo)&lt;/li>
 &lt;li>node&lt;/li>
