@@ -89,6 +89,10 @@ min_cuda_compute_capability=None
 &lt;li>
 &lt;a href="https://docs.anaconda.com/anaconda/user-guide/faq/#installing-anaconda" target="_blank" rel="noopener">Anaconda-FAQ on whether you should add Anaconda to the PATH&lt;/a>&lt;/li>
 &lt;/ul>
+&lt;h3 id="prevent-conda-from-activating-the-base-env-by-default">Prevent Conda from activating the base env by default&lt;/h3>
+&lt;pre>&lt;code>conda config --set auto_activate_base false
+&lt;/code>&lt;/pre>
+&lt;p>&lt;a href="https://stackoverflow.com/questions/54429210/how-do-i-prevent-conda-from-activating-the-base-environment-by-default">https://stackoverflow.com/questions/54429210/how-do-i-prevent-conda-from-activating-the-base-environment-by-default&lt;/a>&lt;/p>
 &lt;h3 id="temporarily">Temporarily&lt;/h3>
 &lt;p>To add Anaconda temporarily to the PATH, open a terminal and type:&lt;/p>
 &lt;p>&lt;code>export PATH=&amp;quot;/home/bodo/anaconda3/bin:$PATH&amp;quot;&lt;/code>&lt;/p>
