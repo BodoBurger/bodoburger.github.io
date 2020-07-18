@@ -65,7 +65,6 @@ conda install opencv # needed for some examples
 conda install pydot # graphviz
 conda install pillow # python imaging library
 conda install cython # Why?
-conda install keras-gpu
 conda install ipykernel # for kernel selection in jupyter
 &lt;/code>&lt;/pre>
 &lt;h2 id="deeplearn-tensorflow-20">Deeplearn Tensorflow 2.0&lt;/h2>
@@ -75,14 +74,12 @@ pip install tensorflow-gpu
 pip install tensorflow-datasets
 pip install matplotlib PyYAML opencv-python pydot pillow cython
 &lt;/code>&lt;/pre>
-&lt;h2 id="check-tensorflow-and-keras-gpu">Check tensorflow and keras gpu&lt;/h2>
+&lt;h2 id="check-tensorflow-gpu">Check tensorflow gpu&lt;/h2>
 &lt;pre>&lt;code class="language-python">import tensorflow as tf
 tf.test.is_gpu_available(
 cuda_only=False,
 min_cuda_compute_capability=None
 )
-from keras import backend as K
-K.tensorflow_backend._get_available_gpus()
 &lt;/code>&lt;/pre>
 &lt;h2 id="archived">Archived&lt;/h2>
 &lt;ul>
