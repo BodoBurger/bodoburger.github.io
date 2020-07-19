@@ -29,6 +29,8 @@ BrowseRemoteProtocols none
 &lt;li>Chromium&lt;/li>
 &lt;li>keepassxc&lt;/li>
 &lt;li>VLC&lt;/li>
+&lt;li>libreoffice&lt;/li>
+&lt;li>GitKraken&lt;/li>
 &lt;li>gimp&lt;/li>
 &lt;li>go (and hugo)&lt;/li>
 &lt;li>node&lt;/li>
@@ -40,7 +42,7 @@ BrowseRemoteProtocols none
 &lt;/li>
 &lt;li>Flatpak
 &lt;ul>
-&lt;li>libreoffice&lt;/li>
+&lt;li>&amp;hellip;&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;li>.deb (manually)
