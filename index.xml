@@ -87,12 +87,10 @@ sudo apt install r-base r-base-dev
 &lt;li>RStudio: &lt;a href="https://www.rstudio.com/products/rstudio/download/">https://www.rstudio.com/products/rstudio/download/&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h2 id="dependencies-of-r-packages">Dependencies of R packages&lt;/h2>
-&lt;pre>&lt;code class="language-bash">#&amp;quot;rgl&amp;quot;
+&lt;pre>&lt;code class="language-bash"># &amp;quot;devtools&amp;quot;:
+sudo apt install libcurl4-openssl-dev libssl-dev libxml2-dev
+#&amp;quot;rgl&amp;quot;
 sudo apt install libcgal-dev libglu1-mesa-dev libglu1-mesa-dev libfreetype6-dev
-# &amp;quot;devtools&amp;quot;:
-sudo apt install libcurl4-openssl-dev libssl-dev
-# &amp;quot;XML&amp;quot;:
-sudo apt install libxml2-dev
 # &amp;quot;rattle&amp;quot;:
 sudo apt install libcanberra-gtk-module
 sudo apt install wajig
