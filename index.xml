@@ -11,7 +11,26 @@ BrowseRemoteProtocols none
 &lt;p>&lt;code>gnome-session-quit --power-off&lt;/code>&lt;/p>
 &lt;h2 id="kein-lock-screen-nach-suspend">Kein Lock screen nach Suspend&lt;/h2>
 &lt;p>&lt;a href="https://www.techgrube.de/tutorials/ubuntu-sperrbildschirm-nach-standby-deaktivieren">https://www.techgrube.de/tutorials/ubuntu-sperrbildschirm-nach-standby-deaktivieren&lt;/a>&lt;/p>
-&lt;p>&amp;ldquo;Die gewünschte Einstellung findet man dann unter org -&amp;gt; Gnome -&amp;gt; Desktop -&amp;gt; screensaver. Hier entfernt man einfach bei ubuntu-lock-on-suspend das Häkchen.&amp;rdquo;&lt;/p></description></item><item><title>Installing software</title><link>https://bodoburger.github.io/notes/ubuntu/install-software/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/ubuntu/install-software/</guid><description>&lt;h2 id="software-list">Software list&lt;/h2>
+&lt;p>&amp;ldquo;Die gewünschte Einstellung findet man dann unter org -&amp;gt; Gnome -&amp;gt; Desktop -&amp;gt; screensaver. Hier entfernt man einfach bei ubuntu-lock-on-suspend das Häkchen.&amp;rdquo;&lt;/p>
+&lt;h2 id="make-header-bar-of-windows-thinner">Make header bar of windows &amp;ldquo;thinner&amp;rdquo;&lt;/h2>
+&lt;p>Create a CSS file under &lt;code>.config\gtk-3\gtk.css&lt;/code> with the following content:&lt;/p>
+&lt;pre>&lt;code class="language-css">headerbar entry,
+headerbar spinbutton,
+headerbar button,
+headerbar separator {
+margin-top: 0px; /* same as headerbar side padding for nicer proportions */
+margin-bottom: 0px;
+min-height: 20px;
+}
+headerbar {
+min-height: 20px;
+padding-left: 2px; /* same as childrens vertical margins for nicer proportions */
+padding-right: 2px;
+margin: 0px; /* same as headerbar side padding for nicer proportions */
+padding: 0px;
+}
+&lt;/code>&lt;/pre>
+&lt;p>Press &lt;em>Alt-F2&lt;/em> und type in &lt;code>r&lt;/code> to make the changes effective.&lt;/p></description></item><item><title>Installing software</title><link>https://bodoburger.github.io/notes/ubuntu/install-software/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/ubuntu/install-software/</guid><description>&lt;h2 id="software-list">Software list&lt;/h2>
 &lt;ul>
 &lt;li>APT
 &lt;ul>
