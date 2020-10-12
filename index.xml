@@ -46,6 +46,8 @@ padding: 0px;
 &lt;li>Snap (Ubuntu Software Manager)
 &lt;ul>
 &lt;li>Chromium&lt;/li>
+&lt;li>
+&lt;a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VS Code&lt;/a>&lt;/li>
 &lt;li>keepassxc&lt;/li>
 &lt;li>VLC&lt;/li>
 &lt;li>libreoffice&lt;/li>
@@ -53,7 +55,6 @@ padding: 0px;
 &lt;li>gimp&lt;/li>
 &lt;li>go (and hugo)&lt;/li>
 &lt;li>node&lt;/li>
-&lt;li>onlyoffice&lt;/li>
 &lt;li>Octave (Matlab alternative)&lt;/li>
 &lt;li>
 &lt;a href="https://snapcraft.io/foliate" target="_blank" rel="noopener">Foliate&lt;/a> (epub reader)&lt;/li>
@@ -68,8 +69,6 @@ padding: 0px;
 &lt;ul>
 &lt;li>
 &lt;a href="https://rstudio.com/products/rstudio/download/" target="_blank" rel="noopener">Rstudio&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VS Code&lt;/a> (.deb package installs apt repo)&lt;/li>
 &lt;li>
 &lt;a href="https://code-industry.net/free-pdf-editor/" target="_blank" rel="noopener">Master PDF&lt;/a>&lt;/li>
 &lt;/ul>
