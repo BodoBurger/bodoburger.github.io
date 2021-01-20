@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Git | Bodo Burger</title><link>https://bodoburger.github.io/notes/git/</link><atom:link href="https://bodoburger.github.io/notes/git/index.xml" rel="self" type="application/rss+xml"/><description>Git</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>Bodo Burger 2021</copyright><image><url>https://bodoburger.github.io/images/logo_huf0189912a6c4c6fe87cd287c2a6e1211_3971_300x300_fit_lanczos_2.png</url><title>Git</title><link>https://bodoburger.github.io/notes/git/</link></image><item><title>Basics</title><link>https://bodoburger.github.io/notes/git/git-basics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/git/git-basics/</guid><description>&lt;h2 id="rm">&lt;code>rm&lt;/code>&lt;/h2>
+&lt;h3 id="remove-files-from-the-index-without-removing-them-from-disc">Remove files from the index without removing them from disc&lt;/h3>
+&lt;p>If you forgot to add a file to &lt;code>.gitignore&lt;/code>:&lt;/p>
+&lt;pre>&lt;code class="language-Bash">$ git rm -rf --cached file-name
+&lt;/code>&lt;/pre>
+&lt;p>The file is now untracked and can be added to &lt;code>.gitignore&lt;/code>.
+Then, you can commit the deletion and the modified gitignore file.&lt;/p></description></item><item><title>Branching and Merging</title><link>https://bodoburger.github.io/notes/git/git-branch/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/git/git-branch/</guid><description>&lt;h2 id="branches">Branches&lt;/h2>
+&lt;h3 id="change-branch-without-committing-changes-stash-and-pop">Change branch without committing changes: stash and pop&lt;/h3>
+&lt;p>Want to have a look at another branch without committing changes done so far?
+Put them in a stash where they can hide until you switch back.&lt;/p>
+&lt;pre>&lt;code class="language-Bash">$ git stash # on the original branch
+$ git checkout other-branch
+# do some stuff on the other branch
+$ git checkout original-branch
+$ git stash pop
+&lt;/code>&lt;/pre>
+&lt;p>More about &lt;a href="https://git-scm.com/docs/git-stash" target="_blank" rel="noopener">&lt;em>git-stash&lt;/em>&lt;/a>.&lt;/p>
+&lt;h3 id="create-a-local-branch-push-it-to-a-remote-repository-and-track-it">Create a local branch, push it to a remote repository and track it&lt;/h3>
+&lt;pre>&lt;code class="language-Bash">$ git checkout -b MyNewBranch # create and switch to new branch
+# do some stuff
+$ git push -u origin MyNewBranch
+&lt;/code>&lt;/pre>
+&lt;h3 id="delete-local-branch">Delete local branch&lt;/h3>
+&lt;pre>&lt;code class="language-Bash">$ git branch -d MyLocalBranch
+&lt;/code>&lt;/pre>
+&lt;h2 id="merging">Merging&lt;/h2>
+&lt;h3 id="merge-master-into-feature-branch-before-making-a-pr">Merge master into feature branch before making a PR&lt;/h3>
+&lt;pre>&lt;code class="language-Bash">$ git checkout master
+$ git pull
+$ git checkout new-feature
+$ git add *files-and-changes*
+$ git commit -m &amp;quot;feature description&amp;quot;
+$ git reset HEAD --hard # removes all uncommited files
+$ rm *untracked-files* # to prevent merge conflicts
+$ git merge master
+# resolve potential merge conflicts
+$ git commit -m &amp;quot;resolved mergeconflicts | merged master&amp;quot;
+$ git push origin new-feature
+&lt;/code>&lt;/pre></description></item><item><title>Setup and Config</title><link>https://bodoburger.github.io/notes/git/git-config/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/git/git-config/</guid><description>&lt;h2 id="config">&lt;code>config&lt;/code>&lt;/h2>
+&lt;h3 id="show-or-change-git-username-or-email-address">Show or change Git username or email address&lt;/h3>
+&lt;pre>&lt;code class="language-Bash">$ git config --list # repository-specific settings
+$ git config --list --global # global git settings
+$ git config user.name &amp;quot;Enrico Pallazzo&amp;quot;
+$ git config user.email &amp;quot;enrico.pallazzo@lapd.com&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;p>The global settings are stored in the Git config file
+in the HOME directory (&lt;code>~/.gitconfig&lt;/code>),
+repository-specific settings are found at &lt;code>.git/config&lt;/code>
+in the respective repository folder.&lt;/p></description></item><item><title>Sharing and Updating Projects</title><link>https://bodoburger.github.io/notes/git/git-remote/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/git/git-remote/</guid><description>&lt;h2 id="remote">Remote&lt;/h2>
+&lt;p>&lt;a href="https://git-scm.com/docs/git-remote">https://git-scm.com/docs/git-remote&lt;/a>&lt;/p>
+&lt;h3 id="push-local-repository-to-existing-remote">Push local repository to existing remote&lt;/h3>
+&lt;pre>&lt;code class="language-Bash">$ git remote add origin git@github.com:USERNAME/REPOSITORY.git
+$ git push --all --set-upstream origin
+&lt;/code>&lt;/pre>
+&lt;h3 id="show-or-change-remote">Show or change remote&lt;/h3>
+&lt;p>In this example we switch from HTTPS to SSH:&lt;/p>
+&lt;pre>&lt;code class="language-Bash">$ git remote -v
+&amp;gt; origin https://github.com/USERNAME/REPOSITORY.git (fetch)
+&amp;gt; origin https://github.com/USERNAME/REPOSITORY.git (push)
+$ git remote set-url origin git@github.com:USERNAME/REPOSITORY.git
+$ git remote -v
+&amp;gt; origin git@github.com:USERNAME/REPOSITORY.git (fetch)
+&amp;gt; origin git@github.com:USERNAME/REPOSITORY.git (push)
+&lt;/code>&lt;/pre>
+&lt;h2 id="submodules">Submodules&lt;/h2>
+&lt;p>&lt;a href="https://git-scm.com/docs/git-submodule">https://git-scm.com/docs/git-submodule&lt;/a>&lt;/p>
+&lt;h3 id="add-a-submodule">Add a submodule&lt;/h3>
+&lt;pre>&lt;code class="language-Bash">git submodule add git@github.com:USERNAME/REPOSITORY.git PATH/TO/SUBMODULEDIR
+&lt;/code>&lt;/pre>
+&lt;h3 id="download-files-to-empty-submodule-directory">Download files to empty submodule directory&lt;/h3>
+&lt;p>When cloning a repository with submodules and the submodule directories are empty:&lt;/p>
+&lt;pre>&lt;code class="language-Bash">git submodule update --init --recursive
+&lt;/code>&lt;/pre>
+&lt;h3 id="remove-a-submodule-leaving-no-trace">Remove a submodule (leaving no trace)&lt;/h3>
+&lt;pre>&lt;code class="language-Bash">git rm PATH/TO/SUBMODULEDIR
+rm -rf .git/modules/PATH/TO/SUBMODULEDIR
+git config -f .git/config --remove-section submodule.PATH/TO/SUBMODULEDIR 2&amp;gt; /dev/null
+&lt;/code>&lt;/pre></description></item></channel></rss>
