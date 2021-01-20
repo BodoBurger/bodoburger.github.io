@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ubuntu Wiki | Bodo Burger</title><link>https://bodoburger.github.io/notes/ubuntu/</link><atom:link href="https://bodoburger.github.io/notes/ubuntu/index.xml" rel="self" type="application/rss+xml"/><description>Ubuntu Wiki</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Bodo Burger 2020</copyright><lastBuildDate>Sun, 09 Sep 2018 00:00:00 +0000</lastBuildDate><image><url>img/map[gravatar:%!s(bool=false) shape:circle]</url><title>Ubuntu Wiki</title><link>https://bodoburger.github.io/notes/ubuntu/</link></image><item><title>Basic tweaks and configuration</title><link>https://bodoburger.github.io/notes/ubuntu/basic-tweaks/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/ubuntu/basic-tweaks/</guid><description>&lt;h2 id="disable-middle-click-paste">Disable middle click paste&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ubuntu Wiki | Bodo Burger</title><link>https://bodoburger.github.io/notes/ubuntu/</link><atom:link href="https://bodoburger.github.io/notes/ubuntu/index.xml" rel="self" type="application/rss+xml"/><description>Ubuntu Wiki</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>Bodo Burger 2021</copyright><lastBuildDate>Sun, 09 Sep 2018 00:00:00 +0000</lastBuildDate><image><url>https://bodoburger.github.io/images/logo_huf0189912a6c4c6fe87cd287c2a6e1211_3971_300x300_fit_lanczos_2.png</url><title>Ubuntu Wiki</title><link>https://bodoburger.github.io/notes/ubuntu/</link></image><item><title>Basic tweaks and configuration</title><link>https://bodoburger.github.io/notes/ubuntu/basic-tweaks/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/notes/ubuntu/basic-tweaks/</guid><description>&lt;h2 id="disable-middle-click-paste">Disable middle click paste&lt;/h2>
 &lt;p>&lt;a href="https://wiki.ubuntuusers.de/GNOME_Tweak_Tool/">https://wiki.ubuntuusers.de/GNOME_Tweak_Tool/&lt;/a>&lt;/p>
 &lt;h2 id="disable-looking-for-wifi-printer">Disable looking for wifi printer&lt;/h2>
 &lt;pre>&lt;code class="language-bash">/etc/cups/cups-browsed.conf
@@ -36,18 +36,15 @@ padding: 0px;
 &lt;ul>
 &lt;li>tlp (use PPA ppa:linrunner/tlp for latest version)&lt;/li>
 &lt;li>TexLive: &lt;code>sudo apt install texlive-full&lt;/code> (4GB)&lt;/li>
-&lt;li>R (
-&lt;a href="../r-stats">more info&lt;/a>)&lt;/li>
+&lt;li>R (&lt;a href="../r-stats">more info&lt;/a>)&lt;/li>
 &lt;li>Scribus&lt;/li>
-&lt;li>
-&lt;a href="https://www.darktable.org/install" target="_blank" rel="noopener">darktable&lt;/a>: &lt;code>bash sudo apt install darktable&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://www.darktable.org/install" target="_blank" rel="noopener">darktable&lt;/a>: &lt;code>bash sudo apt install darktable&lt;/code>&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;li>Snap (Ubuntu Software Manager)
 &lt;ul>
 &lt;li>Chromium&lt;/li>
-&lt;li>
-&lt;a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VS Code&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VS Code&lt;/a>&lt;/li>
 &lt;li>keepassxc&lt;/li>
 &lt;li>VLC&lt;/li>
 &lt;li>libreoffice&lt;/li>
@@ -56,8 +53,7 @@ padding: 0px;
 &lt;li>go (and hugo)&lt;/li>
 &lt;li>node&lt;/li>
 &lt;li>Octave (Matlab alternative)&lt;/li>
-&lt;li>
-&lt;a href="https://snapcraft.io/foliate" target="_blank" rel="noopener">Foliate&lt;/a> (epub reader)&lt;/li>
+&lt;li>&lt;a href="https://snapcraft.io/foliate" target="_blank" rel="noopener">Foliate&lt;/a> (epub reader)&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;li>Flatpak
@@ -67,10 +63,8 @@ padding: 0px;
 &lt;/li>
 &lt;li>.deb (manually)
 &lt;ul>
-&lt;li>
-&lt;a href="https://rstudio.com/products/rstudio/download/" target="_blank" rel="noopener">Rstudio&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="https://code-industry.net/free-pdf-editor/" target="_blank" rel="noopener">Master PDF&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://rstudio.com/products/rstudio/download/" target="_blank" rel="noopener">Rstudio&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://code-industry.net/free-pdf-editor/" target="_blank" rel="noopener">Master PDF&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;li>.sh

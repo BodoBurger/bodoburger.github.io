@@ -2,14 +2,14 @@
   "name": "Bodo Burger",
   "short_name": "Bodo Burger",
   "lang": "en-us",
-  "theme_color": "#d3534f",
-  "background_color": "#d3534f",
+  "theme_color": "rgb(255, 0, 60)",
+  "background_color": "rgb(255, 0, 60)",
   "icons": [{
-    "src": "/images/icon_hub4c73ccbf3df5181340bfa37098d2ed3_9466_192x192_fill_lanczos_center_2.png",
+    "src": "/images/icon_hu3866d77b83de7bf7a980c2cf7f90ec51_5456_192x192_fill_lanczos_center_2.png",
     "sizes": "192x192",
     "type": "image/png"
     }, {
-    "src": "/images/icon_hub4c73ccbf3df5181340bfa37098d2ed3_9466_512x512_fill_lanczos_center_2.png",
+    "src": "/images/icon_hu3866d77b83de7bf7a980c2cf7f90ec51_5456_512x512_fill_lanczos_center_2.png",
     "sizes": "512x512",
     "type": "image/png"
      }],

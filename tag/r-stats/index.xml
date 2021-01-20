@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>r-stats | Bodo Burger</title><link>https://bodoburger.github.io/tag/r-stats/</link><atom:link href="https://bodoburger.github.io/tag/r-stats/index.xml" rel="self" type="application/rss+xml"/><description>r-stats</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>Bodo Burger 2021</copyright><lastBuildDate>Sat, 06 Apr 2019 00:00:00 +0000</lastBuildDate><image><url>https://bodoburger.github.io/images/logo_huf0189912a6c4c6fe87cd287c2a6e1211_3971_300x300_fit_lanczos_2.png</url><title>r-stats</title><link>https://bodoburger.github.io/tag/r-stats/</link></image><item><title>Feature Effects in Machine Learning Models</title><link>https://bodoburger.github.io/project/2019-feature-effects/</link><pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/project/2019-feature-effects/</guid><description>
+&lt;div id="TOC">
+&lt;ul>
+&lt;li>&lt;a href="#abstract">Abstract&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#example-bike-sharing-data">Example: Bike Sharing Data&lt;/a>&lt;ul>
+&lt;li>&lt;a href="#model-training">Model Training&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#analysis">Analysis&lt;/a>&lt;/li>
+&lt;/ul>&lt;/li>
+&lt;li>&lt;a href="#r-package">R package&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#references">References&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/div>
+&lt;div id="abstract" class="section level2">
+&lt;h2>Abstract&lt;/h2>
+&lt;p>Supervised machine learning models are mostly black boxes.
+The method we propose tries to improve understanding of these black boxes.
+The goal is to find a way to quantify effect sizes of features.
+Average marginal effects are used in social sciences
+to determine effect sizes of logistic regression models.
+Applying this method to a machine learning model usually does not
+adequately represent the non-convex, non-monotonic response function.
+There are graphical methods like partial dependence plots or accumulated local effect plots
+that visualize the response functions but do not offer a quantitative interpretation.
+First, we use one of the latter methods to identify intervals
+within the response function is relatively stable.
+Second, we report some estimate of the feature effect separately for each interval.
+Our method determines the number of necessary intervals automatically.&lt;/p>
+&lt;/div>
+&lt;div id="example-bike-sharing-data" class="section level2">
+&lt;h2>Example: Bike Sharing Data&lt;/h2>
+&lt;p>The following examples shows
+how the method can help to understand heterogeneous feature effects.
+We apply the method to the Bike Sharing dataset &lt;span class="citation">(Fanaee-T and Gama 2013)&lt;/span>
+which was further processed by &lt;span class="citation">Molnar (2018)&lt;/span>.
+See table &lt;a href="#tab:bikes-load-data">1&lt;/a> for an overview of all the features.
+The target &lt;code>cnt&lt;/code> is the number of bicycles
+lent by a bicycle sharing company per day.
+The features comprise calendrical and meteorological information for each day.&lt;/p>
+&lt;table>
+&lt;caption>&lt;span id="tab:bikes-load-data">Table 1: &lt;/span>Excerpt of the Bike Sharing dataset&lt;/caption>
+&lt;thead>
+&lt;tr class="header">
+&lt;th align="left">season&lt;/th>
+&lt;th align="left">yr&lt;/th>
+&lt;th align="left">mnth&lt;/th>
+&lt;th align="left">holiday&lt;/th>
+&lt;th align="left">weekday&lt;/th>
+&lt;th align="left">weathersit&lt;/th>
+&lt;th align="right">temp&lt;/th>
+&lt;th align="right">hum&lt;/th>
+&lt;th align="right">windspeed&lt;/th>
+&lt;th align="right">cnt&lt;/th>
+&lt;th align="right">days_since_2011&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr class="odd">
+&lt;td align="left">SPRING&lt;/td>
+&lt;td align="left">2011&lt;/td>
+&lt;td align="left">JAN&lt;/td>
+&lt;td align="left">0&lt;/td>
+&lt;td align="left">SAT&lt;/td>
+&lt;td align="left">MISTY&lt;/td>
+&lt;td align="right">8.18&lt;/td>
+&lt;td align="right">80.6&lt;/td>
+&lt;td align="right">10.8&lt;/td>
+&lt;td align="right">985&lt;/td>
+&lt;td align="right">0&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td align="left">SPRING&lt;/td>
+&lt;td align="left">2011&lt;/td>
+&lt;td align="left">JAN&lt;/td>
+&lt;td align="left">0&lt;/td>
+&lt;td align="left">SUN&lt;/td>
+&lt;td align="left">MISTY&lt;/td>
+&lt;td align="right">9.08&lt;/td>
+&lt;td align="right">69.6&lt;/td>
+&lt;td align="right">16.7&lt;/td>
+&lt;td align="right">801&lt;/td>
+&lt;td align="right">1&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td align="left">SPRING&lt;/td>
+&lt;td align="left">2011&lt;/td>
+&lt;td align="left">JAN&lt;/td>
+&lt;td align="left">0&lt;/td>
+&lt;td align="left">MON&lt;/td>
+&lt;td align="left">GOOD&lt;/td>
+&lt;td align="right">1.23&lt;/td>
+&lt;td align="right">43.7&lt;/td>
+&lt;td align="right">16.6&lt;/td>
+&lt;td align="right">1349&lt;/td>
+&lt;td align="right">2&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td align="left">SPRING&lt;/td>
+&lt;td align="left">2011&lt;/td>
+&lt;td align="left">JAN&lt;/td>
+&lt;td align="left">0&lt;/td>
+&lt;td align="left">TUE&lt;/td>
+&lt;td align="left">GOOD&lt;/td>
+&lt;td align="right">1.40&lt;/td>
+&lt;td align="right">59.0&lt;/td>
+&lt;td align="right">10.7&lt;/td>
+&lt;td align="right">1562&lt;/td>
+&lt;td align="right">3&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td align="left">SPRING&lt;/td>
+&lt;td align="left">2011&lt;/td>
+&lt;td align="left">JAN&lt;/td>
+&lt;td align="left">0&lt;/td>
+&lt;td align="left">WED&lt;/td>
+&lt;td align="left">GOOD&lt;/td>
+&lt;td align="right">2.67&lt;/td>
+&lt;td align="right">43.7&lt;/td>
+&lt;td align="right">12.5&lt;/td>
+&lt;td align="right">1600&lt;/td>
+&lt;td align="right">4&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td align="left">SPRING&lt;/td>
+&lt;td align="left">2011&lt;/td>
+&lt;td align="left">JAN&lt;/td>
+&lt;td align="left">0&lt;/td>
+&lt;td align="left">THU&lt;/td>
+&lt;td align="left">GOOD&lt;/td>
+&lt;td align="right">1.60&lt;/td>
+&lt;td align="right">51.8&lt;/td>
+&lt;td align="right">6.0&lt;/td>
+&lt;td align="right">1606&lt;/td>
+&lt;td align="right">5&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;div id="model-training" class="section level3">
+&lt;h3>Model Training&lt;/h3>
+&lt;p>We use a linear model &lt;span class="citation">(R Core Team 2019)&lt;/span>, an SVM &lt;span class="citation">(Meyer et al. 2019)&lt;/span>,
+a random decision forest &lt;span class="citation">(Breiman et al. 2018)&lt;/span> and gradient boosting &lt;span class="citation">(Greenwell et al. 2019)&lt;/span>.
+We compare the performance of all models and the performance
+of predicting the mean for each observation on a hold-out test set
+(see table &lt;a href="#tab:bikes-model-training">2&lt;/a>).
+The linear model performs relatively well
+but we can improve by using a more complex machine learning model
+even without extensive tuning.&lt;/p>
+&lt;table>
+&lt;caption>&lt;span id="tab:bikes-model-training">Table 2: &lt;/span>Mean squared error, root mean squared log error,
+and R squared for hold-out test set&lt;/caption>
+&lt;thead>
+&lt;tr class="header">
+&lt;th>&lt;/th>
+&lt;th align="right">mean(y)&lt;/th>
+&lt;th align="right">lm&lt;/th>
+&lt;th align="right">svm&lt;/th>
+&lt;th align="right">rf&lt;/th>
+&lt;th align="right">gbm&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr class="odd">
+&lt;td>mse&lt;/td>
+&lt;td align="right">3.75e+06&lt;/td>
+&lt;td align="right">5.30e+05&lt;/td>
+&lt;td align="right">4.33e+05&lt;/td>
+&lt;td align="right">4.22e+05&lt;/td>
+&lt;td align="right">4.12e+05&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>rmsle&lt;/td>
+&lt;td align="right">5.93e-01&lt;/td>
+&lt;td align="right">2.36e-01&lt;/td>
+&lt;td align="right">2.44e-01&lt;/td>
+&lt;td align="right">2.61e-01&lt;/td>
+&lt;td align="right">2.30e-01&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>rsq&lt;/td>
+&lt;td align="right">0.00e+00&lt;/td>
+&lt;td align="right">8.59e-01&lt;/td>
+&lt;td align="right">8.85e-01&lt;/td>
+&lt;td align="right">8.88e-01&lt;/td>
+&lt;td align="right">8.90e-01&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;div id="analysis" class="section level3">
+&lt;h3>Analysis&lt;/h3>
+&lt;p>Now analyse how changing feature values influences
+the predicted number of bikes.
+We focus on the three numerical features &lt;code>temp&lt;/code> (temperature in degree Celsius),
+&lt;code>hum&lt;/code> (humidity in percent) and &lt;code>windspeed&lt;/code> (in kilometers per hour).
+We apply our method to each of the complex models with default settings.
+The output in &lt;code>R&lt;/code> looks as follows:&lt;/p>
+&lt;pre>&lt;code>## lm:
+## temp hum windspeed
+## 98.2 -13.7 -40.1
+## SVM (temp)
+## [-5.221, 19.26) [19.26, 32.498]
+## 128.11 3.87
+## SVM (hum)
+## [18.792, 56.792) [56.792, 93.957]
+## 7.19 -32.71
+## SVM (windspeed)
+## [2.834, 14.876) [14.876, 34]
+## -22.7 -64.7
+## RF (temp)
+## [-5.221, 20.278) [20.278, 32.498]
+## 104.5 -62.7
+## RF (hum)
+## [18.792, 64.667) [64.667, 93.957]
+## -1.18 -31.97
+## RF (windspeed)
+## [2.834, 18.417) [18.417, 24.251) [24.251, 34]
+## -16.46 -78.30 -1.64
+## GBM (temp)
+## [-5.221, 16.792) [16.792, 26.075) [26.075, 32.498]
+## 124.2 13.9 -239.7
+## GBM (hum)
+## [18.792, 64.667) [64.667, 83.792) [83.792, 87.25) [87.25, 93.957]
+## -3.86 -39.63 -227.00 91.19
+## GBM (windspeed)
+## [2.834, 8.584) [8.584, 22.959) [22.959, 24.251) [24.251, 34]
+## -5.32e+01 -1.85e+01 -5.04e+02 6.60e-14&lt;/code>&lt;/pre>
+&lt;p>The marginal effect of the linear model is equal to the model coefficients.
+So according to the model an increase of the temperature by 1° Celsius
+leads to a predicted increase of &lt;span class="math inline">\(98.188\)&lt;/span>. rented bicycles per day.
+This seems plausible for an average day.
+The higher the temperature the more people are willing to go by bike.
+But one could easily imagine that a temperature rise on a hot day
+will make people less likely rent a bike to avoid physical exertion.
+This is exactly what the results of the complex models suggest.
+Below 20° the SVM predicts an increase of
+&lt;span class="math inline">\(128.106\)&lt;/span>
+bikes per day for an additional degree Celsius.
+Above 20° the effect becomes negative and very small
+&lt;span class="math inline">\((3.867)\)&lt;/span>.
+The results of the random forest show two cutoff points.
+At around 13° the positive marginal effect becomes smaller in size
+and above 25° the effect is negative.
+The effect for gradient boosting is partitioned into four intervals.
+The effect of the three intervals below 27° are positive,
+above 27° it is negative, similarly to the results of the other two models.
+However, the absolute values of the effect fluctuate substantially
+for gradient boosting.&lt;/p>
+&lt;p>For humidity the linear model predicts a negative effect.
+For the SVM the effect is positive up to around 43%.
+Between 43% and 65% the effect is negative but smaller in size.
+Above 65% it is negative and
+four times bigger than in the previous interval.
+The results for the random forest and gradient boosting
+both show very small effects below roughly 65% humidity.
+Above this point both models predict a decrease of rented bicycles
+with rising humidity.
+The histogram (figure &lt;a href="#fig:bikes-hum-hist">1&lt;/a>) explains
+why the effect for humidity is probably non-monotonic.
+Humidity usually is between 50% to 75%.
+Values outside this range indicate more extreme weather conditions.
+If uncommonly dry or wet air reduces people’s desire to ride a bike
+we will expect a positive effect on the number of rented bikes
+if humidity is below the familiar range, and a negative effect if it is above.&lt;/p>
+&lt;div class="figure" style="text-align: center">&lt;span id="fig:bikes-hum-hist">&lt;/span>
+&lt;img src="figures/bikes-hum-hist-1.png" alt="Histogram for feature humidity of the Bike Sharing dataset." width="40%" />
+&lt;p class="caption">
+Figure 1: Histogram for feature &lt;code>humidity&lt;/code> of the Bike Sharing dataset.
+&lt;/p>
+&lt;/div>
+&lt;p>Wind makes cycling less attractive, so one associates higher wind speed
+with a reduced willingness to rent a bike.
+The linear model predicts a negative effect (&lt;span class="math inline">\(-40.149\)&lt;/span>).
+For both SVM and random forest our method proposes a negative effect
+that is constant over the whole feature distribution.
+Consequently, in the case of wind speed a linear model seems to be appropriate
+to represent the relationship.
+Gradient boosting shows a negative effect for five intervals,
+the reported values are not very stable, again.&lt;/p>
+&lt;p>In this exemplary application we showed that
+the linear model does not suffice to represent the varying response function types.
+A user may come to wrong conclusions about the number of rented bikes
+depending on the weather conditions of the day.
+The proposed method enables the user to make quantitative statements
+as if he was using a linear model
+while preserving the non-linear, non-monotonic relationship where necessary.
+Thus, he can combine a better performing model with a comprehensible interpretation.
+The results for the gradient boosting model are less convincing.
+Due to the stepped response function the model is less appropriate
+for making quantitative statements about the feature effect.
+The estimates fluctuate between high values and values close to zero.&lt;/p>
+&lt;div class="figure" style="text-align: center">&lt;span id="fig:bikes-results-svm">&lt;/span>
+&lt;img src="figures/bikes-results-svm-1.png" alt="Bike sharing data. Results SVM." width="1152" />
+&lt;p class="caption">
+Figure 2: Bike sharing data. Results SVM.
+&lt;/p>
+&lt;/div>
+&lt;div class="figure" style="text-align: center">&lt;span id="fig:bikes-results-gbm">&lt;/span>
+&lt;img src="figures/bikes-results-gbm-1.png" alt="Bike sharing data. Results gradient boosting." width="1152" />
+&lt;p class="caption">
+Figure 3: Bike sharing data. Results gradient boosting.
+&lt;/p>
+&lt;/div>
+&lt;div class="figure" style="text-align: center">&lt;span id="fig:bikes-results-rf">&lt;/span>
+&lt;img src="figures/bikes-results-rf-1.png" alt="Bike sharing data. Results random forest." width="1152" />
+&lt;p class="caption">
+Figure 4: Bike sharing data. Results random forest.
+&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div id="r-package" class="section level2">
+&lt;h2>R package&lt;/h2>
+&lt;p>The method is implemented in &lt;strong>R&lt;/strong> supporting a variety of models out of the box.
+Source code and more information can be found on GitHub:
+&lt;a href="https://github.com/BodoBurger/intame" class="uri">https://github.com/BodoBurger/intame&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div id="references" class="section level2 unnumbered">
+&lt;h2>References&lt;/h2>
+&lt;div id="refs" class="references">
+&lt;div id="ref-R-randomForest">
+&lt;p>Breiman, Leo, Adele Cutler, Andy Liaw, and Matthew Wiener. 2018. &lt;em>RandomForest: Breiman and Cutler’s Random Forests for Classification and Regression&lt;/em>. &lt;a href="https://CRAN.R-project.org/package=randomForest">https://CRAN.R-project.org/package=randomForest&lt;/a>.&lt;/p>
+&lt;/div>
+&lt;div id="ref-fanaee2013event">
+&lt;p>Fanaee-T, Hadi, and Joao Gama. 2013. “Event Labeling Combining Ensemble Detectors and Background Knowledge.” &lt;em>Progress in Artificial Intelligence&lt;/em>. Springer Berlin Heidelberg, 1–15. &lt;a href="https://doi.org/10.1007/s13748-013-0040-3">https://doi.org/10.1007/s13748-013-0040-3&lt;/a>.&lt;/p>
+&lt;/div>
+&lt;div id="ref-R-gbm">
+&lt;p>Greenwell, Brandon, Bradley Boehmke, Jay Cunningham, and GBM Developers. 2019. &lt;em>Gbm: Generalized Boosted Regression Models&lt;/em>. &lt;a href="https://CRAN.R-project.org/package=gbm">https://CRAN.R-project.org/package=gbm&lt;/a>.&lt;/p>
+&lt;/div>
+&lt;div id="ref-R-e1071">
+&lt;p>Meyer, David, Evgenia Dimitriadou, Kurt Hornik, Andreas Weingessel, and Friedrich Leisch. 2019. &lt;em>E1071: Misc Functions of the Department of Statistics, Probability Theory Group (Formerly: E1071), Tu Wien&lt;/em>. &lt;a href="https://CRAN.R-project.org/package=e1071">https://CRAN.R-project.org/package=e1071&lt;/a>.&lt;/p>
+&lt;/div>
+&lt;div id="ref-molnar2018interpretable">
+&lt;p>Molnar, Christoph. 2018. &lt;em>Interpretable Machine Learning - a Guide for Making Black Box Models Explainable&lt;/em>. Creative Commons. &lt;a href="https://christophm.github.io/interpretable-ml-book/">https://christophm.github.io/interpretable-ml-book/&lt;/a>.&lt;/p>
+&lt;/div>
+&lt;div id="ref-R-base">
+&lt;p>R Core Team. 2019. &lt;em>R: A Language and Environment for Statistical Computing&lt;/em>. Vienna, Austria: R Foundation for Statistical Computing. &lt;a href="https://www.R-project.org/">https://www.R-project.org/&lt;/a>.&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;/div></description></item><item><title>Use R, Google Sheets and a nutrition API to calculate a nutrition table</title><link>https://bodoburger.github.io/post/2019-04-nutrition-table-google-sheets/</link><pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/post/2019-04-nutrition-table-google-sheets/</guid><description>
+&lt;p>I recently stumbled upon this
+&lt;a href="https://greenysherry.com/life-changing-brot-mit-nuessen-nach-my-new-roots-glutenfrei-vegan/">bread recipe&lt;/a>.
+It’s quickly prepared, the bread tastes great and is full of valuable ingredients
+(only oats, nuts and seeds).
+However, being homemade it does not come with a nutrition table.
+The following shows an easy way to create one.&lt;/p>
+&lt;p>We put the recipe into a spreadsheet
+(&lt;a href="https://docs.google.com/spreadsheets/d/1C0AwjQYrudrV3ZLgQJZnCr9La7OVftRTZn3QKMrJx5E">recipe&lt;/a>).
+Another spreadsheet contains the nutritional values of the macro nutrients of each ingredient
+(&lt;a href="https://docs.google.com/spreadsheets/d/1qgo8Yefb5nx5PVElZvmf6nSDI6RfN2ofd8CeMuSklHk">food stats&lt;/a>).
+We combine these using &lt;strong>R&lt;/strong> to get the nutrition table.
+Then, we look at an alternative to manually creating a spreadsheet with nutritional information
+by using an online database.
+As a bonus, we can calculate the price of the recipe.&lt;/p>
+&lt;div id="downloading-google-sheets-to-r" class="section level2">
+&lt;h2>Downloading Google Sheets to R&lt;/h2>
+&lt;p>A simple way to import Google Sheets to &lt;strong>R&lt;/strong> is the
+&lt;a href="https://cran.r-project.org/package=gsheet">gsheet&lt;/a> package.
+We only need to supply the sharing link.
+It returns a &lt;a href="https://tibble.tidyverse.org/">tibble&lt;/a>.&lt;/p>
+&lt;pre class="r">&lt;code>food_stats = gsheet::gsheet2tbl(&amp;quot;https://docs.google.com/spreadsheets/d/1qgo8Yefb5nx5PVElZvmf6nSDI6RfN2ofd8CeMuSklHk&amp;quot;)
+recipe = gsheet::gsheet2tbl(&amp;quot;https://docs.google.com/spreadsheets/d/1C0AwjQYrudrV3ZLgQJZnCr9La7OVftRTZn3QKMrJx5E&amp;quot;)&lt;/code>&lt;/pre>
+&lt;p>&lt;code>food_stats&lt;/code> contains more ingredients than we need for our bread recipe.
+So when we merge both data frames we only want to keep the rows
+that contain the ingredients of the recipe.
+This is done by &lt;code>left_join()&lt;/code> from the
+&lt;a href="https://cran.r-project.org/package=dplyr">dplyr&lt;/a> package.&lt;/p>
+&lt;pre class="r">&lt;code>library(dplyr)
+bread_ingredient_stats = left_join(recipe, food_stats, &amp;quot;Description&amp;quot;)&lt;/code>&lt;/pre>
+&lt;/div>
+&lt;div id="calculating-the-nutritional-values" class="section level2">
+&lt;h2>Calculating the nutritional values&lt;/h2>
+&lt;p>We have 10 ingredients. First, we create a vector that gives us
+the quantity of each ingredient in grams,
+then we select the columns that are relevant for the nutrition table.&lt;/p>
+&lt;pre class="r">&lt;code>nutrient_names = c(&amp;quot;Calories (kcal)&amp;quot;, &amp;quot;Total Fat&amp;quot;, &amp;quot;Saturated Fat&amp;quot;,
+&amp;quot;Total Carbs&amp;quot;, &amp;quot;Sugar&amp;quot;, &amp;quot;Dietary Fiber&amp;quot;, &amp;quot;Protein&amp;quot;)
+quantities = select(bread_ingredient_stats, &amp;quot;Quantity (gr)&amp;quot;)[[1]]
+nutrition_values = bread_ingredient_stats %&amp;gt;% select(nutrient_names)&lt;/code>&lt;/pre>
+&lt;p>The following calculation gives us the quantity of
+each macro nutrient in our bread &lt;em>per 100g&lt;/em>:&lt;/p>
+&lt;pre class="r">&lt;code>nutrition_table = colSums(nutrition_values * quantities) / sum(quantities)&lt;/code>&lt;/pre>
+&lt;p>Finally, we can print our nutrition table:&lt;/p>
+&lt;pre class="r">&lt;code>knitr::kable(nutrition_table, digits = 1, col.names = &amp;quot;per 100g&amp;quot;,
+caption = &amp;quot;Nutrition table&amp;quot;)&lt;/code>&lt;/pre>
+&lt;table>
+&lt;caption>&lt;span id="tab:unnamed-chunk-5">Table 1: &lt;/span>Nutrition table&lt;/caption>
+&lt;thead>
+&lt;tr class="header">
+&lt;th>&lt;/th>
+&lt;th align="right">per 100g&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr class="odd">
+&lt;td>Calories (kcal)&lt;/td>
+&lt;td align="right">307.3&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Total Fat&lt;/td>
+&lt;td align="right">22.5&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Saturated Fat&lt;/td>
+&lt;td align="right">4.7&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Total Carbs&lt;/td>
+&lt;td align="right">12.2&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Sugar&lt;/td>
+&lt;td align="right">0.5&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Dietary Fiber&lt;/td>
+&lt;td align="right">10.6&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Protein&lt;/td>
+&lt;td align="right">12.6&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Calorie-wise very similar to your &lt;a href="https://www.google.com/search?q=brown+bread">typical brown bread&lt;/a>, but rich in fat.
+Trust me, the bread is very filling, so you won’t be able to eat too much of it anyways.
+And how much does it cost?&lt;/p>
+&lt;pre class="r">&lt;code>prices = select(bread_ingredient_stats, &amp;quot;Price (€)&amp;quot;)[[1]]
+packaging = select(bread_ingredient_stats, &amp;quot;Packaging (g)&amp;quot;)[[1]]
+(price_total = sum(prices / packaging * quantities, na.rm = TRUE))&lt;/code>&lt;/pre>
+&lt;pre>&lt;code>## [1] 3.208962&lt;/code>&lt;/pre>
+&lt;p>One loaf of bread is 3.21€ (not including energy and time)
+weighing 910 grams (raw ingredients).
+I think that is a fair price for a bread I can eat from for a whole week.&lt;/p>
+&lt;/div>
+&lt;div id="using-the-api-of-a-nutrition-database" class="section level2">
+&lt;h2>Using the API of a nutrition database&lt;/h2>
+&lt;p>Instead of manually creating a spreadsheet for the nutritional values of each ingredient
+we can fetch the information from on online database.
+We use &lt;a href="https://openfoodfacts.org">openfoodfacts&lt;/a>.
+It’s a crowd-sourced database of food stats.
+To identify a product we need a barcode for each ingredient
+which I added to the recipe spreadsheet.
+The openfoodfacts API returns a JSON file which we can convert to a list
+using the &lt;a href="https://cran.r-project.org/package=rjson">rjson&lt;/a> package.
+We write two helper functions to fetch and extract the relevant information.&lt;/p>
+&lt;pre class="r">&lt;code>library(&amp;quot;rjson&amp;quot;)
+fetch_json = function(barcode, url = &amp;quot;https://world.openfoodfacts.org/api/v0/product/&amp;quot;) {
+query = paste0(url, barcode, &amp;quot;.json&amp;quot;)
+fromJSON(file = query)
+}
+extract_nutrition_values = function(food_list,
+nutriments = c(&amp;quot;energy_100g&amp;quot;, &amp;quot;fat_100g&amp;quot;, &amp;quot;saturated-fat_100g&amp;quot;,
+&amp;quot;carbohydrates_100g&amp;quot;, &amp;quot;sugars_100g&amp;quot;, &amp;quot;fiber_100g&amp;quot;,
+&amp;quot;proteins_100g&amp;quot;)) {
+nv = setNames(rep(0, length(nutriments)), nutriments)
+tmp = unlist(food_list$product$nutriments[nutriments])
+nv[names(tmp)] = tmp
+nv
+}
+barcodes = bread_ingredient_stats$Barcode[-10] # water does not have a barcode
+nutrition_values_api = matrix(0, nrow = 10, ncol = length(nutrition_values),
+dimnames = list(1:10, nutrient_names))
+for(i in seq_along(barcodes)) {
+food_list_tmp = fetch_json(barcodes[i])
+nutrition_values_api[i,] = extract_nutrition_values(food_list_tmp)
+}&lt;/code>&lt;/pre>
+&lt;p>&lt;code>nutrition_values_api&lt;/code> has the same structure as &lt;code>nutrition_values&lt;/code> from above,
+so we can proceed as before:&lt;/p>
+&lt;pre class="r">&lt;code>(nutrition_table_api = colSums(nutrition_values_api * quantities) / sum(quantities))&lt;/code>&lt;/pre>
+&lt;pre>&lt;code>## Calories (kcal) Total Fat Saturated Fat Total Carbs
+## 1344.0329670 22.4906593 4.7263736 12.3516484
+## Sugar Dietary Fiber Protein
+## 0.4923077 8.9291209 12.5313187&lt;/code>&lt;/pre>
+&lt;p>The results for the macro nutrients differ slightly which is expected
+because we changed the data source.
+However, the value for &lt;em>calories&lt;/em> quadrupled
+because the API reported energy in kilojoule (kJ) instead of kilocalories.
+To correct for this we divide the value by &lt;span class="math inline">\(4.1858\)&lt;/span>.&lt;/p>
+&lt;pre class="r">&lt;code>nutrition_table_api[1] = nutrition_table_api[1] / 4.1858
+knitr::kable(nutrition_table_api, digits = 1, col.names = &amp;quot;per 100g&amp;quot;,
+caption = &amp;quot;Nutrition table&amp;quot;)&lt;/code>&lt;/pre>
+&lt;table>
+&lt;caption>&lt;span id="tab:unnamed-chunk-9">Table 2: &lt;/span>Nutrition table&lt;/caption>
+&lt;thead>
+&lt;tr class="header">
+&lt;th>&lt;/th>
+&lt;th align="right">per 100g&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr class="odd">
+&lt;td>Calories (kcal)&lt;/td>
+&lt;td align="right">321.1&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Total Fat&lt;/td>
+&lt;td align="right">22.5&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Saturated Fat&lt;/td>
+&lt;td align="right">4.7&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Total Carbs&lt;/td>
+&lt;td align="right">12.4&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Sugar&lt;/td>
+&lt;td align="right">0.5&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Dietary Fiber&lt;/td>
+&lt;td align="right">8.9&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Protein&lt;/td>
+&lt;td align="right">12.5&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>And we are done!&lt;/p>
+&lt;/div></description></item></channel></rss>

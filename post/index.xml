@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog | Bodo Burger</title><link>https://bodoburger.github.io/post/</link><atom:link href="https://bodoburger.github.io/post/index.xml" rel="self" type="application/rss+xml"/><description>Blog</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Bodo Burger 2020</copyright><image><url>img/map[gravatar:%!s(bool=false) shape:circle]</url><title>Blog</title><link>https://bodoburger.github.io/post/</link></image><item><title>Slicing / selecting data with Pandas</title><link>https://bodoburger.github.io/post/2020-04-pandas-slicing/</link><pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/post/2020-04-pandas-slicing/</guid><description>&lt;!-- jupyter nbconvert index.ipynb --to markdown --NbConvertApp.output_files_dir=. -->
-&lt;h2>Table of Contents&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog | Bodo Burger</title><link>https://bodoburger.github.io/post/</link><atom:link href="https://bodoburger.github.io/post/index.xml" rel="self" type="application/rss+xml"/><description>Blog</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>Bodo Burger 2021</copyright><image><url>https://bodoburger.github.io/images/logo_huf0189912a6c4c6fe87cd287c2a6e1211_3971_300x300_fit_lanczos_2.png</url><title>Blog</title><link>https://bodoburger.github.io/post/</link></image><item><title>Slicing / selecting data with Pandas</title><link>https://bodoburger.github.io/post/2020-04-pandas-slicing/</link><pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/post/2020-04-pandas-slicing/</guid><description>&lt;!-- jupyter nbconvert index.ipynb --to markdown --NbConvertApp.output_files_dir=. -->
+&lt;details class="toc-inpage d-print-none " open>
+&lt;summary class="font-weight-bold">Table of Contents&lt;/summary>
 &lt;nav id="TableOfContents">
 &lt;ul>
 &lt;li>&lt;a href="#introduction">Introduction&lt;/a>&lt;/li>
@@ -17,17 +18,15 @@
 &lt;li>&lt;a href="#resources">Resources&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;/nav>
+&lt;/details>
 &lt;h2 id="introduction">Introduction&lt;/h2>
 &lt;p>Coming from &lt;strong>R&lt;/strong>, selecting parts of a data frame with Pandas was confusing for me
 because there seemed to be so many different ways to do the same task.&lt;/p>
-&lt;p>The
-&lt;a href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf" target="_blank" rel="noopener">Pandas cheat sheet&lt;/a> is a good reminder to all the possible ways to select data. This article gives a little context to all of them.
+&lt;p>The &lt;a href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf" target="_blank" rel="noopener">Pandas cheat sheet&lt;/a> is a good reminder to all the possible ways to select data. This article gives a little context to all of them.
 I will go through the most common cases you will face in a day-to-day data-sciency application.&lt;/p>
 &lt;p>I will assume that you already know that there are two basic data types in &lt;strong>Pandas&lt;/strong>,
-the
-&lt;a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html" target="_blank" rel="noopener">Series&lt;/a>
-and the
-&lt;a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html" target="_blank" rel="noopener">DataFrame&lt;/a>.
+the &lt;a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html" target="_blank" rel="noopener">Series&lt;/a>
+and the &lt;a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html" target="_blank" rel="noopener">DataFrame&lt;/a>.
 The first one is a one-dimensional array of values of the same data type, the second one is a two-dimensional array consisting of multiple &lt;code>Series&lt;/code> of the same length.&lt;/p>
 &lt;p>There are three main operators / methods to access parts of a &lt;code>DataFrame&lt;/code>:&lt;/p>
 &lt;ul>
@@ -1643,16 +1642,11 @@ Name: CRIM, dtype: float64
 &lt;code>my_df.ix(...)&lt;/code> which is deprecated since Pandas 0.20 and not working anymore in 2020.&lt;/p>
 &lt;h2 id="resources">Resources&lt;/h2>
 &lt;ul>
-&lt;li>
-&lt;a href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf" target="_blank" rel="noopener">Pandas cheat sheet&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html" target="_blank" rel="noopener">Pandas user guide for indexing and selecting data&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="https://jakevdp.github.io/PythonDataScienceHandbook/03.02-data-indexing-and-selection.html" target="_blank" rel="noopener">Python Data Science Handbook chapter 3&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="https://scikit-learn.org/stable/datasets/index.html" target="_blank" rel="noopener">scikit-learn toy datasets&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="https://github.com/mwaskom/seaborn-data" target="_blank" rel="noopener">seaborn datasets&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf" target="_blank" rel="noopener">Pandas cheat sheet&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html" target="_blank" rel="noopener">Pandas user guide for indexing and selecting data&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://jakevdp.github.io/PythonDataScienceHandbook/03.02-data-indexing-and-selection.html" target="_blank" rel="noopener">Python Data Science Handbook chapter 3&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://scikit-learn.org/stable/datasets/index.html" target="_blank" rel="noopener">scikit-learn toy datasets&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/mwaskom/seaborn-data" target="_blank" rel="noopener">seaborn datasets&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Use R, Google Sheets and a nutrition API to calculate a nutrition table</title><link>https://bodoburger.github.io/post/2019-04-nutrition-table-google-sheets/</link><pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/post/2019-04-nutrition-table-google-sheets/</guid><description>
 &lt;p>I recently stumbled upon this
 &lt;a href="https://greenysherry.com/life-changing-brot-mit-nuessen-nach-my-new-roots-glutenfrei-vegan/">bread recipe&lt;/a>.
@@ -2046,7 +2040,8 @@ Packages: &lt;a href="https://cran.r-project.org/package=iml">iml&lt;/a>,
 &lt;/td>
 &lt;/tr>
 &lt;/table>
-&lt;/div></description></item><item><title>Git Resources / Cheat Sheet</title><link>https://bodoburger.github.io/post/2017-07-git-cheat-sheet/</link><pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/post/2017-07-git-cheat-sheet/</guid><description>&lt;h2>Table of Contents&lt;/h2>
+&lt;/div></description></item><item><title>Git Resources / Cheat Sheet</title><link>https://bodoburger.github.io/post/2017-07-git-cheat-sheet/</link><pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/post/2017-07-git-cheat-sheet/</guid><description>&lt;details class="toc-inpage d-print-none " open>
+&lt;summary class="font-weight-bold">Table of Contents&lt;/summary>
 &lt;nav id="TableOfContents">
 &lt;ul>
 &lt;li>&lt;a href="#useful-articles--resources">Useful articles / resources&lt;/a>
@@ -2093,46 +2088,33 @@ Packages: &lt;a href="https://cran.r-project.org/package=iml">iml&lt;/a>,
 &lt;/li>
 &lt;/ul>
 &lt;/nav>
+&lt;/details>
 &lt;p>This blog post combines both a collection of useful resources on Git and
 a cheat sheet for git commands I googled repeatedly.
 It will be updated from time to time.&lt;/p>
 &lt;h2 id="useful-articles--resources">Useful articles / resources&lt;/h2>
 &lt;h3 id="basics">Basics&lt;/h3>
 &lt;ul>
-&lt;li>
-&lt;a href="https://git-scm.com/docs" target="_blank" rel="noopener">Git reference manual&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="https://git-scm.com/book/en/v2" target="_blank" rel="noopener">Pro Git book (2nd, 2014)&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="https://stackoverflow.com/questions/315911/git-for-beginners-the-definitive-practical-guide" target="_blank" rel="noopener">Git for beginners on stackoverflow&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="https://rogerdudler.github.io/git-guide/" target="_blank" rel="noopener">git - the simple guide&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/" target="_blank" rel="noopener">The beginner&amp;rsquo;s guide to contributing to a GitHub project&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="http://sethrobertson.github.io/GitFixUm/fixup.html" target="_blank" rel="noopener">On undoing, fixing, or removing commits in git&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="http://justinhileman.info/article/git-pretty/" target="_blank" rel="noopener">Git pretty chart&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://git-scm.com/docs" target="_blank" rel="noopener">Git reference manual&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://git-scm.com/book/en/v2" target="_blank" rel="noopener">Pro Git book (2nd, 2014)&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://stackoverflow.com/questions/315911/git-for-beginners-the-definitive-practical-guide" target="_blank" rel="noopener">Git for beginners on stackoverflow&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://rogerdudler.github.io/git-guide/" target="_blank" rel="noopener">git - the simple guide&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/" target="_blank" rel="noopener">The beginner&amp;rsquo;s guide to contributing to a GitHub project&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://sethrobertson.github.io/GitFixUm/fixup.html" target="_blank" rel="noopener">On undoing, fixing, or removing commits in git&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://justinhileman.info/article/git-pretty/" target="_blank" rel="noopener">Git pretty chart&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h3 id="interesting-discussions-on-git">Interesting discussions on Git&lt;/h3>
 &lt;ul>
-&lt;li>
-&lt;a href="https://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="noopener">A successful Git branching model&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="https://chris.beams.io/posts/git-commit/" target="_blank" rel="noopener">How to Write a Git Commit Message&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="https://lornajane.net/posts/2015/code-reviews-before-you-even-run-the-code" target="_blank" rel="noopener">Code Reviews: Before You Even Run The Code&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="https://softwareengineering.stackexchange.com/questions/69178/what-is-the-benefit-of-gits-two-stage-commit-process-staging" target="_blank" rel="noopener">What is the benefit of gits two stage commit process&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="https://stackoverflow.com/questions/4878358/why-would-i-want-stage-before-committing-in-git" target="_blank" rel="noopener">Why would I want to stage before committing?&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="noopener">A successful Git branching model&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://chris.beams.io/posts/git-commit/" target="_blank" rel="noopener">How to Write a Git Commit Message&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://lornajane.net/posts/2015/code-reviews-before-you-even-run-the-code" target="_blank" rel="noopener">Code Reviews: Before You Even Run The Code&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://softwareengineering.stackexchange.com/questions/69178/what-is-the-benefit-of-gits-two-stage-commit-process-staging" target="_blank" rel="noopener">What is the benefit of gits two stage commit process&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://stackoverflow.com/questions/4878358/why-would-i-want-stage-before-committing-in-git" target="_blank" rel="noopener">Why would I want to stage before committing?&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h3 id="github">GitHub&lt;/h3>
 &lt;ul>
-&lt;li>
-&lt;a href="https://github.com/KirstieJane/STEMMRoleModels/wiki/Syncing-your-fork-to-the-original-repository-via-the-browser" target="_blank" rel="noopener">Keep your fork up to date with the original repo via GitHub browser interface&lt;/a>
-(
-&lt;a href="https://stackoverflow.com/questions/20984802/how-can-i-keep-my-fork-in-sync-without-adding-a-separate-remote/21131381#21131381" target="_blank" rel="noopener">stackoverflow&lt;/a>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/KirstieJane/STEMMRoleModels/wiki/Syncing-your-fork-to-the-original-repository-via-the-browser" target="_blank" rel="noopener">Keep your fork up to date with the original repo via GitHub browser interface&lt;/a>
+(&lt;a href="https://stackoverflow.com/questions/20984802/how-can-i-keep-my-fork-in-sync-without-adding-a-separate-remote/21131381#21131381" target="_blank" rel="noopener">stackoverflow&lt;/a>)&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h2 id="branches">Branches&lt;/h2>
@@ -2145,8 +2127,7 @@ $ git checkout other-branch
 $ git checkout original-branch
 $ git stash pop
 &lt;/code>&lt;/pre>
-&lt;p>More about
-&lt;a href="https://git-scm.com/docs/git-stash" target="_blank" rel="noopener">&lt;em>git-stash&lt;/em>&lt;/a>.&lt;/p>
+&lt;p>More about &lt;a href="https://git-scm.com/docs/git-stash" target="_blank" rel="noopener">&lt;em>git-stash&lt;/em>&lt;/a>.&lt;/p>
 &lt;h3 id="create-a-local-branch-push-it-to-a-remote-repository-and-track-it">Create a local branch, push it to a remote repository and track it&lt;/h3>
 &lt;pre>&lt;code class="language-Bash">$ git checkout -b MyNewBranch # create and switch to new branch
 # do some stuff

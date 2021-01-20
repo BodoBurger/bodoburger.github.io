@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Book reviews | Bodo Burger</title><link>https://bodoburger.github.io/category/book-reviews/</link><atom:link href="https://bodoburger.github.io/category/book-reviews/index.xml" rel="self" type="application/rss+xml"/><description>Book reviews</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>Bodo Burger 2021</copyright><lastBuildDate>Tue, 26 Feb 2019 00:00:00 +0000</lastBuildDate><image><url>https://bodoburger.github.io/images/logo_huf0189912a6c4c6fe87cd287c2a6e1211_3971_300x300_fit_lanczos_2.png</url><title>Book reviews</title><link>https://bodoburger.github.io/category/book-reviews/</link></image><item><title>Interpretable Machine Learning by Christoph Molnar</title><link>https://bodoburger.github.io/post/2019-02-interpretable-ml-book/</link><pubDate>Tue, 26 Feb 2019 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/post/2019-02-interpretable-ml-book/</guid><description>
+&lt;p>The book gives an overview of common methods
+that help to better understand machine learning models.
+You can support the author by buying the book on
+&lt;a href="https://leanpub.com/interpretable-machine-learning">leanpub&lt;/a>.
+There is a &lt;a href="https://christophm.github.io/interpretable-ml-book">free online version&lt;/a>
+of the book, too.&lt;/p>
+&lt;div id="introduction" class="section level2">
+&lt;h2>Introduction&lt;/h2>
+&lt;p>The beginning of the book covers three short stories
+that illustrate the detrimental consequences of
+a world controlled by black box machine learning models
+(&lt;a href="https://christophm.github.io/interpretable-ml-book/storytime.html">1.1&lt;/a>).
+They serve as motivation for why we want to use methods
+that improve understanding of opaque models.
+The ultimate goal of these methods is that a human can understand a model
+so that he can consistently predict its results.&lt;/p>
+&lt;p>&lt;a href="https://christophm.github.io/interpretable-ml-book/interpretability.html">Chapter 2&lt;/a>
+lays the foundation for the discussion on machine learning interpretability
+by answering the following questions:&lt;/p>
+&lt;ul>
+&lt;li>Why is interpretation important and when do we need it
+(&lt;a href="https://christophm.github.io/interpretable-ml-book/interpretability-importance.html">2.1&lt;/a>)?&lt;/li>
+&lt;li>How can we classify different interpretation methods
+(&lt;a href="https://christophm.github.io/interpretable-ml-book/taxonomy-of-interpretability-methods.html">2.2&lt;/a>)?
+&lt;ul>
+&lt;li>intrinsic vs post-hoc methods&lt;/li>
+&lt;li>result of the method&lt;/li>
+&lt;li>model-specific vs model-agnostic&lt;/li>
+&lt;li>local vs global&lt;/li>
+&lt;/ul>&lt;/li>
+&lt;li>Which part of a model do we want to inspect
+(&lt;a href="https://christophm.github.io/interpretable-ml-book/scope-of-interpretability.html">2.3&lt;/a>)?&lt;/li>
+&lt;li>How do we evaluate the interpretation
+(&lt;a href="https://christophm.github.io/interpretable-ml-book/evaluation-of-interpretability.html">2.4&lt;/a>)?&lt;/li>
+&lt;li>What does a human need to know to understand a black box model
+(&lt;a href="https://christophm.github.io/interpretable-ml-book/explanation.html">2.6&lt;/a>)?&lt;/li>
+&lt;/ul>
+&lt;p>The presented interpretation methods are repeatedly applied to three freely available data sets
+representing different kinds of prediction tasks:
+&lt;a href="http://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset">daily bike rentals&lt;/a> (regression),
+&lt;a href="https://archive.ics.uci.edu/ml/datasets/Cervical+cancer+%28Risk+Factors%29">cancer risk factors&lt;/a> (classification) and
+&lt;a href="dcomp.sor.ufscar.br/talmeida/youtubespamcollection/">YouTube spam comments&lt;/a> (text classification).
+&lt;a href="https://christophm.github.io/interpretable-ml-book/data.html">Chapter 3&lt;/a>
+introduces the datasets in more detail.&lt;/p>
+&lt;/div>
+&lt;div id="interpretable-models" class="section level2">
+&lt;h2>Interpretable models&lt;/h2>
+&lt;p>This chapter presents models that are interpretable by itself.
+For Molnar these are
+&lt;a href="https://en.wikipedia.org/wiki/Linear_regression">linear regression&lt;/a>,
+&lt;a href="https://en.wikipedia.org/wiki/Logistic_regression">logistic regression&lt;/a>,
+&lt;a href="https://en.wikipedia.org/wiki/Decision_tree_learning">decision trees&lt;/a>,
+&lt;a href="https://en.wikipedia.org/wiki/Decision_tree#Decision_rules">decision rules&lt;/a>,
+RuleFit (&lt;a href="http://statweb.stanford.edu/~jhf/ftp/RuleFit.pdf">Friedman and Popescu, 2005&lt;/a>),
+&lt;a href="https://en.wikipedia.org/wiki/Naive_Bayes_classifier">naive Bayes&lt;/a> and
+&lt;a href="https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm">k-nearest neighbors&lt;/a>.&lt;/p>
+&lt;p>These models have in common that the result is accessible to the user without further steps.
+They differ in regards to linearity, monotonicity,
+the possibility to include feature interactions and the tasks they can handle.&lt;/p>
+&lt;p>Molnar concludes the discussion of each method with a comparison of its advantages and disadvantages.
+E.g. &lt;a href="https://christophm.github.io/interpretable-ml-book/limo.html#advantages">the apparent simplicity of linear models&lt;/a>
+is opposed by the difficulty to incorporate nonlinearity, the low predictive performance and
+the potentially unintuitive interpretation of the coefficients due to correlated features.&lt;/p>
+&lt;p>The following table is an overview of implementations of &lt;em>interpretable models&lt;/em>
+both for &lt;strong>R&lt;/strong> and &lt;strong>Python&lt;/strong>:&lt;/p>
+&lt;table>
+&lt;tr>
+&lt;th>
+Method&lt;br>
+&lt;/th>
+&lt;th>
+R
+&lt;/th>
+&lt;th>
+Python
+&lt;/th>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+linear model
+&lt;/td>
+&lt;td>
+&lt;a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/lm.html">lm()&lt;/a>
+&lt;/td>
+&lt;td>
+&lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression">sklearn.linear_model.LinearRegression()&lt;/a>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+logistic model
+&lt;/td>
+&lt;td>
+&lt;a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/glm.html">glm(formula, binomial(link = “logit”))&lt;/a>
+&lt;/td>
+&lt;td>
+&lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression">sklearn.linear_model.LogisticRegression()&lt;/a>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+decision tree
+&lt;/td>
+&lt;td>
+&lt;a href="https://cran.r-project.org/package=rpart">rpart()&lt;/a>
+&lt;/td>
+&lt;td>
+&lt;a href="https://scikit-learn.org/stable/modules/tree.html">sklearn.tree&lt;/a>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+decision rule
+&lt;/td>
+&lt;td>
+&lt;a href="https://cran.r-project.org/package=OneR">OneR()&lt;/a>
+&lt;/td>
+&lt;td>
+&lt;a href="https://oracle.github.io/Skater/reference/interpretation.html#bayesian-rule-lists-brl">BRLC() (skater)&lt;/a>
+&lt;/td
+&lt;/tr>
+&lt;tr>
+&lt;td>
+RuleFit
+&lt;/td>
+&lt;td>
+&lt;a href="https://cran.r-project.org/package=pre">pre()&lt;/a>
+&lt;/td>
+&lt;td>
+&lt;a href="https://github.com/christophM/rulefit">RuleFit()&lt;/a> or
+&lt;a href="https://github.com/scikit-learn-contrib/skope-rules">SkopeRules()&lt;/a>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+Naive Bayes
+&lt;/td>
+&lt;td>
+&lt;a href="https://cran.r-project.org/package=e1071">naiveBayes()&lt;/a>
+&lt;td>
+&lt;a href="https://scikit-learn.org/stable/modules/naive_bayes.html">sklearn.naive_bayes&lt;/a>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+k-nearest neighbors
+&lt;/td>
+&lt;td>
+&lt;a href="https://cran.r-project.org/package=kknn">kknn()&lt;/a>
+&lt;td>
+&lt;a href="https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-classification">sklearn.neighbors&lt;/a>
+&lt;/td>
+&lt;/table>
+&lt;/div>
+&lt;div id="model-agnostic-methods" class="section level2">
+&lt;h2>Model-agnostic methods&lt;/h2>
+&lt;p>A model-agnostic interpretability method is applied after a model is trained
+to make the result more accessible or transparent.
+Best case the method is flexible enough to be applied on any model.&lt;/p>
+&lt;table>
+&lt;tr>
+&lt;th>
+Method&lt;br>
+&lt;/th>
+&lt;th>
+R
+&lt;/th>
+&lt;th>
+Python
+&lt;/th>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+Partial Dependence Plot
+&lt;/td>
+&lt;td>
+Packages: &lt;a href="https://cran.r-project.org/package=mlr">mlr&lt;/a>,
+&lt;a href="https://cran.r-project.org/package=pdp">pdp&lt;/a>,
+&lt;a href="https://cran.r-project.org/package=iml">iml&lt;/a>,
+&lt;a href="https://github.com/BodoBurger/intame">intame&lt;/a>
+&lt;/td>
+&lt;td>
+&lt;a href="https://scikit-learn.org/stable/modules/partial_dependence.html">sklearn.inspection.plot_partial_dependence()&lt;/a>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+Individual Conditional Expectation
+&lt;/td>
+&lt;td>
+Packages: &lt;a href="https://cran.r-project.org/package=iml">iml&lt;/a>,
+&lt;a href="https://cran.r-project.org/package=pdp">pdp&lt;/a>,
+&lt;a href="https://cran.r-project.org/package=ICEbox">ICEbox&lt;/a>
+&lt;/td>
+&lt;td>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+Accumulated Local Effect
+&lt;/td>
+&lt;td>
+Packages: &lt;a href="https://cran.r-project.org/package=iml">iml&lt;/a>,
+&lt;a href="https://cran.r-project.org/package=ALEPlot">ALEPlot&lt;/a>,
+&lt;a href="https://github.com/BodoBurger/intame">intame&lt;/a>
+&lt;/td>
+&lt;td>
+&lt;/td>
+&lt;/tr>
+&lt;/table>
+&lt;/div></description></item></channel></rss>

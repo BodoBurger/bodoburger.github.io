@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Health Sector | Bodo Burger</title><link>https://bodoburger.github.io/tag/health-sector/</link><atom:link href="https://bodoburger.github.io/tag/health-sector/index.xml" rel="self" type="application/rss+xml"/><description>Health Sector</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>Bodo Burger 2021</copyright><lastBuildDate>Fri, 07 Apr 2017 00:00:00 +0000</lastBuildDate><image><url>https://bodoburger.github.io/images/logo_huf0189912a6c4c6fe87cd287c2a6e1211_3971_300x300_fit_lanczos_2.png</url><title>Health Sector</title><link>https://bodoburger.github.io/tag/health-sector/</link></image><item><title>Data Analysis for Helmholtz Zentrum München</title><link>https://bodoburger.github.io/project/2017-biomarker-helmholtz/</link><pubDate>Fri, 07 Apr 2017 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/project/2017-biomarker-helmholtz/</guid><description>
+&lt;p>The goal of the project was to quantify the relative importance
+of different metabolic pathways for coronary heart disease and type 2 diabetes.
+We analyzed data from the &lt;a href="https://www.helmholtz-muenchen.de/kora">KORA study&lt;/a>
+for which more than 15000 people are repeatedly medically examined since 1984.
+The main features of the analysis were 47 different biomarkers (see the image above)
+that represent different metabolic pathways.
+Additionally we controlled for several personal characteristics like sex or age.
+The target features were the incidence of the disease and
+the time until the incidence.
+Before the analysis missing data was imputed.
+We modeled the data using a Cox proportional hazards model.
+The &lt;em>case-cohort&lt;/em> study design &lt;span class="citation">(Barlow 1994)&lt;/span> was taken into account
+by weighing the data according to &lt;span class="citation">Barlow et al. (1999)&lt;/span>
+upon request of our project partners.
+Because this weighing method is not supported
+by the R package &lt;code>survival&lt;/code> &lt;span class="citation">(Therneau 2015)&lt;/span>
+we had to implement the routine by ourselves.
+The estimation of the relative contribution of different biomarkers
+to the risk of the disease was done as proposed by &lt;span class="citation">Montonen et al. (2011)&lt;/span>.
+Finally, estimations from multiple imputations had to be combined
+following Rubin’s rules &lt;span class="citation">(Rubin 1987)&lt;/span>.&lt;/p>
+&lt;p>A paper using the results from this project was published in March 2020
+(&lt;a href="https://cardiab.biomedcentral.com/articles/10.1186/s12933-020-01003-w">Huth et al “Biomarker-defined pathways for incident type 2 diabetes and coronary heart disease”&lt;/a>).&lt;/p>
+&lt;div id="references" class="section level2 unnumbered">
+&lt;h2>References&lt;/h2>
+&lt;div id="refs" class="references">
+&lt;div id="ref-barlow1994robust">
+&lt;p>Barlow, William E. 1994. “Robust Variance Estimation for the Case-Cohort Design.” &lt;em>Biometrics&lt;/em>. JSTOR, 1064–72.&lt;/p>
+&lt;/div>
+&lt;div id="ref-barlow1999analysis">
+&lt;p>Barlow, William E, Laura Ichikawa, Dan Rosner, and Shizue Izumi. 1999. “Analysis of Case-Cohort Designs.” &lt;em>Journal of Clinical Epidemiology&lt;/em> 52 (12). Elsevier: 1165–72.&lt;/p>
+&lt;/div>
+&lt;div id="ref-montonen2011estimation">
+&lt;p>Montonen, Jukka, Dagmar Drogan, Hans-Georg Joost, Heiner Boeing, Andreas Fritsche, Erwin Schleicher, Matthias B Schulze, and Tobias Pischon. 2011. “Estimation of the Contribution of Biomarkers of Different Metabolic Pathways to Risk of Type 2 Diabetes.” &lt;em>European Journal of Epidemiology&lt;/em> 26 (1). Springer: 29–38.&lt;/p>
+&lt;/div>
+&lt;div id="ref-rubin1987multiple">
+&lt;p>Rubin, D.B. 1987. &lt;em>Multiple Imputation for Nonresponse in Surveys&lt;/em>. Wiley Series in Probability and Statistics. Wiley.&lt;/p>
+&lt;/div>
+&lt;div id="ref-survival-package">
+&lt;p>Therneau, Terry M. 2015. &lt;em>A Package for Survival Analysis in S&lt;/em>. &lt;a href="https://CRAN.R-project.org/package=survival">https://CRAN.R-project.org/package=survival&lt;/a>.&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;/div></description></item><item><title>German Healthcare System - Risk Selection and Two-tier Medicine</title><link>https://bodoburger.github.io/project/2014-german-healthcare-system/</link><pubDate>Tue, 26 Aug 2014 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/project/2014-german-healthcare-system/</guid><description/></item></channel></rss>

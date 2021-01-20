@@ -1,0 +1,1833 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tutorials | Bodo Burger</title><link>https://bodoburger.github.io/category/tutorials/</link><atom:link href="https://bodoburger.github.io/category/tutorials/index.xml" rel="self" type="application/rss+xml"/><description>Tutorials</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>Bodo Burger 2021</copyright><lastBuildDate>Tue, 10 Dec 2019 00:00:00 +0000</lastBuildDate><image><url>https://bodoburger.github.io/images/logo_huf0189912a6c4c6fe87cd287c2a6e1211_3971_300x300_fit_lanczos_2.png</url><title>Tutorials</title><link>https://bodoburger.github.io/category/tutorials/</link></image><item><title>Slicing / selecting data with Pandas</title><link>https://bodoburger.github.io/post/2020-04-pandas-slicing/</link><pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/post/2020-04-pandas-slicing/</guid><description>&lt;!-- jupyter nbconvert index.ipynb --to markdown --NbConvertApp.output_files_dir=. -->
+&lt;details class="toc-inpage d-print-none " open>
+&lt;summary class="font-weight-bold">Table of Contents&lt;/summary>
+&lt;nav id="TableOfContents">
+&lt;ul>
+&lt;li>&lt;a href="#introduction">Introduction&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#square-brackets">square brackets&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#loc-method">&lt;code>loc&lt;/code> method&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#iloc-method">&lt;code>iloc&lt;/code> method&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#miscellaneous">Miscellaneous&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#filter-method">&lt;code>filter&lt;/code> method&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#select-a-column-using-">Select a column using &lt;code>.&lt;/code>&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#at--iat-methods">at / iat methods&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#ix-method">ix method&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="#resources">Resources&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/nav>
+&lt;/details>
+&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;p>Coming from &lt;strong>R&lt;/strong>, selecting parts of a data frame with Pandas was confusing for me
+because there seemed to be so many different ways to do the same task.&lt;/p>
+&lt;p>The &lt;a href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf" target="_blank" rel="noopener">Pandas cheat sheet&lt;/a> is a good reminder to all the possible ways to select data. This article gives a little context to all of them.
+I will go through the most common cases you will face in a day-to-day data-sciency application.&lt;/p>
+&lt;p>I will assume that you already know that there are two basic data types in &lt;strong>Pandas&lt;/strong>,
+the &lt;a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html" target="_blank" rel="noopener">Series&lt;/a>
+and the &lt;a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html" target="_blank" rel="noopener">DataFrame&lt;/a>.
+The first one is a one-dimensional array of values of the same data type, the second one is a two-dimensional array consisting of multiple &lt;code>Series&lt;/code> of the same length.&lt;/p>
+&lt;p>There are three main operators / methods to access parts of a &lt;code>DataFrame&lt;/code>:&lt;/p>
+&lt;ul>
+&lt;li>square brackets &lt;code>my_df[...]&lt;/code>&lt;/li>
+&lt;li>method &lt;code>my_df.loc[...]&lt;/code>&lt;/li>
+&lt;li>method &lt;code>my_df.iloc[...]&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>In the following we will look at all these methods in detail.
+Before we do that we load some example data from the &lt;strong>scikit-learn&lt;/strong> library:&lt;/p>
+&lt;pre>&lt;code class="language-python">import pandas as pd
+from sklearn import datasets
+boston_data = datasets.load_boston()
+boston_data.keys()
+&lt;/code>&lt;/pre>
+&lt;pre>&lt;code>dict_keys(['data', 'target', 'feature_names', 'DESCR', 'filename'])
+&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-python">df = pd.DataFrame(boston_data['data'], columns=boston_data['feature_names'])
+df['MEDV'] = boston_data['target']
+df
+&lt;/code>&lt;/pre>
+&lt;div>
+&lt;style scoped>
+.dataframe tbody tr th:only-of-type {
+vertical-align: middle;
+}
+&lt;pre>&lt;code>.dataframe tbody tr th {
+vertical-align: top;
+}
+.dataframe thead th {
+text-align: right;
+}
+&lt;/code>&lt;/pre>
+&lt;p>&lt;/style>&lt;/p>
+&lt;table border="1" class="dataframe">
+&lt;thead>
+&lt;tr style="text-align: right;">
+&lt;th>&lt;/th>
+&lt;th>CRIM&lt;/th>
+&lt;th>ZN&lt;/th>
+&lt;th>INDUS&lt;/th>
+&lt;th>CHAS&lt;/th>
+&lt;th>NOX&lt;/th>
+&lt;th>RM&lt;/th>
+&lt;th>AGE&lt;/th>
+&lt;th>DIS&lt;/th>
+&lt;th>RAD&lt;/th>
+&lt;th>TAX&lt;/th>
+&lt;th>PTRATIO&lt;/th>
+&lt;th>B&lt;/th>
+&lt;th>LSTAT&lt;/th>
+&lt;th>MEDV&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;th>0&lt;/th>
+&lt;td>0.00632&lt;/td>
+&lt;td>18.0&lt;/td>
+&lt;td>2.31&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.538&lt;/td>
+&lt;td>6.575&lt;/td>
+&lt;td>65.2&lt;/td>
+&lt;td>4.0900&lt;/td>
+&lt;td>1.0&lt;/td>
+&lt;td>296.0&lt;/td>
+&lt;td>15.3&lt;/td>
+&lt;td>396.90&lt;/td>
+&lt;td>4.98&lt;/td>
+&lt;td>24.0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>1&lt;/th>
+&lt;td>0.02731&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>7.07&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.469&lt;/td>
+&lt;td>6.421&lt;/td>
+&lt;td>78.9&lt;/td>
+&lt;td>4.9671&lt;/td>
+&lt;td>2.0&lt;/td>
+&lt;td>242.0&lt;/td>
+&lt;td>17.8&lt;/td>
+&lt;td>396.90&lt;/td>
+&lt;td>9.14&lt;/td>
+&lt;td>21.6&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>2&lt;/th>
+&lt;td>0.02729&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>7.07&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.469&lt;/td>
+&lt;td>7.185&lt;/td>
+&lt;td>61.1&lt;/td>
+&lt;td>4.9671&lt;/td>
+&lt;td>2.0&lt;/td>
+&lt;td>242.0&lt;/td>
+&lt;td>17.8&lt;/td>
+&lt;td>392.83&lt;/td>
+&lt;td>4.03&lt;/td>
+&lt;td>34.7&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>3&lt;/th>
+&lt;td>0.03237&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>2.18&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.458&lt;/td>
+&lt;td>6.998&lt;/td>
+&lt;td>45.8&lt;/td>
+&lt;td>6.0622&lt;/td>
+&lt;td>3.0&lt;/td>
+&lt;td>222.0&lt;/td>
+&lt;td>18.7&lt;/td>
+&lt;td>394.63&lt;/td>
+&lt;td>2.94&lt;/td>
+&lt;td>33.4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>4&lt;/th>
+&lt;td>0.06905&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>2.18&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.458&lt;/td>
+&lt;td>7.147&lt;/td>
+&lt;td>54.2&lt;/td>
+&lt;td>6.0622&lt;/td>
+&lt;td>3.0&lt;/td>
+&lt;td>222.0&lt;/td>
+&lt;td>18.7&lt;/td>
+&lt;td>396.90&lt;/td>
+&lt;td>5.33&lt;/td>
+&lt;td>36.2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>...&lt;/th>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>501&lt;/th>
+&lt;td>0.06263&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>11.93&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.573&lt;/td>
+&lt;td>6.593&lt;/td>
+&lt;td>69.1&lt;/td>
+&lt;td>2.4786&lt;/td>
+&lt;td>1.0&lt;/td>
+&lt;td>273.0&lt;/td>
+&lt;td>21.0&lt;/td>
+&lt;td>391.99&lt;/td>
+&lt;td>9.67&lt;/td>
+&lt;td>22.4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>502&lt;/th>
+&lt;td>0.04527&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>11.93&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.573&lt;/td>
+&lt;td>6.120&lt;/td>
+&lt;td>76.7&lt;/td>
+&lt;td>2.2875&lt;/td>
+&lt;td>1.0&lt;/td>
+&lt;td>273.0&lt;/td>
+&lt;td>21.0&lt;/td>
+&lt;td>396.90&lt;/td>
+&lt;td>9.08&lt;/td>
+&lt;td>20.6&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>503&lt;/th>
+&lt;td>0.06076&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>11.93&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.573&lt;/td>
+&lt;td>6.976&lt;/td>
+&lt;td>91.0&lt;/td>
+&lt;td>2.1675&lt;/td>
+&lt;td>1.0&lt;/td>
+&lt;td>273.0&lt;/td>
+&lt;td>21.0&lt;/td>
+&lt;td>396.90&lt;/td>
+&lt;td>5.64&lt;/td>
+&lt;td>23.9&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>504&lt;/th>
+&lt;td>0.10959&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>11.93&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.573&lt;/td>
+&lt;td>6.794&lt;/td>
+&lt;td>89.3&lt;/td>
+&lt;td>2.3889&lt;/td>
+&lt;td>1.0&lt;/td>
+&lt;td>273.0&lt;/td>
+&lt;td>21.0&lt;/td>
+&lt;td>393.45&lt;/td>
+&lt;td>6.48&lt;/td>
+&lt;td>22.0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>505&lt;/th>
+&lt;td>0.04741&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>11.93&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.573&lt;/td>
+&lt;td>6.030&lt;/td>
+&lt;td>80.8&lt;/td>
+&lt;td>2.5050&lt;/td>
+&lt;td>1.0&lt;/td>
+&lt;td>273.0&lt;/td>
+&lt;td>21.0&lt;/td>
+&lt;td>396.90&lt;/td>
+&lt;td>7.88&lt;/td>
+&lt;td>11.9&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>506 rows × 14 columns&lt;/p>
+&lt;/div>
+&lt;p>Because the difference between the index values and positional values of rows is important (as we will see later on) we change the index values:&lt;/p>
+&lt;pre>&lt;code class="language-python">df = df.set_index('i_' + df.index.map(str))
+df
+&lt;/code>&lt;/pre>
+&lt;div>
+&lt;style scoped>
+.dataframe tbody tr th:only-of-type {
+vertical-align: middle;
+}
+&lt;pre>&lt;code>.dataframe tbody tr th {
+vertical-align: top;
+}
+.dataframe thead th {
+text-align: right;
+}
+&lt;/code>&lt;/pre>
+&lt;p>&lt;/style>&lt;/p>
+&lt;table border="1" class="dataframe">
+&lt;thead>
+&lt;tr style="text-align: right;">
+&lt;th>&lt;/th>
+&lt;th>CRIM&lt;/th>
+&lt;th>ZN&lt;/th>
+&lt;th>INDUS&lt;/th>
+&lt;th>CHAS&lt;/th>
+&lt;th>NOX&lt;/th>
+&lt;th>RM&lt;/th>
+&lt;th>AGE&lt;/th>
+&lt;th>DIS&lt;/th>
+&lt;th>RAD&lt;/th>
+&lt;th>TAX&lt;/th>
+&lt;th>PTRATIO&lt;/th>
+&lt;th>B&lt;/th>
+&lt;th>LSTAT&lt;/th>
+&lt;th>MEDV&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;th>i_0&lt;/th>
+&lt;td>0.00632&lt;/td>
+&lt;td>18.0&lt;/td>
+&lt;td>2.31&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.538&lt;/td>
+&lt;td>6.575&lt;/td>
+&lt;td>65.2&lt;/td>
+&lt;td>4.0900&lt;/td>
+&lt;td>1.0&lt;/td>
+&lt;td>296.0&lt;/td>
+&lt;td>15.3&lt;/td>
+&lt;td>396.90&lt;/td>
+&lt;td>4.98&lt;/td>
+&lt;td>24.0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_1&lt;/th>
+&lt;td>0.02731&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>7.07&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.469&lt;/td>
+&lt;td>6.421&lt;/td>
+&lt;td>78.9&lt;/td>
+&lt;td>4.9671&lt;/td>
+&lt;td>2.0&lt;/td>
+&lt;td>242.0&lt;/td>
+&lt;td>17.8&lt;/td>
+&lt;td>396.90&lt;/td>
+&lt;td>9.14&lt;/td>
+&lt;td>21.6&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_2&lt;/th>
+&lt;td>0.02729&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>7.07&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.469&lt;/td>
+&lt;td>7.185&lt;/td>
+&lt;td>61.1&lt;/td>
+&lt;td>4.9671&lt;/td>
+&lt;td>2.0&lt;/td>
+&lt;td>242.0&lt;/td>
+&lt;td>17.8&lt;/td>
+&lt;td>392.83&lt;/td>
+&lt;td>4.03&lt;/td>
+&lt;td>34.7&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_3&lt;/th>
+&lt;td>0.03237&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>2.18&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.458&lt;/td>
+&lt;td>6.998&lt;/td>
+&lt;td>45.8&lt;/td>
+&lt;td>6.0622&lt;/td>
+&lt;td>3.0&lt;/td>
+&lt;td>222.0&lt;/td>
+&lt;td>18.7&lt;/td>
+&lt;td>394.63&lt;/td>
+&lt;td>2.94&lt;/td>
+&lt;td>33.4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_4&lt;/th>
+&lt;td>0.06905&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>2.18&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.458&lt;/td>
+&lt;td>7.147&lt;/td>
+&lt;td>54.2&lt;/td>
+&lt;td>6.0622&lt;/td>
+&lt;td>3.0&lt;/td>
+&lt;td>222.0&lt;/td>
+&lt;td>18.7&lt;/td>
+&lt;td>396.90&lt;/td>
+&lt;td>5.33&lt;/td>
+&lt;td>36.2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>...&lt;/th>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_501&lt;/th>
+&lt;td>0.06263&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>11.93&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.573&lt;/td>
+&lt;td>6.593&lt;/td>
+&lt;td>69.1&lt;/td>
+&lt;td>2.4786&lt;/td>
+&lt;td>1.0&lt;/td>
+&lt;td>273.0&lt;/td>
+&lt;td>21.0&lt;/td>
+&lt;td>391.99&lt;/td>
+&lt;td>9.67&lt;/td>
+&lt;td>22.4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_502&lt;/th>
+&lt;td>0.04527&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>11.93&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.573&lt;/td>
+&lt;td>6.120&lt;/td>
+&lt;td>76.7&lt;/td>
+&lt;td>2.2875&lt;/td>
+&lt;td>1.0&lt;/td>
+&lt;td>273.0&lt;/td>
+&lt;td>21.0&lt;/td>
+&lt;td>396.90&lt;/td>
+&lt;td>9.08&lt;/td>
+&lt;td>20.6&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_503&lt;/th>
+&lt;td>0.06076&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>11.93&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.573&lt;/td>
+&lt;td>6.976&lt;/td>
+&lt;td>91.0&lt;/td>
+&lt;td>2.1675&lt;/td>
+&lt;td>1.0&lt;/td>
+&lt;td>273.0&lt;/td>
+&lt;td>21.0&lt;/td>
+&lt;td>396.90&lt;/td>
+&lt;td>5.64&lt;/td>
+&lt;td>23.9&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_504&lt;/th>
+&lt;td>0.10959&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>11.93&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.573&lt;/td>
+&lt;td>6.794&lt;/td>
+&lt;td>89.3&lt;/td>
+&lt;td>2.3889&lt;/td>
+&lt;td>1.0&lt;/td>
+&lt;td>273.0&lt;/td>
+&lt;td>21.0&lt;/td>
+&lt;td>393.45&lt;/td>
+&lt;td>6.48&lt;/td>
+&lt;td>22.0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_505&lt;/th>
+&lt;td>0.04741&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>11.93&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.573&lt;/td>
+&lt;td>6.030&lt;/td>
+&lt;td>80.8&lt;/td>
+&lt;td>2.5050&lt;/td>
+&lt;td>1.0&lt;/td>
+&lt;td>273.0&lt;/td>
+&lt;td>21.0&lt;/td>
+&lt;td>396.90&lt;/td>
+&lt;td>7.88&lt;/td>
+&lt;td>11.9&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>506 rows × 14 columns&lt;/p>
+&lt;/div>
+&lt;h2 id="square-brackets">square brackets&lt;/h2>
+&lt;p>The square brackets operator that is also used in Python for accessing parts of a &lt;code>list&lt;/code>, a &lt;code>string&lt;/code> or a &lt;code>dict&lt;/code> can be used to select both a single or multiple columns and rows of a &lt;code>DataFrame&lt;/code>.&lt;/p>
+&lt;p>To select a single column you have to refer to it by its name:&lt;/p>
+&lt;pre>&lt;code class="language-python">df['CRIM']
+&lt;/code>&lt;/pre>
+&lt;pre>&lt;code>i_0 0.00632
+i_1 0.02731
+i_2 0.02729
+i_3 0.03237
+i_4 0.06905
+...
+i_501 0.06263
+i_502 0.04527
+i_503 0.06076
+i_504 0.10959
+i_505 0.04741
+Name: CRIM, Length: 506, dtype: float64
+&lt;/code>&lt;/pre>
+&lt;p>Notice that the result is a &lt;code>Series&lt;/code>. We can check this by typing&lt;/p>
+&lt;pre>&lt;code class="language-python">type(df['CRIM'])
+&lt;/code>&lt;/pre>
+&lt;pre>&lt;code>pandas.core.series.Series
+&lt;/code>&lt;/pre>
+&lt;p>To select multiple columns you refer to them by a list of their names:&lt;/p>
+&lt;pre>&lt;code class="language-python">df[['CRIM', 'INDUS']]
+&lt;/code>&lt;/pre>
+&lt;div>
+&lt;style scoped>
+.dataframe tbody tr th:only-of-type {
+vertical-align: middle;
+}
+&lt;pre>&lt;code>.dataframe tbody tr th {
+vertical-align: top;
+}
+.dataframe thead th {
+text-align: right;
+}
+&lt;/code>&lt;/pre>
+&lt;p>&lt;/style>&lt;/p>
+&lt;table border="1" class="dataframe">
+&lt;thead>
+&lt;tr style="text-align: right;">
+&lt;th>&lt;/th>
+&lt;th>CRIM&lt;/th>
+&lt;th>INDUS&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;th>i_0&lt;/th>
+&lt;td>0.00632&lt;/td>
+&lt;td>2.31&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_1&lt;/th>
+&lt;td>0.02731&lt;/td>
+&lt;td>7.07&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_2&lt;/th>
+&lt;td>0.02729&lt;/td>
+&lt;td>7.07&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_3&lt;/th>
+&lt;td>0.03237&lt;/td>
+&lt;td>2.18&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_4&lt;/th>
+&lt;td>0.06905&lt;/td>
+&lt;td>2.18&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>...&lt;/th>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_501&lt;/th>
+&lt;td>0.06263&lt;/td>
+&lt;td>11.93&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_502&lt;/th>
+&lt;td>0.04527&lt;/td>
+&lt;td>11.93&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_503&lt;/th>
+&lt;td>0.06076&lt;/td>
+&lt;td>11.93&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_504&lt;/th>
+&lt;td>0.10959&lt;/td>
+&lt;td>11.93&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_505&lt;/th>
+&lt;td>0.04741&lt;/td>
+&lt;td>11.93&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>506 rows × 2 columns&lt;/p>
+&lt;/div>
+&lt;p>The result is a &lt;code>DataFrame&lt;/code>, even if the list contains only one column name.&lt;/p>
+&lt;p>We can select rows using square brackets in the same way you can select elements of a &lt;code>list&lt;/code> by refering to their positional values. E.g. to select the first three rows, we write:&lt;/p>
+&lt;pre>&lt;code class="language-python">df[0:3]
+&lt;/code>&lt;/pre>
+&lt;div>
+&lt;style scoped>
+.dataframe tbody tr th:only-of-type {
+vertical-align: middle;
+}
+&lt;pre>&lt;code>.dataframe tbody tr th {
+vertical-align: top;
+}
+.dataframe thead th {
+text-align: right;
+}
+&lt;/code>&lt;/pre>
+&lt;p>&lt;/style>&lt;/p>
+&lt;table border="1" class="dataframe">
+&lt;thead>
+&lt;tr style="text-align: right;">
+&lt;th>&lt;/th>
+&lt;th>CRIM&lt;/th>
+&lt;th>ZN&lt;/th>
+&lt;th>INDUS&lt;/th>
+&lt;th>CHAS&lt;/th>
+&lt;th>NOX&lt;/th>
+&lt;th>RM&lt;/th>
+&lt;th>AGE&lt;/th>
+&lt;th>DIS&lt;/th>
+&lt;th>RAD&lt;/th>
+&lt;th>TAX&lt;/th>
+&lt;th>PTRATIO&lt;/th>
+&lt;th>B&lt;/th>
+&lt;th>LSTAT&lt;/th>
+&lt;th>MEDV&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;th>i_0&lt;/th>
+&lt;td>0.00632&lt;/td>
+&lt;td>18.0&lt;/td>
+&lt;td>2.31&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.538&lt;/td>
+&lt;td>6.575&lt;/td>
+&lt;td>65.2&lt;/td>
+&lt;td>4.0900&lt;/td>
+&lt;td>1.0&lt;/td>
+&lt;td>296.0&lt;/td>
+&lt;td>15.3&lt;/td>
+&lt;td>396.90&lt;/td>
+&lt;td>4.98&lt;/td>
+&lt;td>24.0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_1&lt;/th>
+&lt;td>0.02731&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>7.07&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.469&lt;/td>
+&lt;td>6.421&lt;/td>
+&lt;td>78.9&lt;/td>
+&lt;td>4.9671&lt;/td>
+&lt;td>2.0&lt;/td>
+&lt;td>242.0&lt;/td>
+&lt;td>17.8&lt;/td>
+&lt;td>396.90&lt;/td>
+&lt;td>9.14&lt;/td>
+&lt;td>21.6&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_2&lt;/th>
+&lt;td>0.02729&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>7.07&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.469&lt;/td>
+&lt;td>7.185&lt;/td>
+&lt;td>61.1&lt;/td>
+&lt;td>4.9671&lt;/td>
+&lt;td>2.0&lt;/td>
+&lt;td>242.0&lt;/td>
+&lt;td>17.8&lt;/td>
+&lt;td>392.83&lt;/td>
+&lt;td>4.03&lt;/td>
+&lt;td>34.7&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;p>This also works by refering to row names, like this:&lt;/p>
+&lt;pre>&lt;code class="language-python">df['i_0':'i_2']
+&lt;/code>&lt;/pre>
+&lt;div>
+&lt;style scoped>
+.dataframe tbody tr th:only-of-type {
+vertical-align: middle;
+}
+&lt;pre>&lt;code>.dataframe tbody tr th {
+vertical-align: top;
+}
+.dataframe thead th {
+text-align: right;
+}
+&lt;/code>&lt;/pre>
+&lt;p>&lt;/style>&lt;/p>
+&lt;table border="1" class="dataframe">
+&lt;thead>
+&lt;tr style="text-align: right;">
+&lt;th>&lt;/th>
+&lt;th>CRIM&lt;/th>
+&lt;th>ZN&lt;/th>
+&lt;th>INDUS&lt;/th>
+&lt;th>CHAS&lt;/th>
+&lt;th>NOX&lt;/th>
+&lt;th>RM&lt;/th>
+&lt;th>AGE&lt;/th>
+&lt;th>DIS&lt;/th>
+&lt;th>RAD&lt;/th>
+&lt;th>TAX&lt;/th>
+&lt;th>PTRATIO&lt;/th>
+&lt;th>B&lt;/th>
+&lt;th>LSTAT&lt;/th>
+&lt;th>MEDV&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;th>i_0&lt;/th>
+&lt;td>0.00632&lt;/td>
+&lt;td>18.0&lt;/td>
+&lt;td>2.31&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.538&lt;/td>
+&lt;td>6.575&lt;/td>
+&lt;td>65.2&lt;/td>
+&lt;td>4.0900&lt;/td>
+&lt;td>1.0&lt;/td>
+&lt;td>296.0&lt;/td>
+&lt;td>15.3&lt;/td>
+&lt;td>396.90&lt;/td>
+&lt;td>4.98&lt;/td>
+&lt;td>24.0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_1&lt;/th>
+&lt;td>0.02731&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>7.07&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.469&lt;/td>
+&lt;td>6.421&lt;/td>
+&lt;td>78.9&lt;/td>
+&lt;td>4.9671&lt;/td>
+&lt;td>2.0&lt;/td>
+&lt;td>242.0&lt;/td>
+&lt;td>17.8&lt;/td>
+&lt;td>396.90&lt;/td>
+&lt;td>9.14&lt;/td>
+&lt;td>21.6&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_2&lt;/th>
+&lt;td>0.02729&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>7.07&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.469&lt;/td>
+&lt;td>7.185&lt;/td>
+&lt;td>61.1&lt;/td>
+&lt;td>4.9671&lt;/td>
+&lt;td>2.0&lt;/td>
+&lt;td>242.0&lt;/td>
+&lt;td>17.8&lt;/td>
+&lt;td>392.83&lt;/td>
+&lt;td>4.03&lt;/td>
+&lt;td>34.7&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;p>Notice the slightly different logic (the last element we reference &lt;code>i_2&lt;/code> is included) compared to the slicing method using integers.&lt;/p>
+&lt;p>We can also leave one side of the colon empty to refer to the first or last row, like this:&lt;/p>
+&lt;pre>&lt;code class="language-python">df[:'i_2']
+&lt;/code>&lt;/pre>
+&lt;div>
+&lt;style scoped>
+.dataframe tbody tr th:only-of-type {
+vertical-align: middle;
+}
+&lt;pre>&lt;code>.dataframe tbody tr th {
+vertical-align: top;
+}
+.dataframe thead th {
+text-align: right;
+}
+&lt;/code>&lt;/pre>
+&lt;p>&lt;/style>&lt;/p>
+&lt;table border="1" class="dataframe">
+&lt;thead>
+&lt;tr style="text-align: right;">
+&lt;th>&lt;/th>
+&lt;th>CRIM&lt;/th>
+&lt;th>ZN&lt;/th>
+&lt;th>INDUS&lt;/th>
+&lt;th>CHAS&lt;/th>
+&lt;th>NOX&lt;/th>
+&lt;th>RM&lt;/th>
+&lt;th>AGE&lt;/th>
+&lt;th>DIS&lt;/th>
+&lt;th>RAD&lt;/th>
+&lt;th>TAX&lt;/th>
+&lt;th>PTRATIO&lt;/th>
+&lt;th>B&lt;/th>
+&lt;th>LSTAT&lt;/th>
+&lt;th>MEDV&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;th>i_0&lt;/th>
+&lt;td>0.00632&lt;/td>
+&lt;td>18.0&lt;/td>
+&lt;td>2.31&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.538&lt;/td>
+&lt;td>6.575&lt;/td>
+&lt;td>65.2&lt;/td>
+&lt;td>4.0900&lt;/td>
+&lt;td>1.0&lt;/td>
+&lt;td>296.0&lt;/td>
+&lt;td>15.3&lt;/td>
+&lt;td>396.90&lt;/td>
+&lt;td>4.98&lt;/td>
+&lt;td>24.0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_1&lt;/th>
+&lt;td>0.02731&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>7.07&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.469&lt;/td>
+&lt;td>6.421&lt;/td>
+&lt;td>78.9&lt;/td>
+&lt;td>4.9671&lt;/td>
+&lt;td>2.0&lt;/td>
+&lt;td>242.0&lt;/td>
+&lt;td>17.8&lt;/td>
+&lt;td>396.90&lt;/td>
+&lt;td>9.14&lt;/td>
+&lt;td>21.6&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_2&lt;/th>
+&lt;td>0.02729&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>7.07&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.469&lt;/td>
+&lt;td>7.185&lt;/td>
+&lt;td>61.1&lt;/td>
+&lt;td>4.9671&lt;/td>
+&lt;td>2.0&lt;/td>
+&lt;td>242.0&lt;/td>
+&lt;td>17.8&lt;/td>
+&lt;td>392.83&lt;/td>
+&lt;td>4.03&lt;/td>
+&lt;td>34.7&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;p>Another way to select multiple rows is using a condition. We have to provide a &lt;code>Series&lt;/code> or &lt;code>list&lt;/code> of type &lt;code>bool&lt;/code> with the same length as the number of rows. This is often used to condition on the values of a column in the same &lt;code>DataFrame&lt;/code>, like this:&lt;/p>
+&lt;pre>&lt;code class="language-python">df[df['INDUS'] &amp;gt; 27]
+&lt;/code>&lt;/pre>
+&lt;div>
+&lt;style scoped>
+.dataframe tbody tr th:only-of-type {
+vertical-align: middle;
+}
+&lt;pre>&lt;code>.dataframe tbody tr th {
+vertical-align: top;
+}
+.dataframe thead th {
+text-align: right;
+}
+&lt;/code>&lt;/pre>
+&lt;p>&lt;/style>&lt;/p>
+&lt;table border="1" class="dataframe">
+&lt;thead>
+&lt;tr style="text-align: right;">
+&lt;th>&lt;/th>
+&lt;th>CRIM&lt;/th>
+&lt;th>ZN&lt;/th>
+&lt;th>INDUS&lt;/th>
+&lt;th>CHAS&lt;/th>
+&lt;th>NOX&lt;/th>
+&lt;th>RM&lt;/th>
+&lt;th>AGE&lt;/th>
+&lt;th>DIS&lt;/th>
+&lt;th>RAD&lt;/th>
+&lt;th>TAX&lt;/th>
+&lt;th>PTRATIO&lt;/th>
+&lt;th>B&lt;/th>
+&lt;th>LSTAT&lt;/th>
+&lt;th>MEDV&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;th>i_488&lt;/th>
+&lt;td>0.15086&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>27.74&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.609&lt;/td>
+&lt;td>5.454&lt;/td>
+&lt;td>92.7&lt;/td>
+&lt;td>1.8209&lt;/td>
+&lt;td>4.0&lt;/td>
+&lt;td>711.0&lt;/td>
+&lt;td>20.1&lt;/td>
+&lt;td>395.09&lt;/td>
+&lt;td>18.06&lt;/td>
+&lt;td>15.2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_489&lt;/th>
+&lt;td>0.18337&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>27.74&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.609&lt;/td>
+&lt;td>5.414&lt;/td>
+&lt;td>98.3&lt;/td>
+&lt;td>1.7554&lt;/td>
+&lt;td>4.0&lt;/td>
+&lt;td>711.0&lt;/td>
+&lt;td>20.1&lt;/td>
+&lt;td>344.05&lt;/td>
+&lt;td>23.97&lt;/td>
+&lt;td>7.0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_490&lt;/th>
+&lt;td>0.20746&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>27.74&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.609&lt;/td>
+&lt;td>5.093&lt;/td>
+&lt;td>98.0&lt;/td>
+&lt;td>1.8226&lt;/td>
+&lt;td>4.0&lt;/td>
+&lt;td>711.0&lt;/td>
+&lt;td>20.1&lt;/td>
+&lt;td>318.43&lt;/td>
+&lt;td>29.68&lt;/td>
+&lt;td>8.1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_491&lt;/th>
+&lt;td>0.10574&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>27.74&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.609&lt;/td>
+&lt;td>5.983&lt;/td>
+&lt;td>98.8&lt;/td>
+&lt;td>1.8681&lt;/td>
+&lt;td>4.0&lt;/td>
+&lt;td>711.0&lt;/td>
+&lt;td>20.1&lt;/td>
+&lt;td>390.11&lt;/td>
+&lt;td>18.07&lt;/td>
+&lt;td>13.6&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_492&lt;/th>
+&lt;td>0.11132&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>27.74&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.609&lt;/td>
+&lt;td>5.983&lt;/td>
+&lt;td>83.5&lt;/td>
+&lt;td>2.1099&lt;/td>
+&lt;td>4.0&lt;/td>
+&lt;td>711.0&lt;/td>
+&lt;td>20.1&lt;/td>
+&lt;td>396.90&lt;/td>
+&lt;td>13.35&lt;/td>
+&lt;td>20.1&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;p>As we can see whether we select columns or rows depends on the type of input.
+Because of this the square brackets operator can be confusing at the beginning.
+Furthermore, we can&amp;rsquo;t select specific columns and rows at once,
+as we might be expect coming from &lt;strong>R&lt;/strong>.&lt;/p>
+&lt;h2 id="loc-method">&lt;code>loc&lt;/code> method&lt;/h2>
+&lt;p>The &lt;code>loc&lt;/code> method expects references by name both to rows and columns.&lt;/p>
+&lt;pre>&lt;code class="language-python">df.loc['i_2', 'CRIM']
+&lt;/code>&lt;/pre>
+&lt;pre>&lt;code>0.02729
+&lt;/code>&lt;/pre>
+&lt;p>To select multiple rows and columns, we put their respective names in a &lt;code>list&lt;/code>:&lt;/p>
+&lt;pre>&lt;code class="language-python">df.loc[['i_0', 'i_2'], ['CRIM', 'INDUS']]
+&lt;/code>&lt;/pre>
+&lt;div>
+&lt;style scoped>
+.dataframe tbody tr th:only-of-type {
+vertical-align: middle;
+}
+&lt;pre>&lt;code>.dataframe tbody tr th {
+vertical-align: top;
+}
+.dataframe thead th {
+text-align: right;
+}
+&lt;/code>&lt;/pre>
+&lt;p>&lt;/style>&lt;/p>
+&lt;table border="1" class="dataframe">
+&lt;thead>
+&lt;tr style="text-align: right;">
+&lt;th>&lt;/th>
+&lt;th>CRIM&lt;/th>
+&lt;th>INDUS&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;th>i_0&lt;/th>
+&lt;td>0.00632&lt;/td>
+&lt;td>2.31&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_2&lt;/th>
+&lt;td>0.02729&lt;/td>
+&lt;td>7.07&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;p>We can refer to a range of rows or columns using a colon, like this:&lt;/p>
+&lt;pre>&lt;code class="language-python">df.loc['i_4':'i_5', 'CRIM':'INDUS']
+&lt;/code>&lt;/pre>
+&lt;div>
+&lt;style scoped>
+.dataframe tbody tr th:only-of-type {
+vertical-align: middle;
+}
+&lt;pre>&lt;code>.dataframe tbody tr th {
+vertical-align: top;
+}
+.dataframe thead th {
+text-align: right;
+}
+&lt;/code>&lt;/pre>
+&lt;p>&lt;/style>&lt;/p>
+&lt;table border="1" class="dataframe">
+&lt;thead>
+&lt;tr style="text-align: right;">
+&lt;th>&lt;/th>
+&lt;th>CRIM&lt;/th>
+&lt;th>ZN&lt;/th>
+&lt;th>INDUS&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;th>i_4&lt;/th>
+&lt;td>0.06905&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>2.18&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_5&lt;/th>
+&lt;td>0.02985&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>2.18&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;p>Or mix both methods:&lt;/p>
+&lt;pre>&lt;code class="language-python">df.loc[['i_0','i_2'], 'CRIM':'INDUS']
+&lt;/code>&lt;/pre>
+&lt;div>
+&lt;style scoped>
+.dataframe tbody tr th:only-of-type {
+vertical-align: middle;
+}
+&lt;pre>&lt;code>.dataframe tbody tr th {
+vertical-align: top;
+}
+.dataframe thead th {
+text-align: right;
+}
+&lt;/code>&lt;/pre>
+&lt;p>&lt;/style>&lt;/p>
+&lt;table border="1" class="dataframe">
+&lt;thead>
+&lt;tr style="text-align: right;">
+&lt;th>&lt;/th>
+&lt;th>CRIM&lt;/th>
+&lt;th>ZN&lt;/th>
+&lt;th>INDUS&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;th>i_0&lt;/th>
+&lt;td>0.00632&lt;/td>
+&lt;td>18.0&lt;/td>
+&lt;td>2.31&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_2&lt;/th>
+&lt;td>0.02729&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>7.07&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;p>If we select only a single row or column the result is a &lt;code>Series&lt;/code>:&lt;/p>
+&lt;pre>&lt;code class="language-python">df.loc['i_5', 'CRIM':'INDUS']
+&lt;/code>&lt;/pre>
+&lt;pre>&lt;code>CRIM 0.02985
+ZN 0.00000
+INDUS 2.18000
+Name: i_5, dtype: float64
+&lt;/code>&lt;/pre>
+&lt;p>If we want to select all rows or columns we leave both sides of the colon empty:&lt;/p>
+&lt;pre>&lt;code class="language-python">df.loc['i_5', :]
+&lt;/code>&lt;/pre>
+&lt;pre>&lt;code>CRIM 0.02985
+ZN 0.00000
+INDUS 2.18000
+CHAS 0.00000
+NOX 0.45800
+RM 6.43000
+AGE 58.70000
+DIS 6.06220
+RAD 3.00000
+TAX 222.00000
+PTRATIO 18.70000
+B 394.12000
+LSTAT 5.21000
+MEDV 28.70000
+Name: i_5, dtype: float64
+&lt;/code>&lt;/pre>
+&lt;p>With the &lt;code>loc&lt;/code> method we can also also restrict the selection of rows using a condition:&lt;/p>
+&lt;pre>&lt;code class="language-python">df.loc[df['INDUS'] &amp;gt; 27, 'CRIM':'CHAS']
+&lt;/code>&lt;/pre>
+&lt;div>
+&lt;style scoped>
+.dataframe tbody tr th:only-of-type {
+vertical-align: middle;
+}
+&lt;pre>&lt;code>.dataframe tbody tr th {
+vertical-align: top;
+}
+.dataframe thead th {
+text-align: right;
+}
+&lt;/code>&lt;/pre>
+&lt;p>&lt;/style>&lt;/p>
+&lt;table border="1" class="dataframe">
+&lt;thead>
+&lt;tr style="text-align: right;">
+&lt;th>&lt;/th>
+&lt;th>CRIM&lt;/th>
+&lt;th>ZN&lt;/th>
+&lt;th>INDUS&lt;/th>
+&lt;th>CHAS&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;th>i_488&lt;/th>
+&lt;td>0.15086&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>27.74&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_489&lt;/th>
+&lt;td>0.18337&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>27.74&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_490&lt;/th>
+&lt;td>0.20746&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>27.74&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_491&lt;/th>
+&lt;td>0.10574&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>27.74&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_492&lt;/th>
+&lt;td>0.11132&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>27.74&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;h2 id="iloc-method">&lt;code>iloc&lt;/code> method&lt;/h2>
+&lt;p>Using the &lt;code>iloc&lt;/code> method we can refer to rows and columns by their positional value. To get the third row we type&lt;/p>
+&lt;pre>&lt;code class="language-python">df.iloc[2]
+&lt;/code>&lt;/pre>
+&lt;pre>&lt;code>CRIM 0.02729
+ZN 0.00000
+INDUS 7.07000
+CHAS 0.00000
+NOX 0.46900
+RM 7.18500
+AGE 61.10000
+DIS 4.96710
+RAD 2.00000
+TAX 242.00000
+PTRATIO 17.80000
+B 392.83000
+LSTAT 4.03000
+MEDV 34.70000
+Name: i_2, dtype: float64
+&lt;/code>&lt;/pre>
+&lt;p>The result is a &lt;code>Series&lt;/code>. Multiple rows can be selected using a list&lt;/p>
+&lt;pre>&lt;code class="language-python">df.iloc[[2,4]]
+&lt;/code>&lt;/pre>
+&lt;div>
+&lt;style scoped>
+.dataframe tbody tr th:only-of-type {
+vertical-align: middle;
+}
+&lt;pre>&lt;code>.dataframe tbody tr th {
+vertical-align: top;
+}
+.dataframe thead th {
+text-align: right;
+}
+&lt;/code>&lt;/pre>
+&lt;p>&lt;/style>&lt;/p>
+&lt;table border="1" class="dataframe">
+&lt;thead>
+&lt;tr style="text-align: right;">
+&lt;th>&lt;/th>
+&lt;th>CRIM&lt;/th>
+&lt;th>ZN&lt;/th>
+&lt;th>INDUS&lt;/th>
+&lt;th>CHAS&lt;/th>
+&lt;th>NOX&lt;/th>
+&lt;th>RM&lt;/th>
+&lt;th>AGE&lt;/th>
+&lt;th>DIS&lt;/th>
+&lt;th>RAD&lt;/th>
+&lt;th>TAX&lt;/th>
+&lt;th>PTRATIO&lt;/th>
+&lt;th>B&lt;/th>
+&lt;th>LSTAT&lt;/th>
+&lt;th>MEDV&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;th>i_2&lt;/th>
+&lt;td>0.02729&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>7.07&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.469&lt;/td>
+&lt;td>7.185&lt;/td>
+&lt;td>61.1&lt;/td>
+&lt;td>4.9671&lt;/td>
+&lt;td>2.0&lt;/td>
+&lt;td>242.0&lt;/td>
+&lt;td>17.8&lt;/td>
+&lt;td>392.83&lt;/td>
+&lt;td>4.03&lt;/td>
+&lt;td>34.7&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_4&lt;/th>
+&lt;td>0.06905&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>2.18&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.458&lt;/td>
+&lt;td>7.147&lt;/td>
+&lt;td>54.2&lt;/td>
+&lt;td>6.0622&lt;/td>
+&lt;td>3.0&lt;/td>
+&lt;td>222.0&lt;/td>
+&lt;td>18.7&lt;/td>
+&lt;td>396.90&lt;/td>
+&lt;td>5.33&lt;/td>
+&lt;td>36.2&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;p>or, for a range of rows, using the familiar slicing syntax:&lt;/p>
+&lt;pre>&lt;code class="language-python">df.iloc[2:4]
+&lt;/code>&lt;/pre>
+&lt;div>
+&lt;style scoped>
+.dataframe tbody tr th:only-of-type {
+vertical-align: middle;
+}
+&lt;pre>&lt;code>.dataframe tbody tr th {
+vertical-align: top;
+}
+.dataframe thead th {
+text-align: right;
+}
+&lt;/code>&lt;/pre>
+&lt;p>&lt;/style>&lt;/p>
+&lt;table border="1" class="dataframe">
+&lt;thead>
+&lt;tr style="text-align: right;">
+&lt;th>&lt;/th>
+&lt;th>CRIM&lt;/th>
+&lt;th>ZN&lt;/th>
+&lt;th>INDUS&lt;/th>
+&lt;th>CHAS&lt;/th>
+&lt;th>NOX&lt;/th>
+&lt;th>RM&lt;/th>
+&lt;th>AGE&lt;/th>
+&lt;th>DIS&lt;/th>
+&lt;th>RAD&lt;/th>
+&lt;th>TAX&lt;/th>
+&lt;th>PTRATIO&lt;/th>
+&lt;th>B&lt;/th>
+&lt;th>LSTAT&lt;/th>
+&lt;th>MEDV&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;th>i_2&lt;/th>
+&lt;td>0.02729&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>7.07&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.469&lt;/td>
+&lt;td>7.185&lt;/td>
+&lt;td>61.1&lt;/td>
+&lt;td>4.9671&lt;/td>
+&lt;td>2.0&lt;/td>
+&lt;td>242.0&lt;/td>
+&lt;td>17.8&lt;/td>
+&lt;td>392.83&lt;/td>
+&lt;td>4.03&lt;/td>
+&lt;td>34.7&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_3&lt;/th>
+&lt;td>0.03237&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>2.18&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;td>0.458&lt;/td>
+&lt;td>6.998&lt;/td>
+&lt;td>45.8&lt;/td>
+&lt;td>6.0622&lt;/td>
+&lt;td>3.0&lt;/td>
+&lt;td>222.0&lt;/td>
+&lt;td>18.7&lt;/td>
+&lt;td>394.63&lt;/td>
+&lt;td>2.94&lt;/td>
+&lt;td>33.4&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;p>The result in both cases is a data frame (even if only one row is selected).&lt;/p>
+&lt;p>This can be combined with a selection of columns using the respective positional values. To select only the second column we type&lt;/p>
+&lt;pre>&lt;code class="language-python">df.iloc[2:4, 1]
+&lt;/code>&lt;/pre>
+&lt;pre>&lt;code>i_2 0.0
+i_3 0.0
+Name: ZN, dtype: float64
+&lt;/code>&lt;/pre>
+&lt;p>To select multiple columns we can use a &lt;code>list&lt;/code> or the slicing syntax:&lt;/p>
+&lt;pre>&lt;code class="language-python">df.iloc[2:4, 1:3]
+&lt;/code>&lt;/pre>
+&lt;div>
+&lt;style scoped>
+.dataframe tbody tr th:only-of-type {
+vertical-align: middle;
+}
+&lt;pre>&lt;code>.dataframe tbody tr th {
+vertical-align: top;
+}
+.dataframe thead th {
+text-align: right;
+}
+&lt;/code>&lt;/pre>
+&lt;p>&lt;/style>&lt;/p>
+&lt;table border="1" class="dataframe">
+&lt;thead>
+&lt;tr style="text-align: right;">
+&lt;th>&lt;/th>
+&lt;th>ZN&lt;/th>
+&lt;th>INDUS&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;th>i_2&lt;/th>
+&lt;td>0.0&lt;/td>
+&lt;td>7.07&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_3&lt;/th>
+&lt;td>0.0&lt;/td>
+&lt;td>2.18&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;p>To select all rows or columns we leave sides of the colon empty:&lt;/p>
+&lt;pre>&lt;code class="language-python">df.iloc[:, 1:3]
+&lt;/code>&lt;/pre>
+&lt;div>
+&lt;style scoped>
+.dataframe tbody tr th:only-of-type {
+vertical-align: middle;
+}
+&lt;pre>&lt;code>.dataframe tbody tr th {
+vertical-align: top;
+}
+.dataframe thead th {
+text-align: right;
+}
+&lt;/code>&lt;/pre>
+&lt;p>&lt;/style>&lt;/p>
+&lt;table border="1" class="dataframe">
+&lt;thead>
+&lt;tr style="text-align: right;">
+&lt;th>&lt;/th>
+&lt;th>ZN&lt;/th>
+&lt;th>INDUS&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;th>i_0&lt;/th>
+&lt;td>18.0&lt;/td>
+&lt;td>2.31&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_1&lt;/th>
+&lt;td>0.0&lt;/td>
+&lt;td>7.07&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_2&lt;/th>
+&lt;td>0.0&lt;/td>
+&lt;td>7.07&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_3&lt;/th>
+&lt;td>0.0&lt;/td>
+&lt;td>2.18&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_4&lt;/th>
+&lt;td>0.0&lt;/td>
+&lt;td>2.18&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>...&lt;/th>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_501&lt;/th>
+&lt;td>0.0&lt;/td>
+&lt;td>11.93&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_502&lt;/th>
+&lt;td>0.0&lt;/td>
+&lt;td>11.93&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_503&lt;/th>
+&lt;td>0.0&lt;/td>
+&lt;td>11.93&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_504&lt;/th>
+&lt;td>0.0&lt;/td>
+&lt;td>11.93&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_505&lt;/th>
+&lt;td>0.0&lt;/td>
+&lt;td>11.93&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>506 rows × 2 columns&lt;/p>
+&lt;/div>
+&lt;h2 id="miscellaneous">Miscellaneous&lt;/h2>
+&lt;h3 id="filter-method">&lt;code>filter&lt;/code> method&lt;/h3>
+&lt;p>The filter method allows for a nifty selection of columns based on a regular expression.
+E.g. to select columns beginning with the letter &lt;em>C&lt;/em> we type&lt;/p>
+&lt;pre>&lt;code class="language-python">df.filter(regex='^C')
+&lt;/code>&lt;/pre>
+&lt;div>
+&lt;style scoped>
+.dataframe tbody tr th:only-of-type {
+vertical-align: middle;
+}
+&lt;pre>&lt;code>.dataframe tbody tr th {
+vertical-align: top;
+}
+.dataframe thead th {
+text-align: right;
+}
+&lt;/code>&lt;/pre>
+&lt;p>&lt;/style>&lt;/p>
+&lt;table border="1" class="dataframe">
+&lt;thead>
+&lt;tr style="text-align: right;">
+&lt;th>&lt;/th>
+&lt;th>CRIM&lt;/th>
+&lt;th>CHAS&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;th>i_0&lt;/th>
+&lt;td>0.00632&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_1&lt;/th>
+&lt;td>0.02731&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_2&lt;/th>
+&lt;td>0.02729&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_3&lt;/th>
+&lt;td>0.03237&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_4&lt;/th>
+&lt;td>0.06905&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>...&lt;/th>
+&lt;td>...&lt;/td>
+&lt;td>...&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_501&lt;/th>
+&lt;td>0.06263&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_502&lt;/th>
+&lt;td>0.04527&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_503&lt;/th>
+&lt;td>0.06076&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_504&lt;/th>
+&lt;td>0.10959&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;th>i_505&lt;/th>
+&lt;td>0.04741&lt;/td>
+&lt;td>0.0&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>506 rows × 2 columns&lt;/p>
+&lt;/div>
+&lt;h3 id="select-a-column-using-">Select a column using &lt;code>.&lt;/code>&lt;/h3>
+&lt;p>Instead of &lt;code>df['column_name']&lt;/code> we can also select a column typing &lt;code>df.column_name&lt;/code>.
+However, this only works for columns whose names do not coincide with another &lt;code>DataFrame&lt;/code> method. Thus, I would discourage selecting columns this way.&lt;/p>
+&lt;pre>&lt;code class="language-python">df.CRIM[0:5]
+&lt;/code>&lt;/pre>
+&lt;pre>&lt;code>i_0 0.00632
+i_1 0.02731
+i_2 0.02729
+i_3 0.03237
+i_4 0.06905
+Name: CRIM, dtype: float64
+&lt;/code>&lt;/pre>
+&lt;h3 id="at--iat-methods">at / iat methods&lt;/h3>
+&lt;p>For the special case, we want to access a single value there are the methods &lt;code>at&lt;/code> and &lt;code>iat&lt;/code>, which are supposed to be faster than &lt;code>loc&lt;/code> and &lt;code>iloc&lt;/code>.&lt;/p>
+&lt;pre>&lt;code class="language-python">df.iat[2, 2]
+&lt;/code>&lt;/pre>
+&lt;pre>&lt;code>7.07
+&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-python">df.at['i_2', 'INDUS']
+&lt;/code>&lt;/pre>
+&lt;pre>&lt;code>7.07
+&lt;/code>&lt;/pre>
+&lt;h3 id="ix-method">ix method&lt;/h3>
+&lt;p>If you are googling for a Pandas-related question you may find solutions using the method
+&lt;code>my_df.ix(...)&lt;/code> which is deprecated since Pandas 0.20 and not working anymore in 2020.&lt;/p>
+&lt;h2 id="resources">Resources&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf" target="_blank" rel="noopener">Pandas cheat sheet&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html" target="_blank" rel="noopener">Pandas user guide for indexing and selecting data&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://jakevdp.github.io/PythonDataScienceHandbook/03.02-data-indexing-and-selection.html" target="_blank" rel="noopener">Python Data Science Handbook chapter 3&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://scikit-learn.org/stable/datasets/index.html" target="_blank" rel="noopener">scikit-learn toy datasets&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/mwaskom/seaborn-data" target="_blank" rel="noopener">seaborn datasets&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Use R, Google Sheets and a nutrition API to calculate a nutrition table</title><link>https://bodoburger.github.io/post/2019-04-nutrition-table-google-sheets/</link><pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate><guid>https://bodoburger.github.io/post/2019-04-nutrition-table-google-sheets/</guid><description>
+&lt;p>I recently stumbled upon this
+&lt;a href="https://greenysherry.com/life-changing-brot-mit-nuessen-nach-my-new-roots-glutenfrei-vegan/">bread recipe&lt;/a>.
+It’s quickly prepared, the bread tastes great and is full of valuable ingredients
+(only oats, nuts and seeds).
+However, being homemade it does not come with a nutrition table.
+The following shows an easy way to create one.&lt;/p>
+&lt;p>We put the recipe into a spreadsheet
+(&lt;a href="https://docs.google.com/spreadsheets/d/1C0AwjQYrudrV3ZLgQJZnCr9La7OVftRTZn3QKMrJx5E">recipe&lt;/a>).
+Another spreadsheet contains the nutritional values of the macro nutrients of each ingredient
+(&lt;a href="https://docs.google.com/spreadsheets/d/1qgo8Yefb5nx5PVElZvmf6nSDI6RfN2ofd8CeMuSklHk">food stats&lt;/a>).
+We combine these using &lt;strong>R&lt;/strong> to get the nutrition table.
+Then, we look at an alternative to manually creating a spreadsheet with nutritional information
+by using an online database.
+As a bonus, we can calculate the price of the recipe.&lt;/p>
+&lt;div id="downloading-google-sheets-to-r" class="section level2">
+&lt;h2>Downloading Google Sheets to R&lt;/h2>
+&lt;p>A simple way to import Google Sheets to &lt;strong>R&lt;/strong> is the
+&lt;a href="https://cran.r-project.org/package=gsheet">gsheet&lt;/a> package.
+We only need to supply the sharing link.
+It returns a &lt;a href="https://tibble.tidyverse.org/">tibble&lt;/a>.&lt;/p>
+&lt;pre class="r">&lt;code>food_stats = gsheet::gsheet2tbl(&amp;quot;https://docs.google.com/spreadsheets/d/1qgo8Yefb5nx5PVElZvmf6nSDI6RfN2ofd8CeMuSklHk&amp;quot;)
+recipe = gsheet::gsheet2tbl(&amp;quot;https://docs.google.com/spreadsheets/d/1C0AwjQYrudrV3ZLgQJZnCr9La7OVftRTZn3QKMrJx5E&amp;quot;)&lt;/code>&lt;/pre>
+&lt;p>&lt;code>food_stats&lt;/code> contains more ingredients than we need for our bread recipe.
+So when we merge both data frames we only want to keep the rows
+that contain the ingredients of the recipe.
+This is done by &lt;code>left_join()&lt;/code> from the
+&lt;a href="https://cran.r-project.org/package=dplyr">dplyr&lt;/a> package.&lt;/p>
+&lt;pre class="r">&lt;code>library(dplyr)
+bread_ingredient_stats = left_join(recipe, food_stats, &amp;quot;Description&amp;quot;)&lt;/code>&lt;/pre>
+&lt;/div>
+&lt;div id="calculating-the-nutritional-values" class="section level2">
+&lt;h2>Calculating the nutritional values&lt;/h2>
+&lt;p>We have 10 ingredients. First, we create a vector that gives us
+the quantity of each ingredient in grams,
+then we select the columns that are relevant for the nutrition table.&lt;/p>
+&lt;pre class="r">&lt;code>nutrient_names = c(&amp;quot;Calories (kcal)&amp;quot;, &amp;quot;Total Fat&amp;quot;, &amp;quot;Saturated Fat&amp;quot;,
+&amp;quot;Total Carbs&amp;quot;, &amp;quot;Sugar&amp;quot;, &amp;quot;Dietary Fiber&amp;quot;, &amp;quot;Protein&amp;quot;)
+quantities = select(bread_ingredient_stats, &amp;quot;Quantity (gr)&amp;quot;)[[1]]
+nutrition_values = bread_ingredient_stats %&amp;gt;% select(nutrient_names)&lt;/code>&lt;/pre>
+&lt;p>The following calculation gives us the quantity of
+each macro nutrient in our bread &lt;em>per 100g&lt;/em>:&lt;/p>
+&lt;pre class="r">&lt;code>nutrition_table = colSums(nutrition_values * quantities) / sum(quantities)&lt;/code>&lt;/pre>
+&lt;p>Finally, we can print our nutrition table:&lt;/p>
+&lt;pre class="r">&lt;code>knitr::kable(nutrition_table, digits = 1, col.names = &amp;quot;per 100g&amp;quot;,
+caption = &amp;quot;Nutrition table&amp;quot;)&lt;/code>&lt;/pre>
+&lt;table>
+&lt;caption>&lt;span id="tab:unnamed-chunk-5">Table 1: &lt;/span>Nutrition table&lt;/caption>
+&lt;thead>
+&lt;tr class="header">
+&lt;th>&lt;/th>
+&lt;th align="right">per 100g&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr class="odd">
+&lt;td>Calories (kcal)&lt;/td>
+&lt;td align="right">307.3&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Total Fat&lt;/td>
+&lt;td align="right">22.5&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Saturated Fat&lt;/td>
+&lt;td align="right">4.7&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Total Carbs&lt;/td>
+&lt;td align="right">12.2&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Sugar&lt;/td>
+&lt;td align="right">0.5&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Dietary Fiber&lt;/td>
+&lt;td align="right">10.6&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Protein&lt;/td>
+&lt;td align="right">12.6&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Calorie-wise very similar to your &lt;a href="https://www.google.com/search?q=brown+bread">typical brown bread&lt;/a>, but rich in fat.
+Trust me, the bread is very filling, so you won’t be able to eat too much of it anyways.
+And how much does it cost?&lt;/p>
+&lt;pre class="r">&lt;code>prices = select(bread_ingredient_stats, &amp;quot;Price (€)&amp;quot;)[[1]]
+packaging = select(bread_ingredient_stats, &amp;quot;Packaging (g)&amp;quot;)[[1]]
+(price_total = sum(prices / packaging * quantities, na.rm = TRUE))&lt;/code>&lt;/pre>
+&lt;pre>&lt;code>## [1] 3.208962&lt;/code>&lt;/pre>
+&lt;p>One loaf of bread is 3.21€ (not including energy and time)
+weighing 910 grams (raw ingredients).
+I think that is a fair price for a bread I can eat from for a whole week.&lt;/p>
+&lt;/div>
+&lt;div id="using-the-api-of-a-nutrition-database" class="section level2">
+&lt;h2>Using the API of a nutrition database&lt;/h2>
+&lt;p>Instead of manually creating a spreadsheet for the nutritional values of each ingredient
+we can fetch the information from on online database.
+We use &lt;a href="https://openfoodfacts.org">openfoodfacts&lt;/a>.
+It’s a crowd-sourced database of food stats.
+To identify a product we need a barcode for each ingredient
+which I added to the recipe spreadsheet.
+The openfoodfacts API returns a JSON file which we can convert to a list
+using the &lt;a href="https://cran.r-project.org/package=rjson">rjson&lt;/a> package.
+We write two helper functions to fetch and extract the relevant information.&lt;/p>
+&lt;pre class="r">&lt;code>library(&amp;quot;rjson&amp;quot;)
+fetch_json = function(barcode, url = &amp;quot;https://world.openfoodfacts.org/api/v0/product/&amp;quot;) {
+query = paste0(url, barcode, &amp;quot;.json&amp;quot;)
+fromJSON(file = query)
+}
+extract_nutrition_values = function(food_list,
+nutriments = c(&amp;quot;energy_100g&amp;quot;, &amp;quot;fat_100g&amp;quot;, &amp;quot;saturated-fat_100g&amp;quot;,
+&amp;quot;carbohydrates_100g&amp;quot;, &amp;quot;sugars_100g&amp;quot;, &amp;quot;fiber_100g&amp;quot;,
+&amp;quot;proteins_100g&amp;quot;)) {
+nv = setNames(rep(0, length(nutriments)), nutriments)
+tmp = unlist(food_list$product$nutriments[nutriments])
+nv[names(tmp)] = tmp
+nv
+}
+barcodes = bread_ingredient_stats$Barcode[-10] # water does not have a barcode
+nutrition_values_api = matrix(0, nrow = 10, ncol = length(nutrition_values),
+dimnames = list(1:10, nutrient_names))
+for(i in seq_along(barcodes)) {
+food_list_tmp = fetch_json(barcodes[i])
+nutrition_values_api[i,] = extract_nutrition_values(food_list_tmp)
+}&lt;/code>&lt;/pre>
+&lt;p>&lt;code>nutrition_values_api&lt;/code> has the same structure as &lt;code>nutrition_values&lt;/code> from above,
+so we can proceed as before:&lt;/p>
+&lt;pre class="r">&lt;code>(nutrition_table_api = colSums(nutrition_values_api * quantities) / sum(quantities))&lt;/code>&lt;/pre>
+&lt;pre>&lt;code>## Calories (kcal) Total Fat Saturated Fat Total Carbs
+## 1344.0329670 22.4906593 4.7263736 12.3516484
+## Sugar Dietary Fiber Protein
+## 0.4923077 8.9291209 12.5313187&lt;/code>&lt;/pre>
+&lt;p>The results for the macro nutrients differ slightly which is expected
+because we changed the data source.
+However, the value for &lt;em>calories&lt;/em> quadrupled
+because the API reported energy in kilojoule (kJ) instead of kilocalories.
+To correct for this we divide the value by &lt;span class="math inline">\(4.1858\)&lt;/span>.&lt;/p>
+&lt;pre class="r">&lt;code>nutrition_table_api[1] = nutrition_table_api[1] / 4.1858
+knitr::kable(nutrition_table_api, digits = 1, col.names = &amp;quot;per 100g&amp;quot;,
+caption = &amp;quot;Nutrition table&amp;quot;)&lt;/code>&lt;/pre>
+&lt;table>
+&lt;caption>&lt;span id="tab:unnamed-chunk-9">Table 2: &lt;/span>Nutrition table&lt;/caption>
+&lt;thead>
+&lt;tr class="header">
+&lt;th>&lt;/th>
+&lt;th align="right">per 100g&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr class="odd">
+&lt;td>Calories (kcal)&lt;/td>
+&lt;td align="right">321.1&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Total Fat&lt;/td>
+&lt;td align="right">22.5&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Saturated Fat&lt;/td>
+&lt;td align="right">4.7&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Total Carbs&lt;/td>
+&lt;td align="right">12.4&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Sugar&lt;/td>
+&lt;td align="right">0.5&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Dietary Fiber&lt;/td>
+&lt;td align="right">8.9&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Protein&lt;/td>
+&lt;td align="right">12.5&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>And we are done!&lt;/p>
+&lt;/div></description></item></channel></rss>
