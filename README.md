@@ -5,12 +5,12 @@
 ## Tools
 
 - static site generator: [Hugo](https://gohugo.io/)
-- Hugo theme: [Academic](https://sourcethemes.com/academic/)
+- Hugo theme: [Wowchemy](https://wowchemy.com/)
 - deployment: [netlify](https://www.netlify.com/)
 - hosting: [GitHub Pages](https://pages.github.com/)
 - version control: [Git](https://git-scm.com/)
 - editors: [VS Code](https://code.visualstudio.com/), [RStudio](https://rstudio.com/) (+ [blogdown](https://bookdown.org/yihui/blogdown/)), [JupyterLab](https://jupyter.org/)
-- web form handling: [Formspree](https://formspree.io/), [Getform](https://getform.io/)
+- web form handling: [Formspree](https://formspree.io/)
 
 ## Resources
 
