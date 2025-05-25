@@ -1,2 +1,5 @@
 # Workspace settings
 .vscode/
+
+# Jupyter
+.ipynb_checkpoints/

@@ -1,11 +1,36 @@
+# Project Information
 site_name: My Site
 site_description: my personal website for data and tech stuff
 site_url: https://bodoburger.github.io/
+site_author: Bodo Burger
 
+# Repository
+repo_name: BodoBurger/bodoburger.github.io
+repo_url: https://github.com/BodoBurger/bodoburger.github.io
+
+# Configuration
 theme:
   name: material
+  #custom_dir: overrides
+  features:
+    - navigation.sections
+    - navigation.tabs
+    - navigation.top
+  font:
+    text: Roboto
+    code: Roboto Mono
+#  favicon: assets/favicon.png
+#  icon:
+#    logo: logo
 
+# Plugins
 plugins:
   - search
   - blog
   - meta
+
+# Extra settings
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/BodoBurger
