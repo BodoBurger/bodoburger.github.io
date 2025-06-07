@@ -50,16 +50,23 @@ extra:
 
 # Custom CSS
 extra_css:
-  - assets/stylesheets/extra.css
+  - assets/stylesheets/custom.css
+
+# Extensions
+markdown_extensions: 
+  - attr_list
+  - md_in_html
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
 
 not_in_nav: |
   /index.md
 
-
 # Page tree
 nav:
 #- Home: index.md
-- About me: aboutme.md
+- About: about.md
 - Notes:
   - notes/index.md
   - Data science concepts:
