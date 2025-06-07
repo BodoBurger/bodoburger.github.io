@@ -24,7 +24,7 @@ theme:
     - navigation.sections
     - navigation.tabs
     - navigation.top
-    - navtiagion.tracking
+    - navigation.tracking
   font:
     text: Roboto
     code: Roboto Mono
