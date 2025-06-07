@@ -1,5 +1,5 @@
 # Project Information
-site_name: My Site
+site_name: Bodo's site
 site_description: my personal website for data and tech stuff
 site_url: https://bodoburger.github.io/
 site_author: Bodo Burger
@@ -13,15 +13,21 @@ theme:
   name: material
   #custom_dir: overrides
   features:
+    - content.code.annotate
+    - content.code.copy
+    - content.code.select
+    - navigation.indexes
+    - navigation.path
     - navigation.sections
     - navigation.tabs
     - navigation.top
+    - navtiagion.tracking
   font:
     text: Roboto
     code: Roboto Mono
 #  favicon: assets/favicon.png
-#  icon:
-#    logo: logo
+  icon:
+    logo: material/home-city
 
 # Plugins
 plugins:
@@ -34,3 +40,27 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/BodoBurger
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/bodo-burger/
+
+# Page tree
+nav:
+#- Home: index.md
+- About me: aboutme.md
+- Notes:
+  - notes/index.md
+  - Data science concepts:
+    - Big data: notes/data_science/big_data.md
+    - SQL recipes: notes/data_science/sql_recipes.md
+  - Tools:
+    - Conda: notes/tools/conda.md
+    - Git: notes/tools/git.md
+    - SSH: notes/tools/ssh.md
+    - Ubuntu: notes/tools/ubuntu.md
+    - VS Code: notes/tools/vs_code.md
+  - Cloud services:
+    - notes/cloud/index.md
+    - AWS: notes/cloud/aws.md
+- Notebooks:
+  - "notebooks/"
+- Contact: contact.md

@@ -1,4 +1,4 @@
-# Welcome to MkDocs
+# bodoburger.github.io
 
 For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 

@@ -95,6 +95,8 @@ conda create -n name_of_new_env python=3.12
 ### Remove environment
 
 ```bash
+conda deactivate # only relevant if environment to-be-deleted is activated
+
 conda remove -n name_of_env --all
 # alternative: conda env remove -n name_of_env
 ```
