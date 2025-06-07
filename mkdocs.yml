@@ -8,10 +8,13 @@ site_author: Bodo Burger
 repo_name: BodoBurger/bodoburger.github.io
 repo_url: https://github.com/BodoBurger/bodoburger.github.io
 
+# Copyright
+copyright: Copyright &copy; 2025 Bodo Burger
+
 # Configuration
 theme:
   name: material
-  #custom_dir: overrides
+  custom_dir: overrides
   features:
     - content.code.annotate
     - content.code.copy
@@ -42,6 +45,16 @@ extra:
       link: https://github.com/BodoBurger
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/bodo-burger/
+    - icon: custom/pride
+      link: https://www.thehrcfoundation.org/
+
+# Custom CSS
+extra_css:
+  - assets/stylesheets/extra.css
+
+not_in_nav: |
+  /index.md
+
 
 # Page tree
 nav:

@@ -48,6 +48,20 @@ $ git push -u origin MyNewBranch
 $ git branch -d MyLocalBranch
 ```
 
+### Create empty branch with no history
+
+Everyone will tell you not to do this. But hey, you can do whatever you want in your own repositories, so do this:
+
+```Bash
+git switch --orphan my_new_branch
+
+# commit some files, like a README or .gitignore
+
+git push -u origin my_new_branch
+```
+
+- [Stackoverflow 'Create empty branch on GitHub'](https://stackoverflow.com/questions/34100048/create-empty-branch-on-github/34100189#34100189)
+
 
 ## Merging
 
@@ -157,4 +171,3 @@ Then, you can commit the deletion and the modified gitignore file.
 
 - [Keep your fork up to date with the original repo via GitHub browser interface](https://github.com/KirstieJane/STEMMRoleModels/wiki/Syncing-your-fork-to-the-original-repository-via-the-browser)
   ([stackoverflow](https://stackoverflow.com/questions/20984802/how-can-i-keep-my-fork-in-sync-without-adding-a-separate-remote/21131381#21131381))
-

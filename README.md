@@ -20,6 +20,8 @@ mkdocs serve --dirtyreload # faster rebuild
 
 ### Documentation
 
+- [mkdocs.org](https://www.mkdocs.org/)
+    - [User guide](https://www.mkdocs.org/user-guide/)
 - Material for MkDocs: https://squidfunk.github.io/
 
 
