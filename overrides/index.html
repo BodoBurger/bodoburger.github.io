@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block nav %}
+{# override default nav with nothing (no sidebar) #}
+{% endblock %}
+
+{% block content %}
+  <section class="hero">
+    {# You can leave it empty if you’re doing background-only #}
+  </section>
+  {{ super() }}
+{% endblock %}

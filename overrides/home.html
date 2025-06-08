@@ -1,32 +1,10 @@
 {% extends "base.html" %}
 
-{% block content %}
-
-<div class="custom-page">
-  <div class="hero-section">
-    <div class="hero-content">
-      <h1 class="hero-title">Welcome to {{ config.site_name }}</h1>
-      <p class="hero-subtitle">Your awesome documentation site built with Material for MkDocs</p>
-      <a href="{{ 'about/' | url }}" class="hero-cta">Learn More About Me</a>
+{% block container %}
+  <div class="homepage-hero">
+    <div class="homepage-content">
+      {{ page.content }}
     </div>
   </div>
-
-  <div class="features-section">
-    <div class="feature-grid">
-      <div class="feature-card">
-        <h3>📚 Documentation</h3>
-        <p>Comprehensive guides and tutorials to help you master the topics that matter most.</p>
-      </div>
-      <div class="feature-card">
-        <h3>🚀 Quick Start</h3>
-        <p>Get up and running in minutes with our step-by-step quick start guides.</p>
-      </div>
-      <div class="feature-card">
-        <h3>💡 Examples</h3>
-        <p>Real-world examples and code snippets to accelerate your learning journey.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
+  
 {% endblock %}

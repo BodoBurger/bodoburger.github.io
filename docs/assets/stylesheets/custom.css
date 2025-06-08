@@ -1,4 +1,8 @@
 .custom-page .md-main {
+  background-image: url('/assets/images/data-better-idea-org.jpg');
+  background-position: top;
+  background-attachment: fixed;
+  background-size: cover;
   margin: 0;
   padding-top: 0 !important;
 }
@@ -28,9 +32,6 @@
 .hero-section {
   position: relative;
   height: 60vh;
-  background-image: url('/assets/images/data-better-idea-org.jpg');
-  background-attachment: fixed;
-  background-size: cover;
   /*background-position: center; */
   /*background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);*/
   display: flex;
@@ -40,13 +41,6 @@
   text-align: center;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
-}
-
-/* If using background image instead */
-.hero-section.with-bg-image {
-
-  background-position: center;
-  background-attachment: fixed;
 }
 
 .hero-section::before {

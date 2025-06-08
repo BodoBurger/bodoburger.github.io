@@ -50,7 +50,7 @@ extra:
 
 # Custom CSS
 extra_css:
-  - assets/stylesheets/custom.css
+  - assets/stylesheets/extra.css
 
 # Extensions
 markdown_extensions: 

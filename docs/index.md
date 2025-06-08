@@ -1,5 +1,8 @@
 ---
-template: home.html
+hide:
+  - navigation
+  - toc
 ---
 
-This content will be replaced by the custom template.
+# Your headline here
+Your content here
