@@ -1,0 +1,270 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f8f9fa;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    overflow: hidden;
+    animation: slideIn 0.8s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header {
+    background: white;
+    color: #333;
+    padding: 60px 40px 40px;
+    text-align: center;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 30px;
+    object-fit: cover;
+    display: block;
+    border: 2px solid #e9ecef;
+}
+
+.header h1 {
+    font-size: 2.2em;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.header .title {
+    font-size: 1.1em;
+    color: #6c757d;
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 0;
+}
+
+.sidebar {
+    background: #fafbfc;
+    padding: 40px 30px;
+    border-right: 1px solid #e9ecef;
+}
+
+.content {
+    padding: 40px;
+}
+
+.section {
+    margin-bottom: 40px;
+}
+
+.section h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.3em;
+    font-weight: 600;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 8px;
+}
+
+.experience-item, .education-item {
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #f1f3f4;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.experience-item:hover, .education-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.experience-item:last-child, .education-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.job-title {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 1.1em;
+    margin-bottom: 4px;
+}
+
+.company {
+    color: #495057;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.date {
+    color: #6c757d;
+    font-size: 0.9em;
+    margin-bottom: 12px;
+}
+
+.skill-category {
+    margin-bottom: 25px;
+}
+
+.skill-category h3, .contact-sidebar h3 {
+    color: #2c3e50;
+    margin-bottom: 12px;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.skill-item {
+    background: white;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 0.85em;
+    margin: 4px 4px 4px 0;
+    border: 1px solid #e9ecef;
+    display: inline-block;
+    color: #495057;
+    transition: all 0.2s ease;
+}
+
+.skill-item:hover {
+    border-color: #6c757d;
+    transform: translateY(-1px);
+}
+
+.contact-sidebar p {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9em;
+    color: #495057;
+}
+
+.languages {
+    margin-top: 15px;
+}
+
+.languages > div:first-child {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 0.9em;
+    color: #495057;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: #e9ecef;
+    border-radius: 2px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: #6c757d;
+    border-radius: 2px;
+    transition: width 1s ease;
+}
+
+.section p {
+    color: #495057;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+.section ul {
+    margin-top: 10px;
+    padding-left: 18px;
+}
+
+.section li {
+    color: #495057;
+    font-size: 0.95em;
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+        order: 2;
+        background: white;
+        border-right: none;
+        border-top: 1px solid #e9ecef;
+    }
+    
+    .contact-info {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .header {
+        padding: 40px 30px 30px;
+    }
+    
+    .header h1 {
+        font-size: 1.8em;
+    }
+    
+    .content, .sidebar {
+        padding: 30px 25px;
+    }
+}
+
+.icon {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+}
