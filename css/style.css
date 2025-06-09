@@ -1,6 +1,6 @@
 :root {
     --main-font-color: #333;
-    --main-a-color: #242424;
+    --main-a-color: #072279;
     --accent-color: #ffee00;
 }
 
@@ -12,6 +12,7 @@
 
 a {
     color: var(--main-a-color);
+    text-shadow: #96a040;
     text-decoration: none;
 }
 
@@ -37,7 +38,7 @@ body {
     max-width: 1000px;
     margin: 0 auto;
     margin-top: 25px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 15px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     overflow: hidden;
@@ -56,8 +57,8 @@ body {
 }
 
 .header {
-    background: linear-gradient(135deg, #96a040 0%, transparent 20%);
-    color: #fff;
+    background: rgba(243, 243, 243, 0.3);
+    color: inherit;
     padding: 25px;
     text-align: center;
     position: relative;
@@ -71,9 +72,9 @@ body {
     left: -50%;
     width: 200%;
     height: 200%;
-    /* background: linear-gradient(135deg, #96a040 0%, transparent 40%); */
-    background: radial-gradient(circle, #414141 20%, transparent 40%);
-    animation: rotate 60s linear infinite;
+    background: linear-gradient(135deg, #96a040 0%, transparent 40%);
+    /* background: radial-gradient(circle, #96a040 20%, transparent 40%); */
+    animation: rotate 120s linear infinite;
 }
 
 @keyframes rotate {
@@ -139,11 +140,11 @@ body {
     background: rgba(248, 249, 250, 0.3);
     padding: 40px 30px;
     border-right: 1px solid #e9ecef;
-    border-bottom: 1px solid #e9ecef;
+    border-top: 1px solid #e9ecef;
 }
 
 .content {
-    padding: 40px;
+    padding: 30px;
 }
 
 .section {
