@@ -42,7 +42,7 @@ body {
     border-radius: 15px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     overflow: hidden;
-    animation: slideIn 0.8s ease-out;
+    /* animation: slideIn 0.8s ease-out; */
 }
 
 @keyframes slideIn {
@@ -379,10 +379,10 @@ body {
 .footer {
     text-align: center;
     padding: 1em 0;
-    background: #f0f0f0;
+    /* background: #f0f0f0; */
     color: #333;
     margin-top: 2em;
-    border-top: 1px solid #ddd;
+    /* border-top: 1px solid #ddd; */
 }
 .footer a {
     margin: 0 0.5em;
