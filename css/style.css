@@ -303,6 +303,32 @@ body {
     transform: scale(1.05);
 }
 
+/* Sidebar portfolio list */
+.portfolio-list {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.portfolio-list li {
+    font-size: 0.95em;
+}
+.portfolio-list li a {
+    color: var(--main-a-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+.portfolio-list li a:hover {
+    text-decoration: underline;
+}
+.portfolio-date {
+    color: #7f8c8d;
+    font-size: 0.85em;
+    margin-left: 8px;
+}
+
 .contact-sidebar h3 {
     color: #2c3e50;
     margin-bottom: 15px;
