@@ -1,0 +1,514 @@
+:root {
+    --main-font-color: #333;
+    --main-a-color: #072279;
+    --accent-color: #ffee00;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    color: var(--main-a-color);
+    text-shadow: #96a040;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.5;
+    color: var(--main-font-color);
+    background-image: url("../images/data-better-idea-org.jpg");
+    background-attachment: fixed;
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding: 12px;
+}
+
+.container {
+    max-width: 1050px;
+    margin: 0 auto;
+    margin-top: 18px;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 12px;
+    box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(300px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.header {
+    background: rgba(243, 243, 243, 0.35);
+    color: inherit;
+    padding: 18px 16px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(135deg, #96a040 0%, transparent 40%);
+    animation: rotate 120s linear infinite;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.2);
+    margin: 0;
+    background: #ddd;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    color: #999;
+    position: relative;
+    z-index: 1;
+}
+
+.header-content {
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
+}
+
+.header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.header h1 {
+    font-size: 2em;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.header .title {
+    font-size: 1.05em;
+    opacity: 0.9;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: flex-start;
+    gap: 14px;
+    margin-top: 0;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.92em;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+    margin-top: 8px;
+    position: relative;
+    z-index: 1;
+}
+
+.social-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.social-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.3s ease;
+    z-index: 0;
+}
+
+.social-btn svg {
+    position: relative;
+    z-index: 1;
+}
+
+.social-btn:hover {
+    transform: translateY(-8px) scale(1.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+}
+
+.social-btn:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 4px;
+}
+
+.social-btn:hover::before {
+    transform: scale(1.2);
+}
+
+.linkedin {
+    background: #0077b5;
+}
+
+.linkedin::before {
+    background: #005885;
+}
+
+.github {
+    background: #333;
+}
+
+.github::before {
+    background: #000;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 0;
+}
+
+.sidebar {
+    background: rgba(248, 249, 250, 0.3);
+    padding: 28px 22px;
+    border-right: 1px solid #e9ecef;
+    border-top: 1px solid #e9ecef;
+}
+
+.content {
+    padding: 22px 22px 26px;
+}
+
+.section {
+    margin-bottom: 24px;
+}
+
+.section h2 {
+    color: #2c3e50;
+    margin-bottom: 8px;
+    font-size: 1.25em;
+    border-bottom: 1px solid #ffffff;
+    padding-top: 12px;
+    position: relative;
+}
+
+.section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0px;
+    height: 3px;
+    background: var(--accent-color);
+}
+
+.about-me p {
+    margin-bottom: 10px;
+}
+
+.experience-item, .education-item {
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    padding-left: 20px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    border-left: 2px solid #ffffff;
+    border-bottom: 2px solid #f1f3f4;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.experience-item:hover, .education-item:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.job-title {
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 1.04em;
+}
+
+.company {
+    color: #919191;
+    font-weight: 600;
+    margin: 5px 0;
+}
+
+.date {
+    color: #7f8c8d;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.skill-category h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.skill-item {
+    background: white;
+    padding: 4px 7px;
+    border-radius: 10px;
+    font-size: 0.88em;
+    margin: 1px 0;
+    border: 2px solid #e9ecef;
+    transition: all 0.2s ease;
+    display: inline-block;
+}
+
+.skill-item:hover {
+    border-color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+/* Sidebar portfolio list */
+.portfolio-list {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.portfolio-list li {
+    font-size: 0.95em;
+}
+.portfolio-list li a {
+    color: var(--main-a-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+.portfolio-list li a:hover {
+    text-decoration: underline;
+}
+.portfolio-date {
+    color: #7f8c8d;
+    font-size: 0.85em;
+    margin-left: 8px;
+}
+
+.contact-sidebar h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.contact-sidebar p {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.languages div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0px;
+    font-size: 0.9em;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: #e9ecef;
+    border-radius: 2px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, #ffffff, var(--accent-color));
+    border-radius: 2px;
+    transition: width 1s ease;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 8px;
+    }
+    
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+        order: 2;
+    }
+    
+    .contact-info {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .header {
+        padding: 22px 15px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .header-content {
+        align-items: center;
+    }
+    
+    .header h1 {
+        font-size: 1.8em;
+    }
+    
+    .content, .sidebar {
+        padding: 18px 16px;
+    }
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+
+.footer {
+    text-align: center;
+    padding: 1em 0;
+    /* background: #f0f0f0; */
+    color: #333;
+    margin-top: 2em;
+    /* border-top: 1px solid #ddd; */
+}
+.footer a {
+    margin: 0 0.5em;
+}
+
+/* GitHub Pages 404 */
+.error-page {
+    display: grid;
+    place-items: center;
+    padding: 24px;
+}
+
+.error-card {
+    width: min(720px, 100%);
+    padding: clamp(28px, 6vw, 56px);
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    text-align: center;
+}
+
+.error-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.error-code {
+    margin-bottom: 4px;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+}
+
+.error-card h1 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+}
+
+.error-message {
+    max-width: 34rem;
+    margin: 0 auto 24px;
+}
+
+.home-button {
+    display: inline-block;
+    padding: 11px 18px;
+    border: 2px solid #2c3e50;
+    border-radius: 8px;
+    background: #2c3e50;
+    color: #fff;
+    font-weight: 700;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.home-button:hover {
+    background: var(--main-a-color);
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+.home-button:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .home-button {
+        transition: none;
+    }
+}
