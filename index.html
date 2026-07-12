@@ -6,6 +6,7 @@
     <title>Bodo Burger - CV</title>
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="stylesheet" href="css/style.css">
+    <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
     <div class="container">
@@ -38,9 +39,15 @@
                     </a>
                 </div>
             </div>
+            <button class="unfold-toggle" type="button" aria-expanded="false" aria-controls="cv-details" aria-label="Show more">
+                <span class="unfold-toggle-label">More &hellip;</span>
+                <span class="unfold-toggle-icon" aria-hidden="true"></span>
+            </button>
         </header>
 
-        <div class="main-content">
+        <div class="unfold-content" id="cv-details">
+          <div class="unfold-content-inner">
+            <div class="main-content">
             <aside class="sidebar">
                 <div class="section contact-sidebar">
                     <h3>Skills</h3>
@@ -291,8 +298,8 @@
                 </section>
                 -->
             </main>
-        </div>
-        <footer class="footer">
+            </div>
+            <footer class="footer">
             <div>
                 &copy; 2026 Bodo Burger &ndash; Made with ❤️ in Munich
             </div>
@@ -305,8 +312,37 @@
                     <img src="images/ally.svg" alt="LGBTQIA+ ally">
                 </a>
             </div>
-        </footer>
+            </footer>
+          </div>
+        </div>
 
     </div>
+    <script>
+        const unfoldToggle = document.querySelector('.unfold-toggle');
+        const unfoldContent = document.querySelector('.unfold-content');
+        const cvContainer = document.querySelector('.container');
+        const cvHeader = document.querySelector('.header');
+        unfoldContent.inert = true;
+
+        function setExpanded(isExpanded) {
+            unfoldToggle.setAttribute('aria-expanded', String(isExpanded));
+            unfoldContent.classList.toggle('is-expanded', isExpanded);
+            cvContainer.classList.toggle('is-expanded', isExpanded);
+            unfoldContent.inert = !isExpanded;
+            unfoldToggle.setAttribute('aria-label', isExpanded ? 'Show less' : 'Show more');
+        }
+
+        unfoldToggle.addEventListener('click', () => {
+            const isExpanded = unfoldToggle.getAttribute('aria-expanded') === 'true';
+            setExpanded(!isExpanded);
+        });
+
+        cvHeader.addEventListener('click', (event) => {
+            const isExpanded = unfoldToggle.getAttribute('aria-expanded') === 'true';
+            if (!isExpanded && !event.target.closest('a, button')) {
+                setExpanded(true);
+            }
+        });
+    </script>
 </body>
 </html>
