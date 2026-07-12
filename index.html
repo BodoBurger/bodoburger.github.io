@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="classic-theme">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,6 +39,10 @@
                     </a>
                 </div>
             </div>
+            <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Toggle liquid glass design">
+                <span class="theme-toggle-icon" aria-hidden="true">&#10022;</span>
+                <span class="theme-toggle-track" aria-hidden="true"><span></span></span>
+            </button>
             <button class="unfold-toggle" type="button" aria-expanded="false" aria-controls="cv-details" aria-label="Show more">
                 <span class="unfold-toggle-label">More &hellip;</span>
                 <span class="unfold-toggle-icon" aria-hidden="true"></span>
@@ -319,10 +323,23 @@
     </div>
     <script>
         const unfoldToggle = document.querySelector('.unfold-toggle');
+        const themeToggle = document.querySelector('.theme-toggle');
         const unfoldContent = document.querySelector('.unfold-content');
         const cvContainer = document.querySelector('.container');
         const cvHeader = document.querySelector('.header');
         unfoldContent.inert = true;
+
+        function updateThemeToggle() {
+            const glassEnabled = !document.documentElement.classList.contains('classic-theme');
+            themeToggle.setAttribute('aria-pressed', String(glassEnabled));
+        }
+
+        updateThemeToggle();
+
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('classic-theme');
+            updateThemeToggle();
+        });
 
         function setExpanded(isExpanded) {
             unfoldToggle.setAttribute('aria-expanded', String(isExpanded));
