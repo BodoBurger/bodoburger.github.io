@@ -70,10 +70,24 @@
                     </a>
                 </div>
             </div>
-            <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Toggle liquid glass design">
-                <span class="theme-toggle-icon" aria-hidden="true">&#10022;</span>
-                <span class="theme-toggle-track" aria-hidden="true"><span></span></span>
-            </button>
+            <div class="theme-toggle" data-mode="0">
+                <input
+                    class="theme-toggle-input"
+                    type="range"
+                    min="0"
+                    max="2"
+                    step="1"
+                    value="0"
+                    aria-label="Visual mode"
+                    aria-valuetext="Sun — default"
+                >
+                <span class="theme-toggle-thumb" aria-hidden="true"></span>
+                <span class="theme-toggle-icons" aria-hidden="true">
+                    <span title="Default">&#9728;</span>
+                    <span title="Liquid glass">&#10022;</span>
+                    <span title="Dark liquid glass">&#9790;</span>
+                </span>
+            </div>
             <button class="unfold-toggle" type="button" aria-expanded="false" aria-controls="cv-details" aria-label="Show more">
                 <span class="unfold-toggle-label">More &hellip;</span>
                 <span class="unfold-toggle-icon" aria-hidden="true"></span>
@@ -354,23 +368,30 @@
     </div>
     <script>
         const unfoldToggle = document.querySelector('.unfold-toggle');
-        const themeToggle = document.querySelector('.theme-toggle');
+        const themeToggle = document.querySelector('.theme-toggle-input');
         const unfoldContent = document.querySelector('.unfold-content');
         const cvContainer = document.querySelector('.container');
         const cvHeader = document.querySelector('.header');
         unfoldContent.inert = true;
 
-        function updateThemeToggle() {
-            const glassEnabled = !document.documentElement.classList.contains('classic-theme');
-            themeToggle.setAttribute('aria-pressed', String(glassEnabled));
+        const visualModes = [
+            { className: 'classic-theme', label: 'Sun — default' },
+            { className: '', label: 'Star — liquid glass' },
+            { className: 'dark-glass-theme', label: 'Moon — dark liquid glass' }
+        ];
+
+        function setVisualMode(modeIndex) {
+            const mode = visualModes[modeIndex];
+            document.documentElement.classList.remove('classic-theme', 'dark-glass-theme');
+            if (mode.className) {
+                document.documentElement.classList.add(mode.className);
+            }
+            themeToggle.closest('.theme-toggle').dataset.mode = String(modeIndex);
+            themeToggle.setAttribute('aria-valuetext', mode.label);
         }
 
-        updateThemeToggle();
-
-        themeToggle.addEventListener('click', () => {
-            document.documentElement.classList.toggle('classic-theme');
-            updateThemeToggle();
-        });
+        setVisualMode(Number(themeToggle.value));
+        themeToggle.addEventListener('input', () => setVisualMode(Number(themeToggle.value)));
 
         function setExpanded(isExpanded) {
             unfoldToggle.setAttribute('aria-expanded', String(isExpanded));
@@ -387,7 +408,7 @@
 
         cvHeader.addEventListener('click', (event) => {
             const isExpanded = unfoldToggle.getAttribute('aria-expanded') === 'true';
-            if (!isExpanded && !event.target.closest('a, button')) {
+            if (!isExpanded && !event.target.closest('a, button, input, select, textarea, label')) {
                 setExpanded(true);
             }
         });
