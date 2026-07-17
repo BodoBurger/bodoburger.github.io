@@ -9,19 +9,6 @@
     --glass-border: rgba(255, 255, 255, 0.48);
     --glass-shadow: 0 14px 40px rgba(4, 25, 40, 0.22);
     --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.58);
-    --unfold-glass-border: rgba(255, 255, 255, 0.48);
-    --unfold-glass-background: linear-gradient(135deg, rgba(255, 255, 255, 0.38), rgba(210, 235, 246, 0.16));
-    --unfold-glass-shadow: 0 7px 20px rgba(4, 25, 40, 0.2),
-                           inset 0 1px 0 rgba(255, 255, 255, 0.65),
-                           inset 0 -1px 0 rgba(255, 255, 255, 0.12);
-    --unfold-glass-shine: radial-gradient(circle at 25% 0, rgba(255, 255, 255, 0.48), transparent 48%),
-                          linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, 0.18) 50%, transparent 65%);
-    --unfold-glass-hover-border: rgba(255, 255, 255, 0.7);
-    --unfold-glass-hover-background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(210, 235, 246, 0.24));
-    --unfold-glass-hover-shadow: 0 9px 24px rgba(4, 25, 40, 0.25),
-                                 inset 0 1px 0 rgba(255, 255, 255, 0.78),
-                                 inset 0 -1px 0 rgba(255, 255, 255, 0.16);
-    --unfold-glass-saturation: 155%;
     --unfold-duration: 0.7s;
     --unfold-easing: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -130,9 +117,9 @@ body {
     top: 12px;
     right: 12px;
     display: none;
-    width: 78px;
+    width: 54px;
     height: 30px;
-    padding: 3px;
+    padding: 0;
     border: 1px solid rgba(255, 255, 255, 0.42);
     border-radius: 15px;
     background: rgba(255, 255, 255, 0.3);
@@ -161,8 +148,9 @@ body {
 .theme-toggle-input {
     position: absolute;
     z-index: 3;
-    inset: 3px;
-    width: 72px;
+    top: 3px;
+    left: 3px;
+    width: 48px;
     height: 24px;
     margin: 0;
     appearance: none;
@@ -210,7 +198,10 @@ body {
     content: '';
     position: absolute;
     z-index: 0;
-    inset: 3px;
+    top: 3px;
+    left: 3px;
+    width: 48px;
+    height: 24px;
     border-radius: 12px;
     background: rgba(83, 97, 111, 0.24);
 }
@@ -233,16 +224,15 @@ body {
     transform: translateX(24px);
 }
 
-.theme-toggle[data-mode="2"] .theme-toggle-thumb {
-    transform: translateX(48px);
-}
-
 .theme-toggle-icons {
     position: absolute;
     z-index: 2;
-    inset: 3px;
+    top: 3px;
+    left: 3px;
+    width: 48px;
+    height: 24px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     align-items: center;
     pointer-events: none;
 }
@@ -254,7 +244,9 @@ body {
     width: 24px;
     height: 24px;
     color: var(--heading-color);
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 0.82rem;
+    font-variant-emoji: text;
     line-height: 24px;
 }
 
@@ -313,29 +305,35 @@ body {
     transform: translate(-50%, -2px);
 }
 
-html.js:not(.classic-theme) .container:not(.is-expanded) .unfold-toggle {
+.dark-glass-theme.js .container:not(.is-expanded) .unfold-toggle {
     overflow: hidden;
     isolation: isolate;
-    border-color: var(--unfold-glass-border);
-    background: var(--unfold-glass-background);
-    box-shadow: var(--unfold-glass-shadow);
-    -webkit-backdrop-filter: blur(16px) saturate(var(--unfold-glass-saturation));
-    backdrop-filter: blur(16px) saturate(var(--unfold-glass-saturation));
+    border-color: rgba(210, 235, 248, 0.26);
+    background: linear-gradient(135deg, rgba(101, 151, 179, 0.22), rgba(5, 18, 29, 0.3));
+    box-shadow: 0 8px 22px rgba(0, 5, 12, 0.46),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.04);
+    -webkit-backdrop-filter: blur(16px) saturate(145%);
+    backdrop-filter: blur(16px) saturate(145%);
 }
 
-html.js:not(.classic-theme) .container:not(.is-expanded) .unfold-toggle::before {
+.dark-glass-theme.js .container:not(.is-expanded) .unfold-toggle::before {
     content: '';
     position: absolute;
     z-index: 0;
     inset: 0;
-    background: var(--unfold-glass-shine);
+    background:
+        radial-gradient(circle at 25% 0, rgba(205, 235, 250, 0.2), transparent 48%),
+        linear-gradient(110deg, transparent 35%, rgba(205, 235, 250, 0.1) 50%, transparent 65%);
     pointer-events: none;
 }
 
-html.js:not(.classic-theme) .container:not(.is-expanded) .unfold-toggle:hover {
-    border-color: var(--unfold-glass-hover-border);
-    background: var(--unfold-glass-hover-background);
-    box-shadow: var(--unfold-glass-hover-shadow);
+.dark-glass-theme.js .container:not(.is-expanded) .unfold-toggle:hover {
+    border-color: rgba(210, 235, 248, 0.42);
+    background: linear-gradient(135deg, rgba(117, 173, 202, 0.3), rgba(10, 30, 45, 0.4));
+    box-shadow: 0 10px 26px rgba(0, 5, 12, 0.52),
+                inset 0 1px 0 rgba(255, 255, 255, 0.26),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .js .container:not(.is-expanded) .unfold-toggle-label {
@@ -837,10 +835,6 @@ html.js:not(.classic-theme) .container:not(.is-expanded) .unfold-toggle:hover {
     text-align: center;
 }
 
-.footer a {
-    margin: 0;
-}
-
 .footer img {
     display: block;
     height: 28px;
@@ -944,6 +938,8 @@ html.js:not(.classic-theme) .container:not(.is-expanded) .unfold-toggle:hover {
     background: rgba(255, 255, 255, 0.94);
     border: 0;
     box-shadow: 0 2px 14px rgba(0, 0, 0, 0.14);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
 }
 
 .classic-theme .header,
@@ -1092,19 +1088,6 @@ html.js:not(.classic-theme) .container:not(.is-expanded) .unfold-toggle:hover {
     --glass-border: rgba(210, 235, 248, 0.2);
     --glass-shadow: 0 18px 50px rgba(0, 5, 12, 0.55);
     --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.14);
-    --unfold-glass-border: rgba(210, 235, 248, 0.26);
-    --unfold-glass-background: linear-gradient(135deg, rgba(101, 151, 179, 0.22), rgba(5, 18, 29, 0.3));
-    --unfold-glass-shadow: 0 8px 22px rgba(0, 5, 12, 0.46),
-                           inset 0 1px 0 rgba(255, 255, 255, 0.2),
-                           inset 0 -1px 0 rgba(255, 255, 255, 0.04);
-    --unfold-glass-shine: radial-gradient(circle at 25% 0, rgba(205, 235, 250, 0.2), transparent 48%),
-                          linear-gradient(110deg, transparent 35%, rgba(205, 235, 250, 0.1) 50%, transparent 65%);
-    --unfold-glass-hover-border: rgba(210, 235, 248, 0.42);
-    --unfold-glass-hover-background: linear-gradient(135deg, rgba(117, 173, 202, 0.3), rgba(10, 30, 45, 0.4));
-    --unfold-glass-hover-shadow: 0 10px 26px rgba(0, 5, 12, 0.52),
-                                 inset 0 1px 0 rgba(255, 255, 255, 0.26),
-                                 inset 0 -1px 0 rgba(255, 255, 255, 0.06);
-    --unfold-glass-saturation: 145%;
 }
 
 .dark-glass-theme body {
@@ -1189,12 +1172,6 @@ html.js:not(.classic-theme) .container:not(.is-expanded) .unfold-toggle:hover {
 .dark-glass-theme .footer {
     background: rgba(5, 17, 28, 0.72);
     border-top-color: rgba(210, 235, 248, 0.14);
-}
-
-.dark-glass-theme .error-card,
-.dark-glass-theme .home-button {
-    background: rgba(7, 20, 31, 0.72);
-    border-color: rgba(210, 235, 248, 0.18);
 }
 
 @media (max-width: 768px) {

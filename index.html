@@ -75,7 +75,7 @@
                     class="theme-toggle-input"
                     type="range"
                     min="0"
-                    max="2"
+                    max="1"
                     step="1"
                     value="0"
                     aria-label="Visual mode"
@@ -83,8 +83,7 @@
                 >
                 <span class="theme-toggle-thumb" aria-hidden="true"></span>
                 <span class="theme-toggle-icons" aria-hidden="true">
-                    <span title="Default">&#9728;</span>
-                    <span title="Liquid glass">&#10022;</span>
+                    <span title="Default">&#9728;&#65038;</span>
                     <span title="Dark liquid glass">&#9790;</span>
                 </span>
             </div>
@@ -97,20 +96,21 @@
         <div class="unfold-content" id="cv-details">
           <div class="unfold-content-inner">
             <div class="main-content">
-            <aside class="sidebar">
-                <div class="section contact-sidebar">
-                    <h3>Skills</h3>
-                    <div class="skill-category">
-                        <h4>Interests</h4>
-                        <span class="skill-item">Machine Learning</span>
-                        <span class="skill-item">Deep Learning</span>
-                        <span class="skill-item">AI</span>
+                <aside class="sidebar">
+
+                    <div class="section">
+                        <h3>Skills</h3>
+                        <div class="skill-category">
+                            <h4>Interests</h4>
+                            <span class="skill-item">Machine Learning</span>
+                            <span class="skill-item">Deep Learning</span>
+                            <span class="skill-item">AI</span>
                         <span class="skill-item">Geospatial Data</span>
                     </div>
                     <div class="skill-category">
                         <h4>Technologies</h4>
                         <span class="skill-item">Python</span>
-                       
+                        
                         <span class="skill-item">SQL</span>
                         <span class="skill-item">R</span>
                         <span class="skill-item">Git</span>
@@ -147,7 +147,7 @@
                         <span class="skill-item">DaVinci Resolve</span>
                     </div> -->
                 </div>
-
+                
                 <!-- <div class="section">
                     <h3>Portfolio</h3>
                     <ul class="portfolio-list">
@@ -179,7 +179,7 @@
                         </li>
                     </ul>
                 </div> -->
-
+            
                 <div class="section">
                     <h3>Languages</h3>
                     <dl class="languages">
@@ -376,7 +376,6 @@
 
         const visualModes = [
             { className: 'classic-theme', label: 'Sun — default' },
-            { className: '', label: 'Star — liquid glass' },
             { className: 'dark-glass-theme', label: 'Moon — dark liquid glass' }
         ];
 
